@@ -1,0 +1,71 @@
+1. Tytuł: "Inżynieria oprogramowania w dobie agentów AI"
+  [strona tytułowa z tytułem, autor: Hubert Łępicki, Programistok 2026, 2026-09-27, Białystok]
+
+2. Intro & powitanie
+  [ slajd jakimś śmiesznym memem powitalnym - welcome to jackass ?]
+
+3. Definicja inżynierii oprogramowania: "całość procesów, metod i narzędzi stosowanych w celu tworzenia, rozwijania i utrzymywania oprogramowania."
+  [ slajd z moją definicją powyżej]
+
+4. Historia: Margaret Hamilton i program Apollo
+  [ slajd ze zdjęciem Margaret Hamilton ze stosem kart performowanych, daty programu apollo, cytat o znaczeniu inżynierii oprogramowania ]
+
+5. Historia: NATO
+  [ zdjęcie z konferencji nato, kilka wniosków ]
+
+6. Historia: permanentny kryzys oprogramowania
+  [ slajd z podpunktami o dużej ilości błędów, przekraczaniu terminów, przekraczaniu budżetu wykonania, trudności w utrzymaniu ]
+
+7. Historia: model kaskadowy, specyfikacja wymagań, odbiór i testowanie
+  [ diagram tworzenia oprogramowania w modelu kaskadowym ]
+
+10. Historia: współdzielenie czasu, pierwsze maszyny wirtualne, Unix, systemy kontroli wersji
+  [ slajd z podpunktami kiedy pojawił się współdzielenie czasu, pierwsze maszyny wirtualne, Unix, systemy kontroli wersji ]
+
+11. Historia: Programowanie obiektowe, wzorce projektowe, testy automatyczne
+  [ slajd z podpunktami kiedy pojawiło się programowanie obiektowe, wzorce projektowe, testy automatyczne ]
+
+12. Historia: Agile, DevOps, CI/CD, chmura obliczeniowa, infrastructure-as-code
+  [ slajd z podpunktami kiedy pojawiło się Agile, DevOps, CI/CD, chmura obliczeniowa, infrastructure-as-code ]
+
+13. Historia: LLMy i agenci kodujący
+  [ slajd z podpunktami kiedy pojawiły się LLMy i agenci kodujący ]
+
+14. Vibe coding - amnezja programisty
+  [ slajd z Claude Code z beznadziejnym promptem jakimś który nie doprowadzi do niczego dobrego a jedynie problemów ]
+
+15. Vibe coding: AI slope
+  [ slajd z PRem z dużą ilością kodu, słabej jakości, problemem z review, pokryciem testami ]
+
+16. O czym zapomnieliśmy?
+  [ zapomnieliśmy o inżynierii oprogramowania ] 
+
+17. Narzędzia agentów: dostęp do dokumentacji, historii, kontekstu
+  [ slajd z podpunktami o tym jak agenci mogą korzystać z dokumentacji, historii i kontekstu (gh cli, serwery MCP, API) ]
+
+18. Narzędzia agentów: system kontroli wersji, stosy pull requestów
+  [ iteracyjne zmiany, częste commity ze znaczącymi opisami, małe pull requesty, stos pull requestów]
+
+19. Proces agentów: wiedza o tym jak i kiedy używać narzędzi
+  [ AGENTS.md/CLAUDE.md, skills, prompty, workflow, checklisty, dokumentacja ]
+
+20. Proces agentów: TDD, ciągły refactoring, sprawdzenie stylu i zgodności
+  [ slajd z podpunktami o TDD, ciągłym refactoringu, sprawdzaniu stylu i zgodności - pluginy, wspomnij o hubertlepicki/agile na slajdzie ]
+
+21. Proces agentów: zapisywanie i dzielenie się wiedzą i podjętymi decyzjami
+  [ slajd z podpunktami o zapisywaniu i dzieleniu się wiedzą i podjętymi decyzjami - dokumentacja, wiki, repozytoria, notatki ]
+
+22. Proces agentów: QA poprzez computer/browser use
+  [ slajd z podpunktami o QA poprzez computer/browser use ]
+
+23. Proces agentów: code review, wielopoziomowy
+  [ slajd z podpunktami o code review, wielopoziomowy - internal review, peer AI review, QA review, security review, human review ]
+
+24. Proces agentów: izolacja środowisk, zasada najniższych uprawnień, sandboxing, paralelizacja pracy
+   [ slajd z podpunktami o izolacji środowisk, zasadzie najniższych uprawnień, sandboxingu, paralelizacji pracy ]
+
+25. Proces agentów: spec-driven development (model kaskadowy v2)
+   [ OpenAI symphony lub inne orkiestratory, opisywanie autonomiczne agenty, orkiestratory ]
+
+26. Podsumowanie
+  [ slajd z podsumowaniem, wnioski, co dalej, pytania i odpowiedzi ]
