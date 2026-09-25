@@ -22,19 +22,10 @@ Wolnych zdjęć z konferencji NATO 1968 (Garmisch) ani 1969 (Rzym) nie ma na Com
 - Pobrany rozmiar: 3840×1349, panorama (oryginał 16209×5695)
 - Podpis: **Fot. Ricardalovesmonuments, CC BY 4.0, Wikimedia Commons**
 
-## agc.jpg
-
-- Tytuł: Agc view (Apollo Guidance Computer, obudowa główna, i panel DSKY)
-- Autor: NASA (plik przesłał Grabert do niemieckiej Wikipedii)
-- Licencja: domena publiczna (PD-NASA). https://commons.wikimedia.org/wiki/Template:PD-NASA
-- Źródło: https://commons.wikimedia.org/wiki/File:Agc_view.jpg
-- Pobrany rozmiar: 1920×1314 (oryginał 2709×1854)
-- Podpis: **Fot. NASA, domena publiczna, Wikimedia Commons**
-
 ## qr-agile.svg
 
 Kod QR do https://github.com/hubertlepicki/agile, wygenerowany lokalnie (Python, biblioteka qrcode).
 
-## Fonty (slajdy/assets/fonts)
+## Fonty (assets/fonts)
 
 Inter, Fraunces i JetBrains Mono na licencji SIL Open Font License 1.1 (pliki LICENSE-*.txt obok), pobrane z pakietów Fontsource.
