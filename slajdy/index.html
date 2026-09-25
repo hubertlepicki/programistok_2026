@@ -1,0 +1,1070 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inżynieria oprogramowania w dobie agentów AI</title>
+<style>
+@font-face { font-family: "Inter"; font-weight: 100 900; font-display: block; src: url(assets/fonts/inter-latin-wght-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Inter"; font-weight: 100 900; font-display: block; src: url(assets/fonts/inter-latin-ext-wght-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Fraunces"; font-weight: 100 900; font-display: block; src: url(assets/fonts/fraunces-latin-wght-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Fraunces"; font-weight: 100 900; font-display: block; src: url(assets/fonts/fraunces-latin-ext-wght-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Fraunces"; font-style: italic; font-weight: 100 900; font-display: block; src: url(assets/fonts/fraunces-latin-wght-italic.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Fraunces"; font-style: italic; font-weight: 100 900; font-display: block; src: url(assets/fonts/fraunces-latin-ext-wght-italic.woff2) format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "JetBrains Mono"; font-weight: 100 800; font-display: block; src: url(assets/fonts/jetbrains-mono-latin-wght-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "JetBrains Mono"; font-weight: 100 800; font-display: block; src: url(assets/fonts/jetbrains-mono-latin-ext-wght-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+:root {
+  --paper: #f6f4ee;
+  --card: #ffffff;
+  --card-2: #efece4;
+  --ink: #16181d;
+  --ink-2: #3b404c;
+  --muted: #6d7280;
+  --rule: #dcd7ca;
+  --accent: #c2410c;
+  --accent-soft: #f8e6da;
+  --blue: #1f4fd1;
+  --blue-soft: #e1e8fa;
+  --green: #1a7f37;
+  --green-soft: #dcf1e2;
+  --red: #c62828;
+  --red-soft: #f9dede;
+  --serif: "Fraunces", Georgia, serif;
+  --sans: "Inter", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { background: #e7e3d9; color: var(--ink); font-family: var(--sans); overflow: hidden; -webkit-font-smoothing: antialiased; }
+
+/* ---------- deck mechanics ---------- */
+.slide {
+  position: absolute; left: 50%; top: 50%;
+  width: 1920px; height: 1080px;
+  transform: translate(-50%, -50%) scale(var(--scale, 1));
+  background: var(--paper);
+  padding: 104px 128px 128px;
+  display: flex; flex-direction: column;
+  opacity: 0; visibility: hidden;
+  transition: opacity .35s ease, visibility 0s linear .35s;
+  overflow: hidden;
+}
+.slide.active { opacity: 1; visibility: visible; transition: opacity .35s ease; }
+.step { opacity: 0; transform: translateY(14px); transition: opacity .35s ease, transform .35s ease; }
+.step.shown { opacity: 1; transform: none; }
+
+.slide-footer {
+  position: absolute; left: 128px; right: 128px; bottom: 44px;
+  display: flex; justify-content: space-between; align-items: center;
+  font: 500 18px/1 var(--mono); color: var(--muted); letter-spacing: .04em;
+}
+.slide-footer .num b { color: var(--ink); font-weight: 600; }
+#progress { position: fixed; left: 0; bottom: 0; height: 4px; background: var(--accent); transition: width .35s ease; z-index: 5; }
+
+/* ---------- typography ---------- */
+.kicker { font: 600 22px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 26px; }
+h1, h2 { font-family: var(--serif); font-weight: 600; letter-spacing: -.02em; line-height: 1.04; font-variation-settings: "SOFT" 50, "WONK" 0; }
+h2 { font-size: 84px; margin-bottom: 56px; max-width: 1560px; }
+h2 em, h1 em { font-style: italic; color: var(--accent); font-weight: 500; }
+p, li { font-size: 36px; line-height: 1.38; color: var(--ink-2); }
+strong { color: var(--ink); font-weight: 650; }
+code, .mono { font-family: var(--mono); font-size: .86em; }
+code { background: var(--card-2); padding: .06em .32em; border-radius: 6px; color: var(--ink); }
+
+.bullets { list-style: none; display: flex; flex-direction: column; gap: 26px; }
+.bullets li { position: relative; padding-left: 46px; }
+.bullets li::before { content: ""; position: absolute; left: 0; top: .6em; width: 20px; height: 4px; background: var(--accent); border-radius: 2px; }
+.bullets.tight { gap: 18px; }
+.bullets.small li { font-size: 31px; }
+
+.echo {
+  display: inline-flex; align-items: center; gap: 14px;
+  font: 500 24px/1.2 var(--mono); color: var(--blue);
+  background: var(--blue-soft); border-radius: 999px; padding: 12px 26px 12px 20px;
+}
+.echo::before { content: "↩"; font-size: 28px; }
+.echo-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: auto; }
+
+.caption { font: 400 18px/1.4 var(--sans); color: var(--muted); margin-top: 16px; }
+.caption a { color: inherit; }
+
+.card { background: var(--card); border: 1px solid var(--rule); border-radius: 22px; padding: 40px 44px; }
+.card h3 { font: 650 38px/1.15 var(--sans); color: var(--ink); margin-bottom: 18px; letter-spacing: -.01em; }
+.card p { font-size: 30px; }
+.card .label { font: 600 20px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+
+.cols { display: grid; gap: 56px; flex: 1; min-height: 0; }
+.cols-2 { grid-template-columns: 1fr 1fr; }
+.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+/* ---------- title slide ---------- */
+.s-title { padding: 0; justify-content: center; }
+.s-title .inner { padding: 0 160px; }
+.s-title .kicker { font-size: 26px; margin-bottom: 44px; }
+.s-title h1 { font-size: 148px; line-height: .98; max-width: 1500px; }
+.s-title .author { margin-top: 72px; font: 600 44px/1.2 var(--sans); color: var(--ink); }
+.s-title .meta { margin-top: 14px; font: 400 30px/1.3 var(--sans); color: var(--muted); }
+.s-title .ruler { position: absolute; left: 160px; right: 160px; bottom: 96px; height: 60px; }
+.s-title .ruler .line { position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--rule); }
+.s-title .ruler span { position: absolute; top: -9px; transform: translateX(-50%); font: 500 18px/1 var(--mono); color: var(--muted); padding-top: 30px; }
+.s-title .ruler span::before { content: ""; position: absolute; left: 50%; top: 0; width: 2px; height: 20px; background: var(--muted); }
+.s-title .ruler span.now { color: var(--accent); font-weight: 700; }
+.s-title .ruler span.now::before { background: var(--accent); width: 4px; margin-left: -1px; }
+
+/* ---------- welcome ---------- */
+.s-hello { justify-content: center; align-items: flex-start; padding-left: 160px; }
+.s-hello h2 { font-size: 260px; line-height: .95; margin: 0; }
+
+/* ---------- definition ---------- */
+.s-def { justify-content: center; }
+.s-def .term { font: 600 30px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 40px; }
+.s-def blockquote { font: 500 72px/1.16 var(--serif); letter-spacing: -.02em; color: var(--ink); max-width: 1600px; }
+.s-def blockquote mark { background: none; color: var(--accent); }
+.s-def blockquote .q { color: var(--rule); }
+.s-def .src { margin-top: 56px; max-width: 1500px; font: 400 24px/1.45 var(--sans); color: var(--muted); }
+.s-def .src b { color: var(--ink-2); font-weight: 600; }
+
+/* ---------- Hamilton ---------- */
+.s-hamilton { padding-top: 88px; }
+.s-hamilton .cols { grid-template-columns: 560px 1fr; gap: 88px; }
+.photo { display: flex; flex-direction: column; min-height: 0; }
+.photo img { width: 100%; flex: 1; min-height: 0; object-fit: cover; border-radius: 18px; background: var(--card-2); display: block; }
+.facts { display: grid; grid-template-columns: repeat(3, auto); gap: 18px 56px; margin-bottom: 52px; justify-content: start; }
+.facts .n { font: 600 64px/1 var(--serif); color: var(--ink); letter-spacing: -.02em; }
+.facts .d { font: 400 24px/1.3 var(--sans); color: var(--muted); margin-top: 10px; max-width: 300px; }
+.quote { border-left: 6px solid var(--accent); padding: 6px 0 6px 40px; }
+.quote p { font: 500 italic 40px/1.28 var(--serif); color: var(--ink); }
+.quote cite { display: block; margin-top: 22px; font: 400 22px/1.4 var(--sans); color: var(--muted); font-style: normal; }
+
+/* ---------- NATO ---------- */
+.s-nato h2 { margin-bottom: 36px; }
+.strip img { width: 100%; height: 330px; object-fit: cover; object-position: center 55%; border-radius: 18px; display: block; }
+.numbered.three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; margin-top: 44px; }
+.numbered.three li { grid-template-columns: 1fr; font-size: 31px; gap: 10px; }
+.numbered { list-style: none; counter-reset: n; display: flex; flex-direction: column; gap: 40px; }
+.numbered li { counter-increment: n; display: grid; grid-template-columns: 72px 1fr; gap: 8px; font-size: 34px; }
+.numbered li::before { content: counter(n, decimal-leading-zero); font: 600 30px/1.45 var(--mono); color: var(--accent); }
+
+/* ---------- crisis ---------- */
+.crisis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 12px; }
+.crisis .card { padding: 44px 40px 48px; display: flex; flex-direction: column; gap: 26px; min-height: 330px; }
+.crisis svg { width: 76px; height: 76px; stroke: var(--accent); fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.crisis h3 { font-size: 42px; margin: 0; }
+.crisis p { font-size: 27px; color: var(--muted); }
+.verdict { margin-top: auto; font: 600 64px/1.1 var(--serif); letter-spacing: -.02em; color: var(--ink); }
+.verdict em { color: var(--accent); font-style: italic; font-weight: 500; }
+
+/* ---------- waterfall ---------- */
+.waterfall { position: relative; width: 1560px; height: 560px; margin-top: -8px; }
+.waterfall .box { position: absolute; width: 400px; height: 96px; border-radius: 16px; background: var(--card); border: 2px solid var(--ink); display: flex; align-items: center; padding: 0 30px; font: 600 32px/1 var(--sans); color: var(--ink); gap: 20px; }
+.waterfall .box i { font: 600 22px/1 var(--mono); color: var(--accent); font-style: normal; }
+.waterfall svg { position: absolute; inset: 0; overflow: visible; }
+.waterfall .fwd { stroke: var(--ink); stroke-width: 3; fill: none; }
+.waterfall .back, .legend .back { stroke: var(--accent); stroke-width: 3; fill: none; stroke-dasharray: 10 9; }
+.waterfall .legend { position: absolute; right: 0; top: 8px; display: flex; align-items: center; gap: 18px; font: 500 26px/1.3 var(--sans); color: var(--accent); }
+.waterfall .legend svg { position: static; flex: none; }
+.royce { display: flex; gap: 40px; align-items: flex-start; margin-top: auto; }
+.royce .quote { max-width: 1020px; }
+.royce .quote p { font-size: 38px; }
+
+/* ---------- timeline ---------- */
+.timeline { position: relative; flex: 1; margin: 0 -20px; }
+.timeline .axis { position: absolute; left: 0; right: 0; top: 50%; height: 3px; background: var(--ink); border-radius: 2px; }
+.timeline .axis::after { content: ""; position: absolute; right: -4px; top: -9px; border: 10px solid transparent; border-left: 16px solid var(--ink); border-right: 0; }
+.timeline ol { list-style: none; position: absolute; inset: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; }
+.timeline li { position: relative; font-size: 0; }
+.timeline li::before { content: ""; position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; margin: -9.5px 0 0 -11px; border-radius: 50%; background: var(--paper); border: 4px solid var(--accent); z-index: 1; }
+.timeline li::after { content: ""; position: absolute; left: 50%; width: 2px; margin-left: -1px; background: var(--rule); }
+.timeline li .t { position: absolute; left: 50%; transform: translateX(-50%); width: 300px; text-align: center; }
+.timeline li:nth-child(odd) .t { bottom: calc(50% + 58px); }
+.timeline li:nth-child(even) .t { top: calc(50% + 58px); }
+.timeline li:nth-child(odd)::after { bottom: 50%; height: 50px; }
+.timeline li:nth-child(even)::after { top: 50%; height: 50px; }
+.timeline .y { display: block; font: 600 30px/1 var(--mono); color: var(--accent); margin-bottom: 12px; }
+.timeline li:nth-child(even) .y { margin: 12px 0 0; order: 3; }
+.timeline .t { display: flex; flex-direction: column; }
+.timeline .nm { font: 650 32px/1.12 var(--sans); color: var(--ink); letter-spacing: -.01em; }
+.timeline .ds { font: 400 23px/1.3 var(--sans); color: var(--muted); margin-top: 8px; }
+.timeline li:nth-child(even) .nm { order: 1; }
+.timeline li:nth-child(even) .ds { order: 2; }
+.timeline.dense li .t { width: 260px; }
+.timeline.dense .nm { font-size: 29px; }
+.timeline.dense .ds { font-size: 21px; }
+
+/* ---------- terminal mockup ---------- */
+.term-wrap { display: grid; grid-template-columns: 1fr; gap: 48px; flex: 1; min-height: 0; margin-top: -12px; }
+.terminal { background: #1b1d23; border-radius: 20px; box-shadow: 0 30px 60px -30px rgba(20,20,30,.45); overflow: hidden; display: flex; flex-direction: column; font: 400 25px/1.5 var(--mono); color: #d7dae0; }
+.terminal .bar { height: 50px; background: #2a2d35; display: flex; align-items: center; gap: 10px; padding: 0 22px; flex: none; }
+.terminal .bar i { width: 15px; height: 15px; border-radius: 50%; background: #ff5f57; }
+.terminal .bar i:nth-child(2) { background: #febc2e; }
+.terminal .bar i:nth-child(3) { background: #28c840; }
+.terminal .bar span { margin-left: 18px; font-size: 19px; color: #8b909c; }
+.terminal .body { padding: 26px 34px; display: flex; flex-direction: column; gap: 14px; }
+.terminal .welcome { border: 1.5px solid #d97757; border-radius: 10px; padding: 8px 20px; color: #d97757; align-self: flex-start; font-size: 22px; }
+.terminal .prompt { border: 1.5px solid #5a5f6b; border-radius: 10px; padding: 10px 20px; color: #f1f2f4; }
+.terminal .prompt::before { content: "> "; color: #8b909c; }
+.terminal .out { padding-left: 4px; }
+.terminal .out .dot { color: #e6e7ea; }
+.terminal .out .dot::before { content: "⏺ "; color: #e6e7ea; }
+.terminal .out .tool::before { content: "⏺ "; color: #3fb950; }
+.terminal .out .sub { color: #8b909c; padding-left: 36px; }
+.terminal .ok { color: #3fb950; }
+.terminal .sys { color: #8b909c; font-style: italic; }
+.terminal .sep { color: #6b7080; text-align: center; font-size: 21px; letter-spacing: .08em; padding: 4px 0; border-top: 1px dashed #3a3e48; margin-top: 4px; padding-top: 14px; }
+.act { display: flex; flex-direction: column; gap: 14px; }
+.act-notes { display: flex; flex-direction: column; justify-content: space-between; padding: 30px 0 40px; }
+.act-note .n { font: 600 22px/1 var(--mono); color: var(--accent); letter-spacing: .1em; }
+.act-note h3 { font: 600 46px/1.1 var(--serif); color: var(--ink); margin: 14px 0 12px; letter-spacing: -.01em; }
+.act-note p { font-size: 27px; color: var(--muted); }
+
+/* ---------- PR mockup ---------- */
+.pr-wrap { display: grid; grid-template-columns: 1fr 440px; gap: 56px; flex: 1; min-height: 0; margin-top: -20px; }
+.pr { background: #fff; border: 1px solid #d0d7de; border-radius: 16px; font-family: -apple-system, "Segoe UI", "Inter", sans-serif; color: #1f2328; padding: 36px 44px; display: flex; flex-direction: column; gap: 22px; box-shadow: 0 30px 60px -36px rgba(20,20,30,.35); }
+.pr .ttl { font: 400 44px/1.2 var(--sans); letter-spacing: -.01em; }
+.pr .ttl span { color: #656d76; font-weight: 300; }
+.pr .meta { display: flex; align-items: center; gap: 16px; font-size: 22px; color: #656d76; }
+.pr .badge { background: #1f883d; color: #fff; border-radius: 999px; padding: 8px 20px; font-weight: 600; font-size: 21px; display: inline-flex; gap: 8px; align-items: center; }
+.pr .meta code { font-size: 19px; background: #ddf4ff; color: #0969da; }
+.pr .tabs { display: flex; gap: 36px; border-bottom: 1px solid #d0d7de; font-size: 22px; color: #656d76; padding-bottom: 12px; align-items: center; }
+.pr .tabs b { color: #1f2328; font-weight: 600; }
+.pr .tabs .cnt { background: #eff1f3; border-radius: 999px; padding: 2px 11px; font-size: 18px; margin-left: 6px; }
+.pr .tabs .stat { margin-left: auto; font: 600 24px/1 var(--mono); }
+.pr .tabs .stat .a { color: #1a7f37; } .pr .tabs .stat .d { color: #d1242f; margin-left: 10px; }
+.pr .tabs .stat .sq { display: inline-flex; gap: 3px; margin-left: 12px; vertical-align: -2px; }
+.pr .tabs .stat .sq i { width: 14px; height: 14px; background: #1a7f37; border-radius: 2px; }
+.pr .tabs .stat .sq i.r { background: #d1242f; }
+.pr .row { border: 1px solid #d0d7de; border-radius: 12px; padding: 18px 24px; display: flex; align-items: center; gap: 18px; font-size: 23px; }
+.pr .row .ic { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 700; font-size: 20px; flex: none; }
+.pr .row small { color: #656d76; font-size: 20px; margin-left: auto; }
+.pr .fail .ic { background: #d1242f; } .pr .warn .ic { background: #9a6700; } .pr .appr .ic { background: #1f883d; }
+.pr .commit { font: 400 21px/1.4 var(--mono); color: #656d76; }
+.pr .commit b { color: #1f2328; font-weight: 500; }
+.pr .review { border: 1px solid #d0d7de; border-radius: 12px; overflow: hidden; font-size: 23px; }
+.pr .review .hd { background: #f6f8fa; padding: 14px 24px; border-bottom: 1px solid #d0d7de; color: #656d76; display: flex; align-items: center; gap: 14px; }
+.pr .review .av { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg,#8f6fe0,#d86a9a); }
+.pr .review .hd b { color: #1f2328; }
+.pr .review .bd { padding: 20px 24px; font-size: 30px; }
+.pr .merge { background: #1f883d; color: #fff; border-radius: 10px; padding: 14px 28px; font-weight: 600; font-size: 23px; align-self: flex-start; }
+.pr-notes { display: flex; flex-direction: column; gap: 26px; justify-content: center; }
+.pr-note { border-left: 5px solid var(--red); padding: 6px 0 6px 28px; }
+.pr-note b { display: block; font: 600 38px/1.15 var(--serif); color: var(--ink); letter-spacing: -.01em; }
+.pr-note span { font-size: 25px; color: var(--muted); line-height: 1.35; display: block; margin-top: 6px; }
+
+/* ---------- forgot ---------- */
+.s-forgot { justify-content: center; }
+.s-forgot h2 { font-size: 132px; margin-bottom: 64px; }
+.s-forgot .answer { font: 500 italic 104px/1.05 var(--serif); color: var(--accent); letter-spacing: -.02em; }
+.s-forgot .def { margin-top: 48px; font-size: 32px; color: var(--muted); max-width: 1300px; }
+
+/* ---------- knowledge cards ---------- */
+.kcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+.kcards .card { min-height: 430px; display: flex; flex-direction: column; }
+.kcards .card p { font-size: 29px; }
+.kcards .card .ico { width: 64px; height: 64px; margin-bottom: 28px; stroke: var(--accent); fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.via { margin-top: auto; display: flex; gap: 16px; align-items: center; font: 500 26px/1 var(--mono); color: var(--muted); padding-top: 44px; }
+.via em { font-style: normal; color: var(--muted); font-size: 24px; }
+.via span { background: var(--card); border: 1px solid var(--rule); padding: 14px 24px; border-radius: 12px; color: var(--ink); }
+
+/* ---------- stacked PRs ---------- */
+.s-stack .cols { grid-template-columns: 1fr 640px; gap: 88px; }
+.stack { display: flex; flex-direction: column-reverse; gap: 0; align-self: center; }
+.stack .pr-card { position: relative; background: var(--card); border: 2px solid var(--ink); border-radius: 16px; padding: 22px 30px; display: flex; align-items: center; gap: 22px; font-size: 28px; margin-top: 44px; }
+.stack .pr-card.main { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.stack .pr-card .id { font: 700 26px/1 var(--mono); color: var(--accent); min-width: 72px; }
+.stack .pr-card.main .id { color: #f3b58f; }
+.stack .pr-card .nm { font-weight: 600; color: inherit; }
+.stack .pr-card .df { margin-left: auto; font: 600 22px/1 var(--mono); }
+.stack .pr-card .df .a { color: var(--green); } .stack .pr-card .df .d { color: var(--red); margin-left: 8px; }
+.stack .pr-card + .pr-card::before { content: ""; position: absolute; left: 50px; bottom: -46px; width: 2px; height: 46px; background: var(--ink); }
+.stack .pr-card + .pr-card::after { content: ""; position: absolute; left: 43px; bottom: -48px; border: 8px solid transparent; border-top: 12px solid var(--ink); border-bottom: 0; transform: none; }
+
+/* ---------- soft -> hard ladder ---------- */
+.ladder { margin-top: auto; }
+.ladder .scale { display: flex; justify-content: space-between; font: 600 20px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.ladder .scale b { color: var(--accent); font-weight: 600; }
+.ladder .rungs { display: grid; grid-template-columns: 1fr 1fr 1fr 1.9fr; gap: 0; }
+.ladder .rung { position: relative; padding: 24px 34px 24px 46px; font: 600 28px/1.2 var(--sans); color: var(--ink); clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%, 26px 50%); margin-right: -14px; display: flex; flex-direction: column; justify-content: center; }
+.ladder .rung small { display: block; font: 400 21px/1.3 var(--sans); color: var(--ink-2); margin-top: 6px; }
+.ladder .rung:nth-child(1) { background: #f1e7dc; clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%); padding-left: 32px; }
+.ladder .rung:nth-child(2) { background: #f0d5c0; }
+.ladder .rung:nth-child(3) { background: #e9b08c; }
+.ladder .rung:nth-child(4) { background: var(--accent); color: #fff; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 26px 50%); margin-right: 0; }
+.ladder .rung:nth-child(4) small { color: #fde8da; }
+
+/* ---------- TDD ---------- */
+.s-tdd .cols { grid-template-columns: 1fr 600px; gap: 72px; }
+.tdd-side { display: flex; flex-direction: column; gap: 30px; }
+.loop { position: relative; border: 2px dashed var(--muted); border-radius: 28px; padding: 58px 30px 26px; }
+.loop .lbl { position: absolute; top: -17px; left: 30px; background: var(--paper); padding: 0 14px; font: 600 20px/1.6 var(--mono); color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+.loop svg { display: block; margin: 0 auto; }
+.loop .inner-lbl { text-align: center; font: 600 20px/1.3 var(--mono); color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-top: 4px; }
+.qr { display: grid; grid-template-columns: 170px 1fr; gap: 28px; align-items: center; background: var(--card); border: 1px solid var(--rule); border-radius: 22px; padding: 26px; }
+.qr img { width: 170px; height: 170px; display: block; }
+.qr .url { font: 600 23px/1.3 var(--mono); color: var(--ink); word-break: break-all; }
+.qr .tag { font: 500 italic 26px/1.3 var(--serif); color: var(--accent); margin-top: 12px; }
+
+/* ---------- writing knowledge ---------- */
+.rows { display: flex; flex-direction: column; gap: 0; border-top: 2px solid var(--ink); }
+.rows .r { display: grid; grid-template-columns: 420px 1fr; gap: 48px; padding: 30px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.rows .r b { font: 600 36px/1.2 var(--serif); color: var(--ink); letter-spacing: -.01em; }
+.rows .r span { font-size: 31px; color: var(--ink-2); line-height: 1.35; }
+
+/* ---------- QA ---------- */
+.s-qa .cols { grid-template-columns: 1fr 760px; gap: 72px; }
+.browser { background: #fff; border: 1px solid var(--rule); border-radius: 18px; overflow: hidden; box-shadow: 0 30px 60px -36px rgba(20,20,30,.35); align-self: start; }
+.browser .bar { height: 52px; background: var(--card-2); display: flex; align-items: center; gap: 10px; padding: 0 20px; }
+.browser .bar i { width: 14px; height: 14px; border-radius: 50%; background: #d6d1c4; }
+.browser .bar span { margin-left: 16px; flex: 1; background: #fff; border-radius: 8px; padding: 7px 16px; font: 400 18px/1 var(--mono); color: var(--muted); }
+.browser .page { position: relative; padding: 36px 40px 40px; height: 440px; }
+.browser .page .h { width: 55%; height: 26px; background: #e6e2d8; border-radius: 6px; margin-bottom: 26px; }
+.browser .page .ln { height: 14px; background: #efece4; border-radius: 6px; margin-bottom: 14px; }
+.browser .ticket { margin-top: 30px; border: 1px solid var(--rule); border-radius: 14px; padding: 22px 26px; display: flex; justify-content: space-between; align-items: center; }
+.browser .ticket .l { width: 220px; }
+.browser .btn { background: var(--ink); color: #fff; font: 600 22px/1 var(--sans); padding: 16px 28px; border-radius: 10px; }
+.browser .hl { position: absolute; border: 4px solid var(--red); border-radius: 14px; }
+.browser .flag { position: absolute; background: var(--red); color: #fff; font: 600 20px/1.2 var(--sans); padding: 10px 16px; border-radius: 10px; }
+.browser .cursor { position: absolute; width: 34px; height: 34px; }
+.shot-row { display: flex; gap: 14px; margin-top: 18px; }
+.shot-row span { font: 500 20px/1 var(--mono); color: var(--muted); background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 16px; }
+
+/* ---------- review pipeline ---------- */
+.pipeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; align-items: center; margin-top: 8px; }
+.stage { position: relative; display: flex; flex-direction: column; justify-content: center; padding: 0 44px 0 58px; color: var(--ink); clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 50%, calc(100% - 34px) 100%, 0 100%, 34px 50%); margin-right: -20px; }
+.stage:first-child { clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 50%, calc(100% - 34px) 100%, 0 100%); padding-left: 40px; }
+.stage .n { font: 600 20px/1 var(--mono); color: var(--accent); margin-bottom: 12px; }
+.stage b { font: 650 33px/1.1 var(--sans); letter-spacing: -.01em; }
+.stage:nth-child(1) { height: 250px; background: #f3ece2; }
+.stage:nth-child(2) { height: 226px; background: #f0e1d2; }
+.stage:nth-child(3) { height: 202px; background: #edd4bf; }
+.stage:nth-child(4) { height: 178px; background: #e8c2a5; }
+.stage:nth-child(5) { height: 154px; background: var(--accent); color: #fff; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 34px 50%); margin-right: 0; }
+.stage:nth-child(5) .n { color: #fde8da; }
+.stage-desc { display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; margin-top: 36px; }
+.stage-desc p { font-size: 25px; line-height: 1.36; color: var(--ink-2); }
+
+/* ---------- security / parallel ---------- */
+.s-sec .cols { gap: 64px; }
+.s-sec .card { padding: 40px 46px; }
+.s-sec .card h3 { display: flex; align-items: center; gap: 18px; margin-bottom: 26px; }
+.s-sec .card h3 svg { width: 44px; height: 44px; stroke: var(--accent); fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.s-sec .bullets li { font-size: 28px; line-height: 1.34; padding-left: 38px; }
+.s-sec .bullets li::before { width: 16px; }
+.s-sec .bullets { gap: 20px; }
+
+/* ---------- symphony ---------- */
+.flow { display: flex; align-items: stretch; gap: 0; margin-top: 4px; }
+.flow .node { flex: 1; background: var(--card); border: 2px solid var(--ink); border-radius: 18px; padding: 30px 30px; display: flex; flex-direction: column; gap: 10px; }
+.flow .node .ph { font: 600 20px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.flow .node b { font: 650 36px/1.1 var(--sans); color: var(--ink); }
+.flow .node span { font-size: 25px; color: var(--muted); line-height: 1.35; }
+.flow .node.file { background: var(--ink); border-color: var(--ink); }
+.flow .node.file b { color: var(--paper); font-family: var(--mono); font-weight: 600; }
+.flow .node.file span { color: #b9bcc6; }
+.flow .arr { width: 76px; display: grid; place-items: center; font: 400 44px/1 var(--sans); color: var(--ink); flex: none; }
+.triple { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 52px; }
+.triple .card p { font-size: 29px; }
+.punch { font: 600 48px/1.2 var(--serif); letter-spacing: -.01em; color: var(--ink); margin-top: auto; }
+.punch em { color: var(--accent); font-style: italic; font-weight: 500; }
+
+.orch { display: grid; grid-template-columns: 1fr 580px; gap: 56px; flex: 1; min-height: 0; margin-top: -10px; }
+.board { background: var(--card-2); border-radius: 22px; padding: 26px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; align-content: start; }
+.board .col h4 { font: 600 19px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 4px 6px 16px; }
+.board .col.hot h4 { color: var(--accent); }
+.board .col.wait h4 { color: var(--blue); }
+.tix { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; margin-bottom: 14px; font-size: 20px; line-height: 1.3; color: var(--ink-2); }
+.tix .k { font: 600 17px/1 var(--mono); color: var(--muted); display: block; margin-bottom: 8px; }
+.tix .ag { white-space: nowrap; margin-top: 12px; display: flex; align-items: center; gap: 8px; font: 500 15px/1.3 var(--mono); color: var(--accent); background: var(--accent-soft); border-radius: 8px; padding: 7px 10px; }
+.tix .ag::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); flex: none; animation: pulse 1.6s infinite ease-in-out; }
+.tix .hu { margin-top: 12px; font: 500 15px/1.3 var(--mono); color: var(--blue); background: var(--blue-soft); border-radius: 8px; padding: 7px 10px; }
+@keyframes pulse { 50% { opacity: .25; } }
+.orch-side { display: flex; flex-direction: column; gap: 26px; min-height: 0; }
+.wf { white-space: pre; background: #1b1d23; color: #d7dae0; border-radius: 18px; padding: 20px 28px; font: 400 19px/1.45 var(--mono); }
+.wf .fn { color: #8b909c; margin-bottom: 8px; display: block; }
+.wf .c { color: #7d8390; } .wf .k2 { color: #f3b58f; } .wf .s { color: #9fd49f; }
+.orch-side .bullets li { font-size: 25px; line-height: 1.32; padding-left: 36px; }
+.orch-side .bullets li::before { width: 16px; }
+.orch-side .bullets { gap: 16px; }
+
+/* ---------- summary ---------- */
+.then-now { border-top: 2px solid var(--ink); }
+.then-now > div { display: grid; grid-template-columns: 0.72fr 70px 1.28fr; column-gap: 20px; }
+.then-now span { padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 30px; line-height: 1.25; }
+.then-now span:nth-child(1) { color: var(--muted); }
+.then-now span:nth-child(2) { color: var(--accent); text-align: center; font-weight: 600; }
+.then-now span:nth-child(3) { color: var(--ink); font-weight: 600; }
+.then-now .hd span { font: 600 20px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding: 18px 0 14px; }
+.s-summary .punch { font-size: 54px; margin-top: auto; padding-top: 24px; }
+
+/* ---------- thanks ---------- */
+.s-thanks { justify-content: center; align-items: flex-start; padding-left: 160px; }
+.s-thanks h2 { font-size: 220px; margin-bottom: 40px; line-height: .95; }
+.s-thanks .handle { font: 600 60px/1 var(--mono); color: var(--accent); }
+
+/* ---------- print (PDF export: Ctrl+P) ---------- */
+@page { size: 1920px 1080px; margin: 0; }
+@media print {
+  body { background: none; overflow: visible; }
+  .slide { position: relative; left: 0; top: 0; transform: none; opacity: 1; visibility: visible; break-after: page; page-break-after: always; transition: none; }
+  .step { opacity: 1; transform: none; transition: none; }
+  #progress { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- 1. Tytuł -->
+<section class="slide s-title" data-bare>
+  <div class="inner">
+    <div class="kicker">Programistok 2026 · Białystok</div>
+    <h1>Inżynieria oprogramowania w&nbsp;dobie <em>agentów AI</em></h1>
+    <div class="author">Hubert Łępicki</div>
+    <div class="meta">27 września 2026</div>
+  </div>
+  <div class="ruler">
+    <div class="line"></div>
+    <span style="left:0%">1961</span>
+    <span style="left:10.8%">1968</span>
+    <span style="left:24.6%">1977</span>
+    <span style="left:38.5%">1986</span>
+    <span style="left:52.3%">1995</span>
+    <span style="left:67.7%">2005</span>
+    <span style="left:81.5%">2014</span>
+    <span style="left:100%" class="now">2026</span>
+  </div>
+</section>
+
+<!-- 2. Powitanie -->
+<section class="slide s-hello">
+  <h2>Witam<em>!</em></h2>
+</section>
+
+<!-- 3. Definicja -->
+<section class="slide s-def">
+  <div class="term">Inżynieria oprogramowania</div>
+  <blockquote>
+    <span class="q">„</span>Stosowanie <mark>systematycznego</mark>, <mark>zdyscyplinowanego</mark> i&nbsp;<mark>mierzalnego</mark> podejścia do tworzenia, eksploatacji i&nbsp;utrzymania oprogramowania, czyli zastosowanie inżynierii do oprogramowania.<span class="q">”</span>
+  </blockquote>
+  <div class="src">
+    <b>IEEE Std 610.12-1990</b>, <i>IEEE Standard Glossary of Software Engineering Terminology</i><br>
+    “The application of a systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software; that is, the application of engineering to software.”
+  </div>
+</section>
+
+<!-- 4. Hamilton -->
+<section class="slide s-hamilton">
+  <div class="cols">
+    <figure class="photo">
+      <img src="assets/img/hamilton.jpg" alt="Margaret Hamilton przy stosie wydruków kodu oprogramowania lotu Apollo">
+      <figcaption class="caption" id="cap-hamilton">Margaret Hamilton przy wydrukach kodu oprogramowania lotu Apollo, 1969. Fot. Draper Laboratory (restauracja: Adam Cuerden), domena publiczna, Wikimedia Commons</figcaption>
+    </figure>
+    <div>
+      <div class="kicker">Historia · 1961–1972</div>
+      <h2>Margaret Hamilton i&nbsp;program Apollo</h2>
+      <div class="facts step">
+        <div><div class="n">1961–72</div><div class="d">program Apollo</div></div>
+        <div><div class="n">20.07.1969</div><div class="d">lądowanie Apollo&nbsp;11</div></div>
+        <div><div class="n">≈36k / 2k</div><div class="d">słów pamięci stałej / roboczej komputera AGC</div></div>
+      </div>
+      <div class="quote step">
+        <p id="hamilton-quote">„Chciałam nadać naszemu oprogramowaniu prawomocność, żeby ono – i&nbsp;ci, którzy je tworzą – zyskali należny szacunek. Dlatego zaczęłam nazywać to, co robimy, inżynierią oprogramowania.”</p>
+        <cite id="hamilton-cite">Margaret Hamilton, wywiad w: L. Snyder, R. Henry, <i>Fluency with Information Technology</i>, 7. wyd., Pearson 2017.<br>Oryginał: “I wanted to give our software ‘legitimacy’ so that it (and those building it) would be given its due respect; and, as a result I began to call what we were doing ‘software engineering’…”</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. NATO -->
+<section class="slide s-nato">
+  <div class="kicker">Historia · Garmisch 1968 · Rzym 1969</div>
+  <h2>NATO: dyscyplina dostaje nazwę</h2>
+  <figure class="strip">
+    <img src="assets/img/garmisch-sonnenbichl.jpg" alt="Grand Hotel Sonnenbichl w Garmisch-Partenkirchen">
+    <figcaption class="caption">Hotel Sonnenbichl w&nbsp;Garmisch-Partenkirchen, miejsce konferencji z&nbsp;1968 roku (zdjęcie z&nbsp;2024). Fot. Ricardalovesmonuments, CC&nbsp;BY&nbsp;4.0, Wikimedia Commons</figcaption>
+  </figure>
+  <ol class="numbered three">
+    <li class="step"><span><strong>„Software crisis”:</strong> duże systemy są spóźnione, drogie i&nbsp;zawodne.</span></li>
+    <li class="step"><span><strong>„Software engineering”</strong> jako celowa prowokacja: to jeszcze nie jest inżynieria, ale powinno nią być.</span></li>
+    <li class="step"><span><strong>Efekt:</strong> w&nbsp;kilka lat konferencja ICSE, czasopisma i&nbsp;przedmioty na uczelniach.</span></li>
+  </ol>
+</section>
+
+<!-- 6. Kryzys -->
+<section class="slide">
+  <div class="kicker">Historia · 1968 → dziś</div>
+  <h2>Permanentny kryzys oprogramowania</h2>
+  <div class="crisis">
+    <div class="card step">
+      <svg viewBox="0 0 48 48"><path d="M24 14c-5 0-8 4-8 9v7c0 5 3.6 9 8 9s8-4 8-9v-7c0-5-3-9-8-9z"/><path d="M24 22v17M16 26H9M39 26h-7M17 18l-5-5M31 18l5-5M16 34l-6 4M32 34l6 4M20 12l1.5 3M28 12l-1.5 3"/></svg>
+      <h3>Błędy</h3>
+      <p>dużo i&nbsp;wszędzie, często znajdowane dopiero na produkcji</p>
+    </div>
+    <div class="card step">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="26" r="15"/><path d="M24 17v9l6 4M19 6h10M24 6v5M38 12l3-3"/></svg>
+      <h3>Terminy</h3>
+      <p>przekraczane: „jeszcze tylko dwa tygodnie”</p>
+    </div>
+    <div class="card step">
+      <svg viewBox="0 0 48 48"><path d="M6 36l11-11 8 7 15-17"/><path d="M31 15h9v9"/><path d="M6 42h36"/></svg>
+      <h3>Budżety</h3>
+      <p>przekraczane, bo koszt zmiany rośnie z&nbsp;czasem</p>
+    </div>
+    <div class="card step">
+      <svg viewBox="0 0 48 48"><path d="M29 8a9 9 0 0 0-9 12L8 32a4 4 0 0 0 6 6l12-12a9 9 0 0 0 12-9l-5 5-5-1-1-5 5-5a9 9 0 0 0-3-3z"/></svg>
+      <h3>Utrzymanie</h3>
+      <p>kod, którego nikt nie rozumie i&nbsp;boi się zmieniać</p>
+    </div>
+  </div>
+  <div class="verdict step">Kryzys z&nbsp;1968 roku <em>nigdy się nie skończył.</em></div>
+</section>
+
+<!-- 7. Model kaskadowy -->
+<section class="slide">
+  <div class="kicker">Historia · 1956–1970</div>
+  <h2>Model kaskadowy</h2>
+  <div class="waterfall">
+    <div class="box" style="left:0;top:0"><i>01</i>Wymagania</div>
+    <div class="box" style="left:290px;top:112px"><i>02</i>Projekt</div>
+    <div class="box" style="left:580px;top:224px"><i>03</i>Implementacja</div>
+    <div class="box" style="left:870px;top:336px"><i>04</i>Testy</div>
+    <div class="box" style="left:1160px;top:448px"><i>05</i>Odbiór i&nbsp;utrzymanie</div>
+    <div class="legend step" data-with="0"><svg viewBox="0 0 70 20" width="70" height="20"><path class="back" d="M2 10 H60" marker-end="url(#ah2)"/></svg>powrót do poprzedniej fazy,<br>gdy wyjdzie problem</div>
+    <svg viewBox="0 0 1560 560" width="1560" height="560">
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#16181d"/></marker>
+        <marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker>
+      </defs>
+      <path class="fwd" d="M400 48 H490 V108" marker-end="url(#ah)"/>
+      <path class="fwd" d="M690 160 H780 V220" marker-end="url(#ah)"/>
+      <path class="fwd" d="M980 272 H1070 V332" marker-end="url(#ah)"/>
+      <path class="fwd" d="M1270 384 H1360 V444" marker-end="url(#ah)"/>
+      <g class="step">
+        <path class="back" d="M290 176 H200 V100" marker-end="url(#ah2)"/>
+        <path class="back" d="M580 288 H490 V212" marker-end="url(#ah2)"/>
+        <path class="back" d="M870 400 H780 V324" marker-end="url(#ah2)"/>
+        <path class="back" d="M1160 512 H1070 V436" marker-end="url(#ah2)"/>
+      </g>
+    </svg>
+  </div>
+  <div class="royce step">
+    <div class="quote">
+      <p id="royce-quote">„Wierzę w tę koncepcję, ale opisana powyżej realizacja jest ryzykowna i&nbsp;prosi się o&nbsp;porażkę.”</p>
+      <cite>Winston W. Royce, <i>Managing the Development of Large Software Systems</i>, 1970.<br>Oryginał: “I believe in this concept, but the implementation described above is risky and invites failure.”</cite>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Czas współdzielony, VM, Unix, VCS -->
+<section class="slide">
+  <div class="kicker">Historia · lata 60. i&nbsp;70.</div>
+  <h2>Podział czasu, maszyny wirtualne, Unix, kontrola wersji</h2>
+  <div class="timeline dense" id="tl-unix">
+    <div class="axis"></div>
+    <ol>
+      <li class="step"><div class="t"><span class="y">1961</span><span class="nm">CTSS</span><span class="ds">pierwszy system z&nbsp;podziałem czasu</span></div></li>
+      <li class="step"><div class="t"><span class="y">1967</span><span class="nm">CP-67</span><span class="ds">maszyny wirtualne IBM</span></div></li>
+      <li class="step"><div class="t"><span class="y">1969</span><span class="nm">Unix</span><span class="ds">system operacyjny z&nbsp;Bell Labs</span></div></li>
+      <li class="step"><div class="t"><span class="y">1972</span><span class="nm">SCCS</span><span class="ds">pierwszy system kontroli wersji</span></div></li>
+      <li class="step"><div class="t"><span class="y">1973</span><span class="nm">Potoki (pipes)</span><span class="ds">łączenie małych programów</span></div></li>
+      <li class="step"><div class="t"><span class="y">1974</span><span class="nm">diff</span><span class="ds">porównywanie wersji plików</span></div></li>
+      <li class="step"><div class="t"><span class="y">1975</span><span class="nm">Least privilege</span><span class="ds">zasada najmniejszych uprawnień</span></div></li>
+      <li class="step"><div class="t"><span class="y">1976</span><span class="nm">make</span><span class="ds">automatyczne budowanie</span></div></li>
+      <li class="step"><div class="t"><span class="y">1978</span><span class="nm">lint</span><span class="ds">statyczna analiza kodu</span></div></li>
+      <li class="step"><div class="t"><span class="y">1979</span><span class="nm">chroot</span><span class="ds">przodek kontenerów</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 9. OOP, wzorce, testy -->
+<section class="slide">
+  <div class="kicker">Historia · lata 70.–90.</div>
+  <h2>Obiekty, wzorce projektowe, testy automatyczne</h2>
+  <div class="timeline dense" id="tl-oop">
+    <div class="axis"></div>
+    <ol>
+      <li class="step"><div class="t"><span class="y">1967</span><span class="nm">Simula 67</span><span class="ds">pierwszy język obiektowy</span></div></li>
+      <li class="step"><div class="t"><span class="y">1972</span><span class="nm">Smalltalk</span><span class="ds">obiekty i&nbsp;żywe środowisko</span></div></li>
+      <li class="step"><div class="t"><span class="y">1976</span><span class="nm">Inspekcje Fagana</span><span class="ds">formalny przegląd kodu w&nbsp;IBM</span></div></li>
+      <li class="step"><div class="t"><span class="y">1985</span><span class="nm">C++</span><span class="ds">obiekty w&nbsp;głównym nurcie</span></div></li>
+      <li class="step"><div class="t"><span class="y">1986</span><span class="nm">Eiffel</span><span class="ds">projektowanie przez kontrakt</span></div></li>
+      <li class="step"><div class="t"><span class="y">1994</span><span class="nm">Design Patterns</span><span class="ds">katalog wzorców „Bandy Czworga”</span></div></li>
+      <li class="step"><div class="t"><span class="y">1994</span><span class="nm">SUnit</span><span class="ds">pierwszy framework testów jednostkowych</span></div></li>
+      <li class="step"><div class="t"><span class="y">1997</span><span class="nm">JUnit</span><span class="ds">testy jednostkowe w&nbsp;Javie</span></div></li>
+      <li class="step"><div class="t"><span class="y">1999</span><span class="nm">Refactoring</span><span class="ds">książka Martina Fowlera</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 10. Agile, DevOps, CI/CD, chmura, IaC -->
+<section class="slide">
+  <div class="kicker">Historia · 1999–2018</div>
+  <h2>Agile, DevOps, CI/CD, chmura, infrastruktura jako kod</h2>
+  <div class="timeline dense" id="tl-agile">
+    <div class="axis"></div>
+    <ol>
+      <li class="step"><div class="t"><span class="y">1999</span><span class="nm">Extreme Programming</span><span class="ds">praktyki Kenta Becka</span></div></li>
+      <li class="step"><div class="t"><span class="y">2001</span><span class="nm">Manifest Agile</span><span class="ds">17 osób, 4 wartości</span></div></li>
+      <li class="step"><div class="t"><span class="y">2001</span><span class="nm">CruiseControl</span><span class="ds">popularny serwer CI open source</span></div></li>
+      <li class="step"><div class="t"><span class="y">2005</span><span class="nm">Git · Puppet</span><span class="ds">kontrola wersji · konfiguracja jako kod</span></div></li>
+      <li class="step"><div class="t"><span class="y">2006</span><span class="nm">AWS</span><span class="ds">chmura obliczeniowa na żądanie</span></div></li>
+      <li class="step"><div class="t"><span class="y">2008</span><span class="nm">GitHub</span><span class="ds">pull requesty i&nbsp;review</span></div></li>
+      <li class="step"><div class="t"><span class="y">2009</span><span class="nm">DevOps</span><span class="ds">DevOpsDays w&nbsp;Gandawie</span></div></li>
+      <li class="step"><div class="t"><span class="y">2010</span><span class="nm">Continuous Delivery</span><span class="ds">potok wdrożeniowy</span></div></li>
+      <li class="step"><div class="t"><span class="y">2013–14</span><span class="nm">Docker · Kubernetes · Terraform</span><span class="ds">kontenery i&nbsp;infrastruktura jako kod</span></div></li>
+      <li class="step"><div class="t"><span class="y">2018</span><span class="nm">Accelerate</span><span class="ds">badania DORA: małe partie</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 11. LLM-y i agenci -->
+<section class="slide">
+  <div class="kicker">Historia · 2017–2026</div>
+  <h2>Modele językowe i&nbsp;agenci kodujący</h2>
+  <div class="timeline" id="tl-llm">
+    <div class="axis"></div>
+    <ol>
+      <li class="step"><div class="t"><span class="y">2017</span><span class="nm">Transformer</span><span class="ds">„Attention Is All You Need”</span></div></li>
+      <li class="step"><div class="t"><span class="y">2020</span><span class="nm">GPT-3</span><span class="ds">duży model językowy</span></div></li>
+      <li class="step"><div class="t"><span class="y">2021</span><span class="nm">GitHub Copilot</span><span class="ds">podpowiedzi kodu</span></div></li>
+      <li class="step"><div class="t"><span class="y">2022</span><span class="nm">ChatGPT</span><span class="ds">rozmowa z&nbsp;modelem</span></div></li>
+      <li class="step"><div class="t"><span class="y">2024</span><span class="nm">MCP</span><span class="ds">standard podłączania narzędzi</span></div></li>
+      <li class="step"><div class="t"><span class="y">2025</span><span class="nm">Claude Code · Codex CLI</span><span class="ds">agenci w&nbsp;terminalu; AGENTS.md, skills</span></div></li>
+      <li class="step"><div class="t"><span class="y">2026</span><span class="nm">Symphony</span><span class="ds">orkiestratory agentów</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 12. Vibe coding: amnezja -->
+<section class="slide">
+  <div class="kicker">Vibe coding</div>
+  <h2>Amnezja?</h2>
+  <div class="term-wrap">
+    <div class="terminal">
+      <div class="bar"><i></i><i></i><i></i><span>~/projekty/bilety — claude</span></div>
+      <div class="body">
+        <div class="act step">
+          <div class="welcome">✻ Welcome to Claude Code!</div>
+          <div class="prompt">zrób mi system sprzedaży biletów jak Eventbrite, ma działać bez błędów, szybko</div>
+          <div class="out">
+            <div class="dot">Jasne! Tworzę kompletny system sprzedaży biletów…</div>
+            <div class="tool">Write(src/payments/processor.ts)</div>
+            <div class="sub">⎿ … i&nbsp;62 kolejne pliki</div>
+            <div class="dot"><span class="ok">✓</span> Utworzono 63 pliki, +14&nbsp;382 linii. Gotowe! 🎉</div>
+          </div>
+        </div>
+        <div class="act step">
+          <div class="sep">· · · 3 miesiące później · · ·</div>
+          <div class="sys">✻ Context compacted</div>
+          <div class="prompt">przecież ustaliliśmy, że płatności idą przez Stripe?</div>
+          <div class="out">
+            <div class="dot">Masz rację! Przepraszam za zamieszanie. Przepiszę moduł płatności od nowa…</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. AI slop -->
+<section class="slide">
+  <div class="kicker">Vibe coding</div>
+  <h2>AI slop</h2>
+  <div class="pr-wrap">
+    <div class="pr">
+      <div class="ttl">Add ticketing system <span>#1337</span></div>
+      <div class="meta"><span class="badge">⇅ Open</span> <span><b style="color:#1f2328">vibe-coder</b> wants to merge 1 commit into <code>main</code> from <code>feature/everything</code></span></div>
+      <div class="tabs"><b>Conversation</b><span>Commits<span class="cnt">1</span></span><span>Checks<span class="cnt">1</span></span><span>Files changed<span class="cnt">63</span></span>
+        <span class="stat"><span class="a">+14,382</span><span class="d">−2,107</span><span class="sq"><i></i><i></i><i></i><i></i><i class="r"></i></span></span></div>
+      <div class="commit">⎇ <b>update</b> · a3f9c21</div>
+      <div class="row fail"><span class="ic">✕</span><span><b>CI / test</b> — Failing after 4m</span><small>Required</small></div>
+      <div class="row warn"><span class="ic">!</span><span><b>Coverage</b> — 12% of new lines covered</span><small>Informational</small></div>
+      <div class="review">
+        <div class="hd"><span class="av"></span><b>reviewer</b> approved these changes · 3 minutes ago</div>
+        <div class="bd">LGTM 👍</div>
+      </div>
+      <div class="merge">Merge pull request ▾</div>
+    </div>
+    <div class="pr-notes">
+      <div class="pr-note step"><b>14 tys. linii</b><span>w&nbsp;jednym PR-ze, jeden commit „update”</span></div>
+      <div class="pr-note step"><b>12% pokrycia</b><span>i&nbsp;czerwone CI</span></div>
+      <div class="pr-note step"><b>„LGTM” po 3 minutach</b><span>nikt tego nie przeczytał</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14. O czym zapomnieliśmy? -->
+<section class="slide s-forgot">
+  <h2>O&nbsp;czym zapomnieliśmy?</h2>
+  <div class="step">
+    <div class="answer">O&nbsp;inżynierii oprogramowania.</div>
+    <p class="def">Systematyczne, zdyscyplinowane i&nbsp;mierzalne podejście do tworzenia, eksploatacji i&nbsp;utrzymania oprogramowania.</p>
+  </div>
+</section>
+
+<!-- 15. Agent czyta wiedzę -->
+<section class="slide">
+  <div class="kicker">Narzędzia agentów · agent czyta wiedzę</div>
+  <h2>Dostęp do dokumentacji, historii i&nbsp;kontekstu</h2>
+  <div class="kcards">
+    <div class="card step">
+      <svg class="ico" viewBox="0 0 48 48"><path d="M10 6h20l8 8v28H10z"/><path d="M30 6v8h8M17 22h14M17 29h14M17 36h9"/></svg>
+      <h3>Dokumentacja</h3>
+      <p>aktualizowana na bieżąco, razem z&nbsp;kodem</p>
+    </div>
+    <div class="card step">
+      <svg class="ico" viewBox="0 0 48 48"><circle cx="14" cy="10" r="4"/><circle cx="14" cy="38" r="4"/><circle cx="34" cy="20" r="4"/><path d="M14 14v20M34 24c0 8-8 8-16 12"/></svg>
+      <h3>Historia</h3>
+      <p>w&nbsp;gicie pełna historia zmian i&nbsp;decyzji</p>
+    </div>
+    <div class="card step">
+      <svg class="ico" viewBox="0 0 48 48"><path d="M8 10h32v22H22l-8 7v-7H8z"/><path d="M15 18h18M15 24h12"/></svg>
+      <h3>Kontekst i&nbsp;decyzje</h3>
+      <p>częściowo w&nbsp;kodzie i&nbsp;historii gita, a&nbsp;zmiany decyzji w&nbsp;ticketach i&nbsp;PR-ach</p>
+    </div>
+  </div>
+  <div class="via step">przez <span>serwery MCP</span><span>gh&nbsp;CLI</span><span>API</span><span>AGENTS.md</span><span>prompts</span><span>skills</span><em>(więcej później)</em></div>
+</section>
+
+<!-- 16. Git i stosy PR-ów -->
+<section class="slide s-stack">
+  <div class="kicker">Narzędzia agentów</div>
+  <h2>Kontrola wersji i&nbsp;stosy pull requestów</h2>
+  <div class="cols">
+    <ul class="bullets">
+      <li class="step"><strong>Iteracyjne zmiany</strong> i&nbsp;częste commity z&nbsp;opisem <em>dlaczego</em>, nie tylko <em>co</em>.</li>
+      <li class="step"><strong>Małe PR-y:</strong> jedna zmiana, jeden cel. Najpierw refaktoryzacja bez zmiany zachowania, potem zmiana zachowania.</li>
+      <li class="step"><strong>Stos PR-ów:</strong> każdy buduje na poprzednim i&nbsp;każdy da się przejrzeć osobno.</li>
+      <li class="step">Rebase/merge stosu to dla agenta <strong>tania, mechaniczna praca</strong>.</li>
+    </ul>
+    <div class="stack step">
+      <div class="pr-card main"><span class="id">main</span><span class="nm">gałąź główna</span></div>
+      <div class="pr-card"><span class="id">PR 1</span><span class="nm">rejestracja</span><span class="df"><span class="a">+84</span><span class="d">−3</span></span></div>
+      <div class="pr-card"><span class="id">PR 2</span><span class="nm">logowanie</span><span class="df"><span class="a">+61</span><span class="d">−2</span></span></div>
+      <div class="pr-card"><span class="id">PR 3</span><span class="nm">kupno biletu</span><span class="df"><span class="a">+143</span><span class="d">−9</span></span></div>
+      <div class="pr-card"><span class="id">PR 4</span><span class="nm">skanowanie biletu</span><span class="df"><span class="a">+92</span><span class="d">−7</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 17. Wiedza o narzędziach -->
+<section class="slide">
+  <div class="kicker">Proces agentów</div>
+  <h2>Jak i&nbsp;kiedy używać narzędzi</h2>
+  <ul class="bullets">
+    <li class="step"><strong>AGENTS.md / CLAUDE.md:</strong> krótki spis treści z&nbsp;odsyłaczami do szczegółów, a&nbsp;nie jeden wielki plik.</li>
+    <li class="step"><strong>Skills:</strong> wiedza wczytywana dopiero wtedy, gdy jest potrzebna.</li>
+    <li class="step"><strong>Prompty, workflow, checklisty:</strong> powtarzalne procedury zapisane w&nbsp;repozytorium.</li>
+  </ul>
+  <div class="ladder step">
+    <div class="scale"><span>reguła miękka</span><b>reguła twarda →</b></div>
+    <div class="rungs">
+      <div class="rung">Uwaga w&nbsp;review</div>
+      <div class="rung">Dokumentacja</div>
+      <div class="rung">Skill</div>
+      <div class="rung">Wymuszenie<small>plugin · pre-commit hook · linter · test · workflow CI · merge queue na GitHubie</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 18. TDD -->
+<section class="slide s-tdd">
+  <div class="kicker">Proces agentów</div>
+  <h2>TDD, refaktoryzacja, styl i&nbsp;zgodność</h2>
+  <div class="cols">
+    <ul class="bullets small">
+      <li class="step"><strong>TDD:</strong> czerwony test, który pada z&nbsp;właściwego powodu → zielony → refaktoryzacja.</li>
+      <li class="step"><strong>Ciągła refaktoryzacja</strong> kodu i&nbsp;testów, po każdym zielonym.</li>
+      <li class="step"><strong>Styl i&nbsp;zgodność:</strong> lintery, formatery i&nbsp;wytyczne zespołu jako twarde sprawdzenia.</li>
+      <li class="step"><strong>Twarda reguła:</strong> nie usuwamy, nie pomijamy i&nbsp;nie osłabiamy testów, żeby przeszły.</li>
+    </ul>
+    <div class="tdd-side">
+      <div class="loop step">
+        <span class="lbl">Pętla zewnętrzna · test akceptacyjny</span>
+        <svg viewBox="0 0 440 320" width="440" height="320">
+          <defs><marker id="tah" viewBox="0 0 10 10" refX="4" refY="5" markerWidth="1.9" markerHeight="1.9" markerUnits="strokeWidth" orient="auto"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+          <path d="M231.5 50.6 A110 110 0 0 1 324.6 194" stroke="#c62828" stroke-width="16" fill="none" marker-end="url(#tah)"/>
+          <path d="M309 224.7 A110 110 0 0 1 138.3 233.6" stroke="#1a7f37" stroke-width="16" fill="none" marker-end="url(#tah)"/>
+          <path d="M119.5 204.7 A110 110 0 0 1 197.1 52.4" stroke="#1f4fd1" stroke-width="16" fill="none" marker-end="url(#tah)"/>
+          <text x="346" y="92" font-family="JetBrains Mono" font-weight="700" font-size="22" fill="#c62828">RED</text>
+          <text x="220" y="310" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="22" fill="#1a7f37">GREEN</text>
+          <text x="96" y="92" text-anchor="end" font-family="JetBrains Mono" font-weight="700" font-size="20" fill="#1f4fd1">REFACTOR</text>
+          <text x="220" y="154" text-anchor="middle" font-family="Inter" font-weight="600" font-size="24" fill="#3b404c">testy</text>
+          <text x="220" y="184" text-anchor="middle" font-family="Inter" font-weight="600" font-size="24" fill="#3b404c">jednostkowe</text>
+        </svg>
+      </div>
+      <div class="qr step">
+        <img src="assets/img/qr-agile.svg" alt="Kod QR do github.com/hubertlepicki/agile">
+        <div>
+          <div class="url">https://github.com/<br>hubertlepicki/agile</div>
+          <div class="tag">Talk first. Test first. Small steps. Plain words.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 19. Agent zapisuje wiedzę -->
+<section class="slide">
+  <div class="kicker">Proces agentów · agent zapisuje wiedzę</div>
+  <h2>Zapisywanie wiedzy i&nbsp;decyzji</h2>
+  <div class="rows">
+    <div class="r step"><b>ADR-y w&nbsp;repozytorium</b><span>decyzje architektoniczne zapisane jako Architecture Decision Records</span></div>
+    <div class="r step"><b>Dokumentacja w&nbsp;tym samym PR</b><span>zmienia się kod, zmienia się opis</span></div>
+    <div class="r step"><b>Wnioski z&nbsp;sesji</b><span>do AGENTS.md, skills i&nbsp;notatek: następna sesja (i&nbsp;następny człowiek) nie zaczyna od zera</span></div>
+    <div class="r step"><b>Zmiany decyzji</b><span>w&nbsp;tickecie albo PR, a&nbsp;nie w&nbsp;czacie z&nbsp;agentem, który zniknie</span></div>
+    <div class="r step"><b>Wiedza zespołu</b><span>wiki i&nbsp;repozytoria wiedzy wspólne dla zespołu, nie dla jednego agenta</span></div>
+  </div>
+</section>
+
+<!-- 20. QA -->
+<section class="slide s-qa">
+  <div class="kicker">Proces agentów</div>
+  <h2>QA: agent sam klika po aplikacji</h2>
+  <div class="cols">
+    <div style="display:flex;flex-direction:column">
+      <ul class="bullets small tight">
+        <li class="step"><strong>Przeglądarka:</strong> Playwright albo Chrome DevTools przez MCP, cała ścieżka użytkownika.</li>
+        <li class="step"><strong>Computer use:</strong> aplikacje desktopowe i&nbsp;mobilne.</li>
+        <li class="step">Czyta <strong>konsolę, ruch sieciowy i&nbsp;logi serwera</strong>.</li>
+        <li class="step">Wyłapuje to, czego nie widzą testy jednostkowe: rozjechany układ, martwy przycisk, urwany przepływ.</li>
+        <li class="step"><strong>Zrzuty ekranu i&nbsp;nagrania</strong> jako dowód wykonania w&nbsp;PR.</li>
+      </ul>
+      <div class="echo-row step"><span class="echo">Apollo: zanim polecisz, przeleć misję w&nbsp;symulatorze</span></div>
+    </div>
+    <div>
+      <div class="browser step">
+        <div class="bar"><i></i><i></i><i></i><span>localhost:3000/wydarzenia/programistok</span></div>
+        <div class="page">
+          <div class="h"></div>
+          <div class="ln" style="width:92%"></div>
+          <div class="ln" style="width:80%"></div>
+          <div class="ln" style="width:64%"></div>
+          <div class="ticket"><div><div class="ln l"></div><div class="ln l" style="width:150px;margin:0"></div></div><div class="btn">Kup bilet</div></div>
+          <div class="ticket"><div><div class="ln l"></div><div class="ln l" style="width:170px;margin:0"></div></div><div class="btn">Kup bilet</div></div>
+          <div class="hl" style="right:28px;top:246px;width:190px;height:78px"></div>
+          <div class="flag" style="right:28px;top:336px">✕ przycisk nic nie robi · 500 w&nbsp;/api/orders</div>
+          <svg class="cursor" style="right:70px;top:282px" viewBox="0 0 24 24"><path d="M4 2l16 10-7 1.5L9.5 21z" fill="#16181d" stroke="#fff" stroke-width="1.5"/></svg>
+        </div>
+      </div>
+      <div class="shot-row step"><span>📷 zrzut-01.png</span><span>🎞 nagranie.webm</span><span>console: 1 error</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 21. Code review -->
+<section class="slide">
+  <div class="kicker">Proces agentów</div>
+  <h2>Wielopoziomowy code review</h2>
+  <div class="pipeline">
+    <div class="stage step"><span class="n">01</span><b>Internal review</b></div>
+    <div class="stage step"><span class="n">02</span><b>Peer AI review</b></div>
+    <div class="stage step"><span class="n">03</span><b>QA review</b></div>
+    <div class="stage step"><span class="n">04</span><b>Security review</b></div>
+    <div class="stage step"><span class="n">05</span><b>Human review</b></div>
+  </div>
+  <div class="stage-desc">
+    <p class="step" data-with="0">Agent-autor sprawdza sam siebie: zakres zmiany, nic ponad to, o&nbsp;co proszono.</p>
+    <p class="step" data-with="1">Drugi agent z&nbsp;czystym kontekstem: tylko diff i&nbsp;wymagania. Kilku recenzentów, różne cele.</p>
+    <p class="step" data-with="2">Przeklikanie aplikacji w&nbsp;przeglądarce albo na urządzeniu.</p>
+    <p class="step" data-with="3">Osobny przegląd bezpieczeństwa.</p>
+    <p class="step" data-with="4"><strong>Człowiek decyduje o&nbsp;scaleniu i&nbsp;odpowiada za kod.</strong></p>
+  </div>
+  <div class="echo-row step"><span class="echo">Fagan, IBM 1976: role i&nbsp;listy kontrolne, dziś zapisane w&nbsp;prompcie</span></div>
+</section>
+
+<!-- 22. Izolacja i równoległość -->
+<section class="slide s-sec">
+  <div class="kicker">Proces agentów</div>
+  <h2>Izolacja, najmniejsze uprawnienia, praca równoległa</h2>
+  <div class="cols cols-2">
+    <div class="card">
+      <h3><svg viewBox="0 0 48 48"><path d="M24 5l15 6v11c0 10-6.5 17-15 21-8.5-4-15-11-15-21V11z"/><path d="M17 24l5 5 9-10"/></svg>Bezpieczeństwo</h3>
+      <ul class="bullets">
+        <li class="step"><strong>Osobne środowisko na projekt:</strong> własne pliki, sekrety, ograniczona sieć.</li>
+        <li class="step"><strong>Najmniejsze uprawnienia:</strong> bez produkcji i&nbsp;danych produkcyjnych, sekrety z&nbsp;menedżera.</li>
+        <li class="step"><strong>Chroniony <code>main</code>:</strong> agent nie pushuje bezpośrednio, scalenie i&nbsp;wdrożenie wymagają zatwierdzenia przez człowieka.</li>
+        <li class="step"><strong>Treść z&nbsp;zewnątrz to dane, nie polecenia</strong> (prompt injection).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><svg viewBox="0 0 48 48"><path d="M8 12h32M8 24h32M8 36h32"/><circle cx="16" cy="12" r="3.5" fill="#fff"/><circle cx="30" cy="24" r="3.5" fill="#fff"/><circle cx="21" cy="36" r="3.5" fill="#fff"/></svg>Równoległość</h3>
+      <ul class="bullets">
+        <li class="step"><strong>Git worktrees</strong> izolują pliki.</li>
+        <li class="step"><strong>Kontener albo VM na zadanie</strong> izoluje bazę, porty i&nbsp;usługi.</li>
+        <li class="step">Zadania muszą być <strong>naprawdę niezależne</strong>.</li>
+        <li class="step"><strong>Limit wyznacza człowiek:</strong> tylu agentów, ile wyników zdążysz rzetelnie przejrzeć.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="echo-row step" style="margin-top:36px"><span class="echo">Saltzer i&nbsp;Schroeder 1975</span><span class="echo">CP-67 1967</span><span class="echo">chroot 1979</span></div>
+</section>
+
+<!-- 23. Spec-driven development -->
+<section class="slide">
+  <div class="kicker">Proces agentów · model kaskadowy v2</div>
+  <h2>Spec-driven development</h2>
+  <div class="flow">
+    <div class="node file step"><span class="ph">Wymagania</span><b>SPEC.md</b><span>pełna specyfikacja na początku</span></div>
+    <div class="arr step" data-with="1">→</div>
+    <div class="node step"><span class="ph">Projekt · implementacja · testy</span><b>Agent</b><span>projektuje, pisze kod, pisze i&nbsp;uruchamia testy</span></div>
+    <div class="arr step" data-with="3">→</div>
+    <div class="node step"><span class="ph">Odbiór</span><b>Gotowy program</b><span>sprawdzenie na końcu</span></div>
+  </div>
+  <div class="triple">
+    <div class="card step"><div class="label">Dziedziczymy</div><p>wszystkie cechy modelu kaskadowego: wymagania z&nbsp;góry, droga późna zmiana, weryfikacja na końcu.</p></div>
+    <div class="card step"><div class="label">Zyskujemy</div><p>automatyzację i&nbsp;tempo: wiele kroków, od implementacji po testy, robi agent w&nbsp;minuty.</p></div>
+    <div class="card step"><div class="label">Płacimy</div><p>tokenami: każdy przebieg i&nbsp;każde przegenerowanie po zmianie specyfikacji kosztuje.</p></div>
+  </div>
+  <div class="echo-row step" style="margin-top:40px"><span class="echo">Royce 1970: wymagania → projekt → implementacja → testy → odbiór</span></div>
+</section>
+
+<!-- 24. Symphony -->
+<section class="slide">
+  <div class="kicker">Symphony</div>
+  <h2>Orkiestrator autonomicznych agentów</h2>
+  <div class="orch">
+    <div class="board step">
+      <div class="col"><h4>Do zrobienia</h4>
+        <div class="tix"><span class="k">TIX-212</span>Eksport listy uczestników</div>
+        <div class="tix"><span class="k">TIX-215</span>Kody rabatowe</div>
+      </div>
+      <div class="col hot"><h4>W toku</h4>
+        <div class="tix"><span class="k">TIX-204</span>Skanowanie biletu przy bramce<div class="ag">agent · ws/TIX-204</div></div>
+        <div class="tix"><span class="k">TIX-207</span>Zwrot biletu<div class="ag">agent · ws/TIX-207</div></div>
+        <div class="tix"><span class="k">TIX-209</span>Mail z&nbsp;potwierdzeniem<div class="ag">agent · ws/TIX-209</div></div>
+      </div>
+      <div class="col wait"><h4>Czeka na człowieka</h4>
+        <div class="tix"><span class="k">TIX-198</span>Limit biletów na osobę<div class="hu">PR + nagranie z&nbsp;QA</div></div>
+      </div>
+      <div class="col"><h4>Gotowe</h4>
+        <div class="tix"><span class="k">TIX-190</span>Strona wydarzenia</div>
+        <div class="tix"><span class="k">TIX-193</span>Płatności Stripe</div>
+      </div>
+    </div>
+    <div class="orch-side">
+      <ul class="bullets">
+        <li class="step"><strong>Tablica zgłoszeń (Linear)</strong> jako panel sterowania.</li>
+        <li class="step">Każde zgłoszenie dostaje <strong>własnego agenta we własnym katalogu</strong>.</li>
+        <li class="step"><strong><code>WORKFLOW.md</code> w&nbsp;repozytorium:</strong> stany, przejścia, kiedy czekać na człowieka, jaki dowód wykonania zostawić.</li>
+      </ul>
+      <div class="wf step" id="workflow-md"><span class="fn">WORKFLOW.md</span><span class="c">---</span>
+<span class="k2">tracker:</span>
+  <span class="k2">kind:</span> linear
+  <span class="k2">active_states:</span> [Todo, In Progress]
+<span class="k2">agent:</span>
+  <span class="k2">max_concurrent_agents:</span> 3
+<span class="c">---</span>
+Pracujesz nad <span class="s">{{ issue.identifier }}</span>.
+Gdy skończysz, otwórz PR z&nbsp;dowodem
+wykonania i&nbsp;przenieś zgłoszenie
+do „Human Review”.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 25. Podsumowanie -->
+<section class="slide s-summary">
+  <div class="kicker">Podsumowanie</div>
+  <h2 style="margin-bottom:36px">Co wraca z&nbsp;historii</h2>
+  <div class="then-now">
+    <div class="hd"><span>Wtedy: ręcznie</span><span></span><span>Dziś: agent automatycznie</span></div>
+    <div class="row step"><span>Test przed kodem (TDD)</span><span>→</span><span>pisze test, sprawdza, że nie przechodzi, potem implementuje</span></div>
+    <div class="row step"><span>Refaktoryzacja</span><span>→</span><span>porządkuje kod i&nbsp;testy po każdym zielonym</span></div>
+    <div class="row step"><span>Małe commity i&nbsp;małe PR-y</span><span>→</span><span>dzieli pracę na stos PR-ów i&nbsp;go utrzymuje</span></div>
+    <div class="row step"><span>Styl i&nbsp;standardy zespołu</span><span>→</span><span>uruchamia lintery, trzyma się wytycznych</span></div>
+    <div class="row step"><span>Przeklikanie aplikacji (QA)</span><span>→</span><span>klika sam i&nbsp;zostawia nagranie jako dowód</span></div>
+    <div class="row step"><span>Code review</span><span>→</span><span>kilku recenzentów-agentów przed człowiekiem</span></div>
+    <div class="row step"><span>Dokumentacja i&nbsp;decyzje</span><span>→</span><span>aktualizuje je w&nbsp;tym samym PR</span></div>
+  </div>
+  <div class="punch step">Inżynieria oprogramowania jest dziś <em>ważniejsza niż kiedykolwiek.</em></div>
+</section>
+
+<!-- 26. Dziękuję -->
+<section class="slide s-thanks" data-bare>
+  <h2>Dziękuję</h2>
+  <div class="handle">@hubertlepicki</div>
+</section>
+
+<div id="progress"></div>
+
+<script>
+(() => {
+  const slides = [...document.querySelectorAll('.slide')];
+  const total = slides.length;
+
+  // Footer with talk title and slide number
+  slides.forEach((s, i) => {
+    if (s.hasAttribute('data-bare')) return;
+    const f = document.createElement('div');
+    f.className = 'slide-footer';
+    f.innerHTML = `<span>Inżynieria oprogramowania w dobie agentów AI · Programistok 2026</span><span class="num"><b>${i + 1}</b> / ${total}</span>`;
+    s.appendChild(f);
+  });
+
+  // Steps: document order, except .then-now rows keep flow; data-with="k" reveals together with the k-th plain step
+  const stepsOf = slides.map(s => {
+    const all = [...s.querySelectorAll('.step')];
+    const primary = all.filter(el => !el.hasAttribute('data-with') && !el.hasAttribute('data-order'));
+    const groups = primary.map(el => [el]);
+    all.filter(el => el.hasAttribute('data-with')).forEach(el => {
+      const k = +el.dataset.with;
+      if (groups[k]) groups[k].push(el); else groups.push([el]);
+    });
+    all.filter(el => el.hasAttribute('data-order')).forEach(el => {
+      const k = +el.dataset.order;
+      groups.splice(Math.min(k, groups.length), 0, [el]);
+    });
+    return groups;
+  });
+
+  let cur = 0, step = 0;
+
+  function fit() {
+    const scale = Math.min(innerWidth / 1920, innerHeight / 1080);
+    document.documentElement.style.setProperty('--scale', scale);
+  }
+
+  function render() {
+    slides.forEach((s, i) => s.classList.toggle('active', i === cur));
+    stepsOf[cur].forEach((g, i) => g.forEach(el => el.classList.toggle('shown', i < step)));
+    document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+    history.replaceState(null, '', '#' + (cur + 1));
+  }
+
+  function go(n, atEnd) {
+    cur = Math.max(0, Math.min(total - 1, n));
+    step = atEnd ? stepsOf[cur].length : 0;
+    render();
+  }
+  function next() {
+    if (step < stepsOf[cur].length) { step++; render(); }
+    else if (cur < total - 1) go(cur + 1);
+  }
+  function prev() {
+    if (step > 0) { step--; render(); }
+    else if (cur > 0) go(cur - 1, true);
+  }
+
+  addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key;
+    if ([' ', 'ArrowRight', 'ArrowDown', 'PageDown', 'Enter'].includes(k)) { e.preventDefault(); next(); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(k)) { e.preventDefault(); prev(); }
+    else if (k === 'Home') go(0);
+    else if (k === 'End') go(total - 1, true);
+    else if (k === 'f' || k === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen();
+    }
+  });
+  addEventListener('click', e => { if (!e.target.closest('a')) next(); });
+  addEventListener('contextmenu', e => { e.preventDefault(); prev(); });
+  addEventListener('resize', fit);
+
+  fit();
+  const fromHash = parseInt(location.hash.slice(1), 10);
+  go(Number.isFinite(fromHash) ? fromHash - 1 : 0, new URLSearchParams(location.search).has('all'));
+})();
+</script>
+</body>
+</html>

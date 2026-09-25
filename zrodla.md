@@ -4,6 +4,8 @@
 
 ## Historia
 
+- **Definicja inżynierii oprogramowania (slajd 3)**: IEEE Std 610.12-1990, *IEEE Standard Glossary of Software Engineering Terminology*, hasło „software engineering”, punkt (1). To samo brzmienie w ISO/IEC/IEEE 24765 i SEBoK: <https://sebokwiki.org/wiki/Software_Engineering_(glossary)>.
+
 - **Apollo, pamięć i oprogramowanie lotu**: David A. Mindell, *Digital Apollo: Human and Machine in Spaceflight*, MIT Press, 2008. ⚠️ Liczby pamięci (około 36 tys. słów stałej, 2 tys. roboczej) dotyczą komputera Block II.
 - **Margaret Hamilton, termin „software engineering”, historia z programem P01 i Apollo 8**: wywiady i materiały MIT / Draper Laboratory. ⚠️ Anegdotę o córce i Apollo 8 Hamilton opowiada w wielu wywiadach, szczegóły różnią się w zależności od wersji.
 - **Alarmy 1201 i 1202 w Apollo 11**: materiały historyczne NASA, Mindell (jak wyżej).
@@ -30,6 +32,10 @@
 - **Rodowód stacked diffs**: Phabricator (Facebook). Opcja `git rebase --update-refs`: Git 2.38 (2022).
 - **git worktree**: Git 2.5 (2015).
 
+- **Cytat Hamilton na slajdzie**: pisemny wywiad z Margaret Hamilton w: Lawrence Snyder, Ray Henry, *Fluency with Information Technology*, 7. wyd., Pearson, 2017. Transkrypcja: <https://catskull.net/interview-with-margaret-h-hamilton.html>. Inna, pierwotna wypowiedź: MIT News, *Recalling the “Giant Leap”*, 17 lipca 2009, <https://news.mit.edu/2009/apollo-vign-0717>.
+- **Cytat Royce'a**: „I believe in this concept, but the implementation described above is risky and invites failure.” (Royce 1970, jak wyżej). Royce nie używa słowa „waterfall”.
+- **Daty na osiach czasu**: CP-67 poprzedzał CP-40 (1964–67). lint: 1978 (publicznie w Unix V7, 1979). CruiseControl (2001) to pierwszy popularny serwer CI open source, nie pierwszy w ogóle (Tinderbox, Netscape, 1997). SUnit: artykuł Becka w *The Smalltalk Report*, 1994. JUnit: 1997.
+
 ## Agenci
 
 - **Vibe coding**: Andrej Karpathy, post na X z 2 lutego 2025 roku.
@@ -37,6 +43,6 @@
 - **DORA a AI**: raport DORA 2024 (większe użycie AI i nieco mniejsza stabilność dostarczania) i raport DORA 2025 (AI wzmacnia istniejące praktyki). ⚠️ Warto potwierdzić dokładne sformułowania w raportach.
 - **Wykorzystanie długiego kontekstu**: Nelson F. Liu i in., *Lost in the Middle: How Language Models Use Long Contexts*, 2023, arXiv:2307.03172.
 - **Harness engineering**: OpenAI, *Harness engineering: leveraging Codex in an agent-first world*, luty 2026, <https://openai.com/index/harness-engineering/>.
-- **Symphony**: <https://github.com/openai/symphony>, specyfikacja: <https://github.com/openai/symphony/blob/main/SPEC.md>.
+- **Symphony**: repozytorium publiczne od marca 2026, wpis OpenAI 27 kwietnia 2026. Klucze `WORKFLOW.md` na slajdzie (`tracker.kind`, `tracker.active_states`, `agent.max_concurrent_agents`) i szablon Liquid pochodzą z SPEC.md. <https://github.com/openai/symphony>, specyfikacja: <https://github.com/openai/symphony/blob/main/SPEC.md>.
 - **Symphony w prasie**: InfoQ, *OpenAI Open-Sources Symphony, a SPEC.md for Autonomous Coding Agent Orchestration*, maj 2026, <https://www.infoq.com/news/2026/05/openai-symphony-agents/>. ⚠️ Liczba „+500% scalonych PR-ów” pochodzi z omówień wpisu OpenAI. Sam wpis nie był dla mnie dostępny.
 - **Specyfikacja a model kaskadowy**: David L. Parnas, Paul C. Clements, *A Rational Design Process: How and Why to Fake It*, IEEE TSE, 1986; Jack W. Reeves, *What Is Software Design?*, C++ Journal, 1992.

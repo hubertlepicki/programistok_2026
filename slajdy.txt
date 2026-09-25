@@ -11,10 +11,11 @@ Zasady ogólne
   [strona tytułowa z tytułem, autor: Hubert Łępicki, Programistok 2026, 2026-09-27, Białystok]
 
 2. Intro & powitanie
-  [ puste miejsce na śmieszny mem powitalny (np. "Welcome to Jackass") - wstawię go sam. Bez informacji o mnie. ]
+  [ duże "Witam!", bez mema i bez informacji o mnie ]
 
-3. Definicja inżynierii oprogramowania: "całość procesów, metod i narzędzi stosowanych w celu tworzenia, rozwijania i utrzymywania oprogramowania."
-  [ slajd z moją definicją powyżej ]
+3. Definicja inżynierii oprogramowania (IEEE Std 610.12-1990)
+  [ polskie tłumaczenie: "Stosowanie systematycznego, zdyscyplinowanego i mierzalnego podejścia do tworzenia, eksploatacji i utrzymania oprogramowania, czyli zastosowanie inżynierii do oprogramowania."
+    wyróżnione: systematycznego, zdyscyplinowanego, mierzalnego. Pod spodem oryginał po angielsku i źródło. ]
 
 4. Historia: Margaret Hamilton i program Apollo
   [ zdjęcie Margaret Hamilton ze stosem wydruków kodu źródłowego AGC (to wydruki, nie karty perforowane - podpis odpowiednio), daty programu Apollo, cytat Hamilton o znaczeniu inżynierii oprogramowania - znaleźć i zweryfikować w źródle pierwotnym, podać źródło ]
@@ -56,10 +57,10 @@ Zasady ogólne
     - 2025 Claude Code, Codex CLI - agenci w terminalu; AGENTS.md, skills
     - 2026 orkiestratory agentów (Symphony) ]
 
-12. Vibe coding - amnezja programisty i agenta
+12. Vibe coding: tytuł "Amnezja?" (amnezja programisty i agenta, bez podpisów po prawej stronie)
   [ makieta terminala Claude Code w dwóch aktach:
-    1. programista zapomina o inżynierii: prompt w stylu "zrób mi system sprzedaży biletów jak Eventbrite, ma działać bez błędów, nie pisz testów, szybko" → agent: "✓ Utworzono 63 pliki, +14 382 linii. Gotowe! 🎉"
-    2. agent zapomina: kilka godzin później, po "context compacted", programista: "przecież ustaliliśmy, że płatności idą przez Stripe?" → agent: "Masz rację! Przepraszam…" i zaczyna od nowa ]
+    1. programista zapomina o inżynierii: prompt w stylu "zrób mi system sprzedaży biletów jak Eventbrite, ma działać bez błędów, szybko" → agent: "✓ Utworzono 63 pliki, +14 382 linii. Gotowe! 🎉"
+    2. agent zapomina: 3 miesiące później, po "context compacted", programista: "przecież ustaliliśmy, że płatności idą przez Stripe?" → agent: "Masz rację! Przepraszam…" i zaczyna od nowa ]
 
 13. Vibe coding: AI slop
   [ tytuł "AI slop" (bez tłumaczenia). Makieta PR w stylu GitHuba: tytuł "Add ticketing system", +14 382 / −2 107, 63 pliki, pokrycie testami 12%, czerwone CI, komentarz recenzenta "LGTM 👍" sprzed 3 minut ]
@@ -68,7 +69,7 @@ Zasady ogólne
   [ najpierw duże pytanie, po naciśnięciu odpowiedź: "O inżynierii oprogramowania", nawiązanie do definicji ze slajdu 3 ]
 
 15. Narzędzia agentów: dostęp do dokumentacji, historii, kontekstu (agent czyta wiedzę)
-  [ dostęp przez serwery MCP lub gh cli / API:
+  [ dostęp przez serwery MCP, gh cli, API, AGENTS.md, prompts, skills (więcej później):
     - dokumentacja: aktualizowana na bieżąco
     - historia: w gicie pełna historia zmian i decyzji
     - kontekst i podjęte decyzje: częściowo w kodzie i historii gita, a zmiany decyzji w ticketach i PR-ach ]
@@ -76,8 +77,8 @@ Zasady ogólne
 16. Narzędzia agentów: system kontroli wersji, stosy pull requestów
   [ - iteracyjne zmiany, częste commity z opisami mówiącymi "dlaczego", nie tylko "co"
     - małe PR-y: jedna zmiana, jeden cel; najpierw refaktoryzacja bez zmiany zachowania, potem zmiana zachowania
-    - stos PR-ów: każdy buduje na poprzednim, każdy do przejrzenia osobno; rebase stosu to dla agenta tania, mechaniczna praca
-    Obok schemat stosu: main ← PR1 ← PR2 ← PR3 ]
+    - stos PR-ów: każdy buduje na poprzednim, każdy do przejrzenia osobno; rebase/merge stosu to dla agenta tania, mechaniczna praca
+    Obok schemat stosu: main ← PR 1 rejestracja ← PR 2 logowanie ← PR 3 kupno biletu ← PR 4 skanowanie biletu ]
 
 17. Proces agentów: wiedza o tym jak i kiedy używać narzędzi
   [ - AGENTS.md / CLAUDE.md: krótki spis treści z odsyłaczami do szczegółów, nie jeden wielki plik (lekcja OpenAI, luty 2026)
@@ -131,27 +132,29 @@ Zasady ogólne
     - limit wyznacza człowiek: tylu agentów, ile wyników zdążysz rzetelnie przejrzeć
     Nawiązania: Saltzer i Schroeder 1975, CP-67 1967, chroot 1979 ]
 
-23. Symphony (1): spec-driven development (model kaskadowy v2)
-  [ jak powstaje Symphony: OpenAI publikuje SPEC.md - "daj agentowi, niech zbuduje w Twoim języku".
-    Pełna specyfikacja na początku → implementacja w jednym przebiegu → odbiór na końcu = waterfall.
-    Działa, bo specyfikację spisano po działającym systemie. Nawiązanie do slajdu 7. ]
+23. Spec-driven development (model kaskadowy v2) - ogólnie, bez wspominania Symphony
+  [ przepływ: SPEC.md (pełna specyfikacja na początku) → agent (projekt, implementacja, testy: projektuje, pisze kod, pisze i uruchamia testy) → gotowy program (odbiór na końcu).
+    Trzy karty:
+    - dziedziczymy wszystkie cechy modelu kaskadowego: wymagania z góry, droga późna zmiana, weryfikacja na końcu
+    - zyskujemy: wiele kroków można zautomatyzować i przyspieszyć
+    - płacimy tokenami: każdy przebieg i przegenerowanie po zmianie specyfikacji kosztuje
+    Nawiązanie do slajdu 7 (Royce 1970). ]
 
-24. Symphony (2): orkiestrator autonomicznych agentów
+24. Symphony: orkiestrator autonomicznych agentów
   [ czym jest Symphony: orkiestrator, który można oskryptować, opisując workflow autonomicznych agentów:
     - tablica zgłoszeń (Linear) jako panel sterowania
     - każde zgłoszenie dostaje własnego agenta we własnym katalogu
     - WORKFLOW.md w repozytorium: stany, przejścia, kiedy czekać na człowieka, jaki dowód wykonania zostawić ]
 
 25. Podsumowanie
-  [ tabela "wtedy → dziś":
-    - symulatory Apollo → agent przeklikuje aplikację
-    - Unix, powłoka, diff → interfejs pracy agenta
-    - CP-67, chroot → izolacja zadań
-    - Saltzer i Schroeder 1975 → uprawnienia agenta
-    - inspekcje Fagana → recenzenci z checklistami
-    - TDD i BDD → struktura i pamięć agenta
-    - małe partie (DORA) → stosy małych PR-ów
-    - waterfall → spec-driven development
+  [ tabela "Wtedy: ręcznie → Dziś: agent automatycznie" (dobre praktyki, które kiedyś robiliśmy ręcznie, a dziś robi agent):
+    - test przed kodem (TDD) → pisze test, sprawdza, że nie przechodzi, potem implementuje
+    - refaktoryzacja → porządkuje kod i testy po każdym zielonym
+    - małe commity i małe PR-y → dzieli pracę na stos PR-ów i go utrzymuje
+    - styl i standardy zespołu → uruchamia lintery, trzyma się wytycznych
+    - przeklikanie aplikacji (QA) → klika sam i zostawia nagranie jako dowód
+    - code review → kilku recenzentów-agentów przed człowiekiem
+    - dokumentacja i decyzje → aktualizuje je w tym samym PR
     Puenta: "Inżynieria oprogramowania jest dziś ważniejsza niż kiedykolwiek." ]
 
 26. Dziękuję

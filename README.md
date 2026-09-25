@@ -2,10 +2,19 @@
 
 Prezentacja na Programistok 2026, około 30 minut.
 
-Na tym etapie repozytorium zawiera tylko treść do przeglądu. Aplikacja do wyświetlania (rzutnik i sterowanie z telefonu) powstanie w drugim kroku.
+## Slajdy
+
+Otwórz [`slajdy/index.html`](slajdy/index.html) w przeglądarce. Wszystko (fonty, obrazy, kod QR) jest lokalnie w `slajdy/assets/`, internet nie jest potrzebny.
+
+- Dalej: spacja, →, ↓, PageDown, Enter albo kliknięcie. Wstecz: ←, ↑, PageUp, Backspace albo prawy przycisk myszy.
+- Home / End: pierwszy i ostatni slajd. `F`: pełny ekran.
+- Adres `index.html#12` otwiera slajd 12. `index.html?all#12` pokazuje go ze wszystkimi podpunktami.
+- PDF: drukuj do PDF (Ctrl+P) z wyłączonymi marginesami; każdy slajd to jedna strona ze wszystkimi podpunktami.
+- Licencje obrazów: [`slajdy/assets/img/ATTRIBUTION.md`](slajdy/assets/img/ATTRIBUTION.md).
 
 ## Pliki
 
+- [`slajdy.txt`](slajdy.txt): ustalenia per slajd, na podstawie których powstały slajdy.
 - [`prezentacja.md`](prezentacja.md): pełny tekst wystąpienia, podzielony na slajdy. Każdy slajd to nagłówek `##` z tekstem pod spodem. Slajdy nie są numerowane.
 - [`zrodla.md`](zrodla.md): źródła faktów, dat i liczb z prezentacji.
 
