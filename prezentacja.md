@@ -7,29 +7,9 @@ czas_minut: 30
 
 # Inżynieria oprogramowania w dobie agentów AI
 
-Każdy slajd ma trzy części:
-
-- **Slajd**: to, co widzi sala.
-- **Notatki**: krótkie punkty na telefon.
-- **Tekst**: pełny tekst do wygłoszenia.
-
 ---
 
-## 1. Inżynieria oprogramowania w dobie agentów AI
-
-### Slajd
-
-# Inżynieria oprogramowania w dobie agentów AI
-
-Hubert Łępicki · Programistok 2026
-
-### Notatki
-
-- Przywitanie, podziękowanie organizatorom
-- Kilka zdań o sobie [uzupełnić]
-- Dwa pytania do sali: kto używał agenta? kto codziennie?
-
-### Tekst
+## Powitanie
 
 Dzień dobry! Bardzo się cieszę, że mogę być z Wami na Programistoku. Dziękuję organizatorom za zaproszenie, a Wam za to, że wybraliście tę salę.
 
@@ -39,24 +19,7 @@ Na początek krótkie pytanie. Podnieście rękę, jeśli używaliście kiedyś 
 
 ---
 
-## 2. Plan
-
-### Slajd
-
-- Skąd się wzięła inżynieria oprogramowania
-- Praktyki i narzędzia z 60 lat, które dziś wracają
-- Jak pracować z agentami, żeby powstawał dobry kod
-
-> Agenci nie zastępują inżynierii oprogramowania.
-> Sprawiają, że jest potrzebna bardziej niż kiedykolwiek.
-
-### Notatki
-
-- Część 1: historia, około 11 minut
-- Część 2: agenci, około 16 minut
-- Teza: przeczytać powoli
-
-### Tekst
+## Plan
 
 Plan jest taki. Przez pierwsze kilkanaście minut szybko przejdziemy przez historię: od programu Apollo, przez konferencje NATO, Uniksa, programowanie obiektowe i agile, aż po DevOps i GitHuba. Prawie każda dobra praktyka pracy z agentami, którą dziś odkrywamy, ma swój odpowiednik sprzed dwudziestu, czterdziestu albo sześćdziesięciu lat.
 
@@ -66,52 +29,19 @@ Moja teza: agenci nie zastępują inżynierii oprogramowania. Sprawiają, że je
 
 ---
 
-## 3. Margaret Hamilton i program Apollo
-
-### Slajd
-
-- MIT Instrumentation Lab: oprogramowanie lotu Apollo
-- Około 36 tys. słów pamięci stałej i 2 tys. roboczej
-- Pamięć linowa (core rope): program ręcznie przewlekany drutem, zamrażany miesiące przed startem
-- Połowa lat 60.: opóźnienia, brak pamięci, interwencja NASA
-- „Software engineering”: żeby oprogramowanie traktowano jak inżynierię
-
-### Notatki
-
-- Hamilton kierowała zespołem oprogramowania lotu (moduł dowodzenia i lądownik)
-- Bill Tindall z NASA porządkuje projekt, 1966–67
-- Termin: najpierw żart, potem wymusza szacunek dla oprogramowania
-
-### Tekst
+## Margaret Hamilton i program Apollo
 
 Zaczynamy w latach sześćdziesiątych, od Margaret Hamilton. Kierowała w laboratorium MIT zespołem, który pisał oprogramowanie lotu dla programu Apollo.
 
 Komputer pokładowy miał około trzydziestu sześciu tysięcy słów pamięci stałej i dwóch tysięcy słów pamięci roboczej. Program zapisywano w pamięci linowej (core rope): pracownice fabryki ręcznie przewlekały druty przez rdzenie magnetyczne. Trwało to tygodnie, więc program zamrażano na miesiące przed startem. Potem nie było już poprawek.
 
-W połowie dekady oprogramowanie się spóźniało i nie mieściło w pamięci. NASA wysłała do MIT swojego inżyniera, Billa Tindalla, żeby zaprowadził porządek.
+W połowie dekady oprogramowanie się spóźniało i nie mieściło w pamięci. MIT był tu wykonawcą na kontrakcie NASA, więc NASA przydzieliła swojego inżyniera, Billa Tindalla, do nadzoru nad pracą laboratorium. Tindall pilnował harmonogramu i budżetu pamięci, wymuszał decyzje, co wyciąć, i wprowadzał kontrolę zmian.
 
 Właśnie wtedy Hamilton zaczęła nazywać swoją pracę inżynierią oprogramowania (software engineering). Na początku się z tego śmiano. Ona chciała, żeby oprogramowanie traktowano tak poważnie jak sprzęt, bo od niego zależało życie astronautów.
 
 ---
 
-## 4. Jak pracował zespół Apollo
-
-### Slajd
-
-- Symulatory cyfrowe (na komputerach mainframe) i hybrydowe (z prawdziwym komputerem pokładowym)
-- Kilka poziomów testów, aż po pełne próby misji z astronautami
-- Czytanie wydruków kodu w zespole, kontrola zmian, zamrażanie wersji
-- Projektowanie na błąd człowieka
-- Priorytety zadań i restart bez utraty stanu
-- Apollo 11: alarmy 1201 i 1202, a lądowanie trwa dalej
-
-### Notatki
-
-- Córka Hamilton uruchamia P01 w trakcie lotu; „astronauta tego nie zrobi”
-- Apollo 8: Lovell robi to samo, procedura naprawcza gotowa
-- Zapowiedź: symulator, testy, kontrola zmian, błąd człowieka → wrócą przy agentach
-
-### Tekst
+## Jak pracował zespół Apollo
 
 Jak ten zespół pracował? Programu nie dało się przetestować w kosmosie, więc testowano go w symulacji. Były symulatory cyfrowe na dużych komputerach i symulatory hybrydowe, w których prawdziwy komputer pokładowy pracował w symulowanym otoczeniu. Testy miały kilka poziomów, aż po pełne próby misji z astronautami. Wydruki kodu czytano wspólnie, a zmiany przechodziły przez komisję.
 
@@ -121,24 +51,7 @@ Podczas lądowania Apollo 11 komputer był przeciążony i zgłaszał alarmy 120
 
 ---
 
-## 5. NATO 1968: dyscyplina dostaje nazwę
-
-### Slajd
-
-- Garmisch 1968, Rzym 1969: Komitet Naukowy NATO
-- Dlaczego NATO? Sputnik, obronność zależna od oprogramowania, luka technologiczna Europa–USA
-- Kryzys oprogramowania (software crisis): projekty spóźnione, drogie, zawodne
-- Nazwa wybrana celowo, jako prowokacja
-- Efekt: czasopismo, konferencja ICSE, przedmioty na uczelniach
-
-### Notatki
-
-- Około 50 osób z uczelni i przemysłu, przewodniczył Friedrich L. Bauer, raport: Naur i Randell
-- Konferencje cywilne, raporty jawne
-- OS/360 IBM jako symbol kryzysu
-- Rzym 1969: spór teoretyków z praktykami
-
-### Tekst
+## NATO 1968: dyscyplina dostaje nazwę
 
 Termin rozpowszechniła instytucja, której mało kto by się tu spodziewał: NATO. W 1968 roku w Garmisch i rok później w Rzymie Komitet Naukowy NATO zorganizował konferencje o inżynierii oprogramowania.
 
@@ -148,26 +61,7 @@ Nazwę wybrano celowo, jako prowokację: ta dziedzina jeszcze nie jest inżynier
 
 ---
 
-## 6. Wojsko i administracja formalizują proces
-
-### Slajd
-
-- **Zamawianie**: kontrakty z fazami i dokumentami do odbioru
-- **Projektowanie**: formalne przeglądy wymagań i projektu
-- **Wycena**: modele kosztów (COCOMO), punkty funkcyjne
-- **Wytwarzanie**: normy Departamentu Obrony, język Ada
-- **Ocena dostawców**: SEI i model dojrzałości CMM
-- Model kaskadowy (waterfall) wpisany w umowy
-
-### Notatki
-
-- Benington 1956 (SAGE): fazy; Royce 1970 (TRW): ostrzegał przed jednokierunkowością
-- Normy: MIL-STD-1679 (1978), DOD-STD-2167 (1985)
-- Przeglądy: SRR, PDR, CDR
-- Zyski: przewidywalność, odpowiedzialność; koszty: późna zmiana droga, testy na końcu
-- Zapowiedź: wróci przy „specyfikacja → kod”
-
-### Tekst
+## Wojsko i administracja formalizują proces
 
 Przez kolejne dekady największym zamawiającym oprogramowanie były wojsko i administracja. To one sformalizowały, jak się oprogramowanie zamawia, wycenia, projektuje i odbiera.
 
@@ -179,25 +73,7 @@ To dało przewidywalność i jasną odpowiedzialność. Późna zmiana wymagań 
 
 ---
 
-## 7. Lata 60. i 70.: narzędzia, których agenci używają do dziś
-
-### Slajd
-
-- Podział czasu (time-sharing, CTSS 1961), maszyny wirtualne (IBM CP-67, 1967)
-- Unix (1969), C (1972), potoki (pipes, 1973), powłoka i skrypty
-- diff (1974), później patch (1985)
-- make (1976), SCCS (1972), lint (1978)
-- chroot (1979): przodek kontenerów
-- Zasada najmniejszych uprawnień (least privilege, Saltzer i Schroeder, 1975)
-
-### Notatki
-
-- Filozofia Uniksa (McIlroy): małe programy, jedna rzecz, tekst jako interfejs
-- Agent = program w powłoce: grep, git, testy; zmiany jako diff
-- CP-67 → izolacja agentów w maszynach wirtualnych
-- Saltzer i Schroeder: każdy program ma tylko uprawnienia potrzebne do swojej pracy
-
-### Tekst
+## Lata 60. i 70.: narzędzia, których agenci używają do dziś
 
 Teraz kilka wynalazków, z których agenci korzystają dosłownie.
 
@@ -209,24 +85,7 @@ Agent kodujący to w praktyce program, który pracuje w powłoce, używa grepa, 
 
 ---
 
-## 8. Lata 80. i 90.: obiekty, modele, generatory kodu
-
-### Slajd
-
-- Smalltalk-80: obiekty, żywe środowisko, automatyczna refaktoryzacja, SUnit
-- C++, Eiffel (projektowanie przez kontrakt)
-- Wzorce projektowe (1994), refaktoryzacja (Fowler, 1999)
-- UML (1997)
-- Narzędzia CASE: kod generowany z diagramów, obietnice większe niż efekty
-- Brooks, *No Silver Bullet* (1986): złożoność istotna i przypadkowa
-
-### Notatki
-
-- Ze społeczności Smalltalka: wzorce, pierwsza wiki, XP, rodzina xUnit
-- CASE: próba „specyfikacja → kod”, wróci przy Symphony
-- Brooks: rama dla całej części o agentach
-
-### Tekst
+## Lata 80. i 90.: obiekty, modele, generatory kodu
 
 Lata osiemdziesiąte i dziewięćdziesiąte to programowanie obiektowe. Smalltalk z Xerox PARC dał obiekty i żywe środowisko programistyczne, a później pierwsze narzędzie do automatycznej refaktoryzacji i framework testów SUnit. Ze społeczności Smalltalka wyszły też wzorce, pierwsza wiki i programowanie ekstremalne.
 
@@ -236,26 +95,7 @@ W 1986 roku Fred Brooks napisał esej *No Silver Bullet*. Oddzielił w nim zło�
 
 ---
 
-## 9. Agile: XP, TDD i BDD
-
-### Slajd
-
-- Manifest Agile (2001)
-- Programowanie ekstremalne (Extreme Programming): pary, ciągła integracja, małe wydania, refaktoryzacja
-- TDD: czerwony → zielony → refaktoryzacja (red → green → refactor)
-- BDD: zachowanie opisane przykładami
-  - Zakładając… / Gdy… / Wtedy… (Given / When / Then)
-
-> „Nie jestem świetnym programistą. Jestem dobrym programistą ze świetnymi nawykami.” (Kent Beck)
-
-### Notatki
-
-- TDD: zobacz czerwony test i sprawdź, że pada z właściwego powodu
-- Test, który przechodzi od razu, niczego nie dowodzi
-- BDD: Dan North, 2006; Cucumber i Gherkin: scenariusze czytelne dla biznesu
-- Cytat Becka: wrócę do niego przy agentach
-
-### Tekst
+## Agile: XP, TDD i BDD
 
 W 2001 roku siedemnaście osób napisało Manifest Agile. Ważniejsze od nazwy były jednak praktyki, zwłaszcza z programowania ekstremalnego (Extreme Programming) Kenta Becka: programowanie w parach, ciągła integracja, małe wydania i ciągła refaktoryzacja.
 
@@ -267,23 +107,7 @@ Kent Beck mówił o sobie, że nie jest świetnym programistą, tylko dobrym pro
 
 ---
 
-## 10. DevOps, infrastruktura jako kod, kontenery
-
-### Slajd
-
-- DevOps (2009): jeden zespół od kodu do produkcji
-- Potok wdrożeniowy (deployment pipeline), ciągłe dostarczanie (continuous delivery)
-- Infrastruktura jako kod (Infrastructure as Code): Puppet, Chef, Ansible, Terraform
-- Kontenery: Docker (2013), Kubernetes (2014)
-- Sekrety poza repozytorium, menedżery sekretów, najmniejsze uprawnienia w praktyce
-
-### Notatki
-
-- chroot 1979 → kontenery
-- Menedżer sekretów: dostęp na określony czas i zakres
-- Dla agentów: powtarzalne, izolowane środowisko w minutę
-
-### Tekst
+## DevOps, infrastruktura jako kod, kontenery
 
 Pod koniec pierwszej dekady XXI wieku powstał ruch DevOps: jeden zespół odpowiada za oprogramowanie od napisania do działania na produkcji. Pojawił się potok wdrożeniowy (deployment pipeline): każda zmiana automatycznie przechodzi przez budowanie, testy i wdrożenie.
 
@@ -295,22 +119,7 @@ Dla agentów to fundament. W minutę stawiamy powtarzalne, izolowane środowisko
 
 ---
 
-## 11. Git, pull requesty, testy, dane
-
-### Slajd
-
-- Git (2005), GitHub (2008): tanie gałęzie, pull requesty
-- Przegląd kodu (code review) jako codzienna praktyka
-- Piramida testów: dużo szybkich, mało wolnych
-- DORA, *Accelerate* (2018): małe zmiany, często → szybciej **i** stabilniej
-
-### Notatki
-
-- Inspekcje Fagana (IBM, 1976) → pull requesty
-- Cztery miary DORA: częstotliwość wdrożeń, czas od zmiany do produkcji, odsetek zmian powodujących awarię, czas przywrócenia usługi
-- Przejście: „Tyle historii”
-
-### Tekst
+## Git, pull requesty, testy, dane
 
 Ostatni przystanek historyczny. W 2005 roku powstał Git, a w 2008 roku GitHub z pull requestami, czyli propozycjami zmian z dyskusją i przeglądem w jednym miejscu. Przegląd kodu (code review), który w latach siedemdziesiątych był formalną inspekcją w IBM, stał się codziennością. Upowszechniła się piramida testów: dużo szybkich testów jednostkowych, mniej integracyjnych, niewiele wolnych testów przez interfejs.
 
@@ -320,23 +129,7 @@ Tyle historii. Przejdźmy do agentów.
 
 ---
 
-## 12. Od podpowiedzi do agentów
-
-### Slajd
-
-- 2021: podpowiadanie kodu
-- 2022: rozmowa z modelem
-- 2025: agenci (Claude Code, Codex, Gemini CLI, Cursor…)
-- Agent = pętla: model proponuje działanie → narzędzie je wykonuje → wynik wraca do modelu
-- Standardy: MCP, AGENTS.md, umiejętności (skills)
-- Brooks: mniej złożoności przypadkowej, tyle samo istotnej
-
-### Notatki
-
-- Copilot 2021–22, ChatGPT listopad 2022, MCP listopad 2024, Claude Code i Codex 2025
-- Wąskie gardło: z pisania kodu na specyfikację i weryfikację
-
-### Tekst
+## Od podpowiedzi do agentów
 
 W ciągu pięciu lat przeszliśmy trzy etapy. W 2021 roku narzędzia podpowiadały kolejne wiersze. Pod koniec 2022 roku zaczęliśmy z modelami rozmawiać. Od 2025 roku na dobre pracujemy z agentami.
 
@@ -346,23 +139,7 @@ Wróćmy do Brooksa. Agent świetnie zmniejsza złożoność przypadkową: szabl
 
 ---
 
-## 13. Programowanie na wyczucie (vibe coding)
-
-### Slajd
-
-- „Vibe coding” (Karpathy, luty 2025): opisuję, akceptuję, nie czytam kodu
-- Szybko powstaje dużo kodu, często niskiej jakości (slop)
-- Duplikacja, brak testów, niespójność, kod, którego nikt nie rozumie
-- To nie jest nowy problem: tak pracuje człowiek bez dobrych praktyk
-- Agent robi to po prostu 10 razy szybciej
-
-### Notatki
-
-- Do prototypów dobre, do systemów utrzymywanych latami złe
-- METR 2025: 16 doświadczonych programistów, 19% wolniej, a wrażenie: 20% szybciej
-- DORA 2025: AI wzmacnia to, co już jest w zespole
-
-### Tekst
+## Programowanie na wyczucie (vibe coding)
 
 W lutym 2025 roku Andrej Karpathy nazwał nowy styl pracy: vibe coding, czyli programowanie na wyczucie. Opisujesz, czego chcesz, akceptujesz wszystko, co zaproponuje agent, i nie czytasz kodu. Do weekendowego prototypu to świetne.
 
@@ -374,23 +151,7 @@ W badaniu METR z 2025 roku doświadczeni programiści z narzędziami AI byli o 1
 
 ---
 
-## 14. Ograniczenia modeli
-
-### Slajd
-
-- Ograniczony kontekst: widzi tylko część projektu, nie pamięta poprzednich sesji
-- W długiej sesji gubi wątek i zapomina wcześniejsze ustalenia
-- Streszczanie kontekstu (compaction) gubi szczegóły
-- Luki w wymaganiach wypełnia pewnie i wiarygodnie
-- Czasem wymyśla API i pakiety
-- „Gotowe” od agenta to jeszcze nie dowód
-
-### Notatki
-
-- *Lost in the Middle* (2023): najsłabiej wykorzystany jest środek kontekstu
-- Człowiek też ma ograniczoną pamięć roboczą → praktyki dają zewnętrzną strukturę
-
-### Tekst
+## Ograniczenia modeli
 
 Skąd to się bierze? Modele mają konkretne ograniczenia.
 
@@ -402,24 +163,7 @@ Człowiek też ma ograniczoną pamięć roboczą i też się myli. Dlatego wymy�
 
 ---
 
-## 15. TDD jako struktura dla agenta
-
-### Slajd
-
-- Jedno zachowanie na raz: mały krok mieści się w kontekście
-- **Czerwony**: test przed kodem, uruchomiony, pada z oczekiwanym komunikatem
-- **Zielony**: najmniej kodu, żeby przeszedł
-- **Refaktoryzacja**: porządek przy zielonych testach
-- Testy to pamięć projektu, której agent nie zgubi
-- Zakaz fałszywej zieleni: nie usuwamy, nie pomijamy, nie osłabiamy testów
-
-### Notatki
-
-- Test po kodzie od tego samego agenta często utrwala błąd
-- Czerwony z właściwym komunikatem = test naprawdę coś sprawdza
-- Reguła „nie osłabiamy testów” w instrukcjach i w przeglądzie
-
-### Tekst
+## TDD jako struktura dla agenta
 
 I tu dochodzimy do sedna. Moim zdaniem TDD to najlepsze, co możemy dać agentowi.
 
@@ -433,26 +177,7 @@ Jest też pułapka. Agent, któremu każe się doprowadzić testy do zieleni, po
 
 ---
 
-## 16. Najpierw przykłady i pytania, potem kod
-
-### Slajd
-
-- Wymagania jako przykłady (BDD):
-  - *Zakładając*, że bilet został już użyty,
-  - *gdy* ktoś zeskanuje go przy wejściu,
-  - *wtedy* bramka się nie otwiera, a obsługa widzi, kiedy bilet użyto
-- Przykład → test akceptacyjny → najpierw czerwony → z zewnątrz do środka (outside-in)
-- Agent pyta o niejasności, zamiast zgadywać
-- Plan przed zmianą; ustalamy, co znaczy „gotowe”
-- Najpierw szkielet (walking skeleton)
-
-### Notatki
-
-- Tryb planowania w agentach
-- Outside-in: Freeman i Pryce, *Growing Object-Oriented Software, Guided by Tests* (2009)
-- Szkielet: najcieńszy działający przekrój przez cały system
-
-### Tekst
+## Najpierw przykłady i pytania, potem kod
 
 Druga rzecz: zanim agent napisze kod, ustalmy, co znaczy „gotowe”. Najlepiej przykładami, w stylu BDD. Zamiast „obsłuż wykorzystane bilety” piszemy: zakładając, że bilet został już użyty, gdy ktoś zeskanuje go przy wejściu, wtedy bramka się nie otwiera, a obsługa widzi, kiedy bilet użyto. Taki przykład od razu staje się testem akceptacyjnym. Piszemy go najpierw, patrzymy, jak pada, i schodzimy do testów jednostkowych, z zewnątrz do środka.
 
@@ -460,24 +185,7 @@ Agent powinien też pytać, zamiast zgadywać. Większość agentów ma tryb pla
 
 ---
 
-## 17. Pętla jakości
-
-### Slajd
-
-1. Refaktoryzacja w każdym cyklu, także testów
-2. Przegląd wewnętrzny: drugi agent z czystym kontekstem
-3. Zgodność z wymaganiami: to, o co proszono, i nic więcej
-4. Standardy zespołu (guidelines, stylebook) dostępne dla agenta
-
-Typowe wady kodu agentów: rozszerzanie zakresu, duplikacja zamiast użycia istniejącego kodu, nadmiarowa obrona, komentarze opisujące kod
-
-### Notatki
-
-- Reguły Becka: przechodzi testy, wyraża intencję, bez duplikacji, najmniej elementów
-- Recenzent z czystym kontekstem nie zna uzasadnień autora
-- Usuwanie kodu jest dziś tanie: robić to regularnie
-
-### Tekst
+## Pętla jakości
 
 Zielone testy to nie koniec. Po każdym cyklu przychodzi refaktoryzacja, i to nie tylko kodu, ale też testów. Agent w trakcie pracy tworzy sporo testów pomocniczych, które potem warto scalić albo usunąć.
 
@@ -491,23 +199,7 @@ I dobra wiadomość: refaktoryzacja i usuwanie kodu nigdy nie były tak tanie. K
 
 ---
 
-## 18. Agent sam klika po aplikacji
-
-### Slajd
-
-- Agent uruchamia aplikację i przechodzi ścieżkę użytkownika w przeglądarce
-- Playwright, Chrome DevTools, podłączone przez MCP
-- Zrzuty ekranu, konsola, ruch sieciowy, logi serwera
-- Widzi to, czego nie widzą testy jednostkowe: układ, komunikaty, urwane przepływy
-- Jak w Apollo: najpierw misja w symulatorze
-
-### Notatki
-
-- Środowisko dla zadania: własne porty, baza, dane testowe
-- Zrzuty i nagranie jako dowód wykonania
-- Człowiek i tak patrzy na wynik
-
-### Tekst
+## Agent sam klika po aplikacji
 
 Człowiek, zanim powie, że skończył, zwykle uruchamia aplikację i się przez nią przeklikuje. Agent może zrobić to samo. Przez Playwrighta albo Chrome DevTools, podłączone przez MCP, otwiera przeglądarkę, loguje się, przechodzi ścieżkę użytkownika, robi zrzuty ekranu, czyta konsolę, ruch sieciowy i logi serwera.
 
@@ -517,24 +209,7 @@ To ta sama idea co w Apollo: zanim polecisz, przeleć misję w symulatorze. Zrzu
 
 ---
 
-## 19. Kontekst to też kod projektu
-
-### Slajd
-
-- AGENTS.md jako spis treści, a nie encyklopedia
-- Umiejętności (skills): jak uruchomić testy, jak zrobić przegląd, jak przygotować commit
-- Instrukcje się starzeją: przeglądamy je jak kod
-- Reguła od miękkiej do twardej:
-  - uwaga w przeglądzie → dokument → umiejętność → linter / test / hook
-- Komunikat lintera jako instrukcja dla agenta
-
-### Notatki
-
-- OpenAI, *harness engineering* (luty 2026): duży plik instrukcji zawiódł (kontekst, rozmycie reguł, starzenie się); zastąpił go spis treści około 100 wierszy
-- Hook jest deterministyczny: model go nie obejdzie
-- Parnas: moduł, który da się zrozumieć bez reszty systemu, mieści się w kontekście
-
-### Tekst
+## Kontekst to też kod projektu
 
 Agent zaczyna każdą sesję bez pamięci o projekcie. Wszystko, co powinien wiedzieć, musi być zapisane w repozytorium. Standardem stał się plik AGENTS.md. W lutym 2026 roku OpenAI opisało, że ich duży plik instrukcji zawiódł: nie mieścił się w kontekście, rozmywał najważniejsze reguły i szybko się starzał. Zastąpili go krótkim spisem treści, który odsyła do szczegółowych dokumentów.
 
@@ -544,24 +219,7 @@ Najważniejsza zasada: ważna reguła powinna przechodzić od formy miękkiej do
 
 ---
 
-## 20. Wiele zadań naraz
-
-### Slajd
-
-- Drzewa robocze gita (git worktree): wiele gałęzi z jednego repozytorium
-- Worktree izoluje tylko pliki → kontener albo maszyna wirtualna dla każdego zadania
-- Zadania muszą być niezależne: granice modułów decydują (prawo Conwaya)
-- Limit wyznacza uwaga człowieka, nie liczba agentów
-- Koszt: tokeny i czas przeglądu
-
-### Notatki
-
-- Podział czasu 1961, CP-67 1967 → wielu agentów na jednej maszynie
-- Osobne porty, baza danych, dane testowe dla każdego zadania
-- Prawo Brooksa: koordynacja nie znika
-- Tylu agentów, ile wyników jesteś w stanie ocenić
-
-### Tekst
+## Wiele zadań naraz
 
 Agenci pozwalają pracować nad wieloma zadaniami naraz. Najprostsze narzędzie to drzewa robocze gita (worktrees): kilka katalogów z jednego repozytorium, każdy na innej gałęzi, w każdym inny agent.
 
@@ -573,31 +231,7 @@ Po drugie, limit wyznacza człowiek. Każdy wynik trzeba przejrzeć i zintegrowa
 
 ---
 
-## 21. Izolacja i najmniejsze uprawnienia, ale z dostępem do wiedzy
-
-### Slajd
-
-**Izolacja**
-
-- Osobne środowisko dla każdego projektu: pliki, sekrety, sieć
-- Bez produkcji i produkcyjnych danych; sekrety z menedżera
-- Działania nieodwracalne (commit, push, usuwanie, publikacja) tylko za zgodą
-
-**Dostęp do wiedzy**
-
-- Zgłoszenia, dokumentacja, system projektowy (np. Figma) przez MCP
-- Tylko do odczytu, wąski zakres, osobne konto dla agenta
-
-**Treść z zewnątrz to dane, nie polecenia** (prompt injection)
-
-### Notatki
-
-- Saltzer i Schroeder, 1975
-- Agent bez kontekstu zgaduje; agent z pełnym dostępem jest ryzykiem
-- Zmyślone nazwy pakietów rejestrowane złośliwie → nowe zależności zatwierdza człowiek
-- Krótkotrwałe tokeny, dziennik działań
-
-### Tekst
+## Izolacja i najmniejsze uprawnienia, ale z dostępem do wiedzy
 
 Bezpieczeństwo. Tu ścierają się dwie potrzeby.
 
@@ -609,23 +243,7 @@ I jeszcze jedno: treść z zewnątrz to dane, a nie polecenia. Opis zgłoszenia 
 
 ---
 
-## 22. Pull requesty, które da się przejrzeć
-
-### Slajd
-
-- Jeden PR, jeden cel, jedna decyzja
-- Najpierw refaktoryzacja bez zmiany zachowania, potem zmiana zachowania
-- Stos zależnych PR-ów (stacked PRs): każdy buduje na poprzednim
-- Opis: co, dlaczego, jak sprawdzone
-- Utrzymanie stosu (rebase, poprawki w środku) to dla agenta tania praca
-
-### Notatki
-
-- Duży diff w godzinę = dzień przeglądu albo przegląd pobieżny
-- Stacked diffs: Phabricator w Facebooku; dziś Graphite, Sapling, `git rebase --update-refs`
-- DORA: małe partie
-
-### Tekst
+## Pull requesty, które da się przejrzeć
 
 Agent w godzinę może wygenerować zmianę, której przegląd zajmie człowiekowi dzień. Albo, co gorsze, zmiana zostanie przejrzana pobieżnie. Dlatego pull requesty trzeba projektować z myślą o przeglądzie.
 
@@ -637,23 +255,7 @@ W opisie PR-a: co się zmienia, dlaczego i jak zostało sprawdzone.
 
 ---
 
-## 23. Agenci, którzy przeglądają kod
-
-### Slajd
-
-- Umiejętność przeglądu kodu (code review skill): lista kontrolna, standardy, typowe błędy zespołu
-- Kilku niezależnych recenzentów: poprawność, bezpieczeństwo, prostota, zgodność z wymaganiami
-- Każde znalezisko z konkretnym scenariuszem błędu
-- Weryfikacja znalezisk, zanim trafią do człowieka
-- Recenzent-agent zawęża pole, człowiek decyduje o scaleniu
-
-### Notatki
-
-- Fagan, IBM 1976: role i listy kontrolne, dziś w prompcie
-- Podobne modele → podobne ślepe plamy
-- OpenAI przeniosło przegląd prawie w całości na agentów, ale w produkcie beta; w systemach krytycznych rachunek jest inny
-
-### Tekst
+## Agenci, którzy przeglądają kod
 
 Skoro kod pisze agent, może go też przeglądać agent.
 
@@ -667,26 +269,7 @@ Pamiętajmy jednak, że agenci oparci na podobnych modelach mają podobne ślepe
 
 ---
 
-## 24. Symphony (1): specyfikacja → kod
-
-### Slajd
-
-- OpenAI Symphony (2026): publikują SPEC.md, „zbuduj to w swoim języku”
-- Specyfikacja jest źródłem, kod jest generowany
-- Najczystszy model kaskadowy (waterfall)?
-- Wcześniejsze próby: Higher Order Software (Hamilton), CASE, Model-Driven Architecture
-- Tu działa: specyfikację spisano po działającym systemie; to reimplementacja; wąska dziedzina
-- Dla nowego produktu z prawdziwymi użytkownikami: skrajny waterfall
-
-### Notatki
-
-- Parnas i Clements 1986, *A Rational Design Process: How and Why to Fake It*
-- Reeves 1992: kod źródłowy jest projektem
-- Dwa generowania = dwa różne programy → potrzebne testy zgodności
-- Tania regeneracja + pętla poprawek specyfikacji → bliżej modelu spiralnego
-- Pytania: gdzie się uczymy? jak duża partia? co jest źródłem prawdy?
-
-### Tekst
+## Symphony (1): specyfikacja → kod
 
 Na koniec przykład, który łączy wiele z tego, o czym mówiliśmy: Symphony od OpenAI, opublikowane wiosną 2026 roku. OpenAI publikuje przede wszystkim plik SPEC.md i mówi: daj go swojemu agentowi i zbuduj to w swoim języku.
 
@@ -696,31 +279,7 @@ Tutaj działa, bo specyfikację spisano po działającym systemie. Iteracje już
 
 ---
 
-## 25. Symphony (2): orkiestrator i cykl pracy nad zadaniem
-
-### Slajd
-
-- Tablica zgłoszeń jako miejsce sterowania (control plane)
-- Każde aktywne zgłoszenie → osobny agent w osobnym katalogu
-- Pętla uzgadniania stanu (jak w Kubernetesie), ponowienia, limity równoległości
-- WORKFLOW.md: stany, limity i szablon promptu, wersjonowane z kodem
-
-```
-Todo → In Progress → Human Review → Rework → Merging → Done
-```
-
-- Dla każdego stanu: kto wchodzi, kto wychodzi, jaki dowód wykonania
-- Ponowne uruchomienie: kontynuuj, nie zaczynaj od nowa
-
-### Notatki
-
-- Stan przekazania do człowieka kończy pracę agenta
-- Zmienna `attempt` w szablonie: inna instrukcja przy ponowieniu
-- `required_labels` jako bramka, bo treść zgłoszenia to niezaufane wejście
-- Kanban: limit równoległości = limit pracy w toku
-- Warunek wstępny według OpenAI: repozytorium z dobrze przygotowanym otoczeniem agenta (harness engineering)
-
-### Tekst
+## Symphony (2): orkiestrator i cykl pracy nad zadaniem
 
 Ciekawszy jest sam orkiestrator. Tablica zgłoszeń, na przykład Linear, staje się miejscem sterowania (control plane). Każde aktywne zgłoszenie dostaje własnego agenta we własnym katalogu. Orkiestrator co kilkadziesiąt sekund porównuje stan tablicy z działającymi agentami i wyrównuje różnice, tak jak pętla uzgadniania w Kubernetesie.
 
@@ -732,24 +291,7 @@ To tablica kanbanowa z limitem pracy w toku, na której pracują agenci. Według
 
 ---
 
-## 26. Czego pilnować
-
-### Slajd
-
-- Nie mierzymy wierszy kodu ani liczby PR-ów
-- Miary DORA + odsetek zmian poprawianych wkrótce po wdrożeniu (rework rate)
-- Wrażenie przyspieszenia to słaby dowód
-- Czytamy to, co scalamy
-- Młodsi programiści potrzebują świadomej ścieżki nauki
-- Odpowiedzialność zostaje przy człowieku, który zatwierdza
-
-### Notatki
-
-- Symphony: +500% scalonych PR-ów w niektórych zespołach to miara wydajności, nie wyniku
-- METR: wrażenie +20%, pomiar −19%
-- Koszt tokenów też jest miarą
-
-### Tekst
+## Czego pilnować
 
 Kilka słów o tym, czego pilnować. Nie mierzmy wierszy kodu ani liczby pull requestów, bo przy agentach można je zwiększać prawie bez kosztu. OpenAI podało, że w niektórych zespołach liczba scalonych PR-ów wzrosła o 500 procent. To miara wydajności, a nie wyniku. Miary DORA nadal mają sens, zwłaszcza odsetek zmian, które trzeba poprawiać wkrótce po wdrożeniu.
 
@@ -761,29 +303,7 @@ I najważniejsze: odpowiedzialność za kod na produkcji zostaje przy człowieku
 
 ---
 
-## 27. Co wraca z historii
-
-### Slajd
-
-| Wtedy | Dziś, z agentami |
-| --- | --- |
-| Symulatory Apollo | Agent klika po aplikacji w izolowanym środowisku |
-| Projektowanie na błąd astronauty | Zabezpieczenia na błąd agenta |
-| Unix, powłoka, diff | Interfejs pracy agenta |
-| Maszyny wirtualne (1967), chroot (1979) | Izolacja zadań i projektów |
-| Najmniejsze uprawnienia (1975) | Uprawnienia agenta |
-| Inspekcje Fagana (1976) | Recenzenci-agenci z listami kontrolnymi |
-| TDD i BDD | Struktura i pamięć dla agenta |
-| DORA: małe partie | Stosy małych PR-ów |
-| CASE, MDA | Specyfikacja → kod |
-
-### Notatki
-
-- Karty perforowane: uruchomienie drogie → myślenie przed kodem
-- Dziś: pisanie tanie, uwaga człowieka i zaufanie drogie
-- Na końcu wrócić do tezy ze slajdu 2
-
-### Tekst
+## Co wraca z historii
 
 Podsumujmy. Prawie wszystko, co dziś działa w pracy z agentami, kiedyś już wymyśliliśmy. Symulatory Apollo wracają jako agent, który przeklikuje aplikację w izolowanym środowisku. Projektowanie na błąd astronauty to zabezpieczenia na błąd agenta. Unix, powłoka i diff to interfejs, przez który agent pracuje. Maszyny wirtualne i chroot izolują zadania i projekty. Zasada najmniejszych uprawnień z 1975 roku mówi, co wolno agentowi. Inspekcje Fagana wracają jako recenzenci z listami kontrolnymi. TDD i BDD dają agentowi strukturę i pamięć. Małe partie z badań DORA to stosy małych PR-ów. A marzenie o generowaniu kodu ze specyfikacji wraca po raz kolejny.
 
@@ -791,21 +311,6 @@ W czasach kart perforowanych uruchomienie programu było drogie, więc starannie
 
 ---
 
-## 28. Dziękuję
-
-### Slajd
-
-# Dziękuję!
-
-Pytania?
-
-[kontakt: uzupełnić]
-
-### Notatki
-
-- Podziękować, zaprosić do pytań
-- Kontakt na slajdzie [uzupełnić]
-
-### Tekst
+## Dziękuję
 
 Dziękuję bardzo za uwagę. Chętnie odpowiem na pytania.
