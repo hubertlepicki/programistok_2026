@@ -1,71 +1,158 @@
+Zasady ogólne
+  - Jeden statyczny plik HTML, wszystkie assety (obrazy, fonty, skrypty) lokalnie.
+  - Nawigacja: spacja i strzałki. Podpunkty pojawiają się kolejno po każdym naciśnięciu, na każdym slajdzie.
+  - Jasny motyw, kolory i fonty do dobrania. Ma wyglądać ładnie i profesjonalnie.
+  - Na slajdach tylko to, co widzi sala. Bez notatek prelegenta (tekst przygotowuję osobno).
+  - Obrazy z Wikipedii / Wikimedia Commons, każdy z atrybucją (autor, licencja, źródło).
+  - Żadnych informacji o Nedap ani AmberBit.
+  - Na osiach czasu przy każdej mniej znanej nazwie (CTSS, CP-67, SCCS itd.) krótki opis w 1–5 słowach.
+
 1. Tytuł: "Inżynieria oprogramowania w dobie agentów AI"
   [strona tytułowa z tytułem, autor: Hubert Łępicki, Programistok 2026, 2026-09-27, Białystok]
 
 2. Intro & powitanie
-  [ slajd jakimś śmiesznym memem powitalnym - welcome to jackass ?]
+  [ puste miejsce na śmieszny mem powitalny (np. "Welcome to Jackass") - wstawię go sam. Bez informacji o mnie. ]
 
 3. Definicja inżynierii oprogramowania: "całość procesów, metod i narzędzi stosowanych w celu tworzenia, rozwijania i utrzymywania oprogramowania."
-  [ slajd z moją definicją powyżej]
+  [ slajd z moją definicją powyżej ]
 
 4. Historia: Margaret Hamilton i program Apollo
-  [ slajd ze zdjęciem Margaret Hamilton ze stosem kart performowanych, daty programu apollo, cytat o znaczeniu inżynierii oprogramowania ]
+  [ zdjęcie Margaret Hamilton ze stosem wydruków kodu źródłowego AGC (to wydruki, nie karty perforowane - podpis odpowiednio), daty programu Apollo, cytat Hamilton o znaczeniu inżynierii oprogramowania - znaleźć i zweryfikować w źródle pierwotnym, podać źródło ]
 
 5. Historia: NATO
-  [ zdjęcie z konferencji nato, kilka wniosków ]
+  [ zdjęcie z konferencji NATO (Garmisch 1968 / Rzym 1969), wnioski:
+    - "software crisis": duże systemy spóźnione, drogie, zawodne
+    - nazwa "software engineering" jako celowa prowokacja: jeszcze nie jest inżynierią, ale powinna być
+    - efekt: w kilka lat konferencja ICSE, czasopisma, przedmioty na uczelniach ]
 
 6. Historia: permanentny kryzys oprogramowania
-  [ slajd z podpunktami o dużej ilości błędów, przekraczaniu terminów, przekraczaniu budżetu wykonania, trudności w utrzymaniu ]
+  [ teza: kryzys z 1968 roku nigdy się nie skończył (prowadzi do vibe codingu jako kolejnej fali). Same hasła, bez liczb:
+    - duża liczba błędów
+    - przekraczanie terminów
+    - przekraczanie budżetów
+    - trudności w utrzymaniu ]
 
 7. Historia: model kaskadowy, specyfikacja wymagań, odbiór i testowanie
-  [ diagram tworzenia oprogramowania w modelu kaskadowym ]
+  [ diagram faz w stylu Royce'a: wymagania → projekt → implementacja → testy → odbiór i utrzymanie.
+    Pod spodem jedna linijka: Royce (1970) sam ostrzegał przed czysto jednokierunkowym przebiegiem (wraca przy slajdzie 23).
+    Bez norm DoD, COCOMO, CMM. ]
 
-10. Historia: współdzielenie czasu, pierwsze maszyny wirtualne, Unix, systemy kontroli wersji
-  [ slajd z podpunktami kiedy pojawił się współdzielenie czasu, pierwsze maszyny wirtualne, Unix, systemy kontroli wersji ]
+8. Historia: współdzielenie czasu, pierwsze maszyny wirtualne, Unix, systemy kontroli wersji
+  [ oś czasu z datami i krótkimi opisami, np. 1961 CTSS - pierwszy system z podziałem czasu, 1967 CP-67 - pierwsze maszyny wirtualne, 1969 Unix, 1972 SCCS - pierwszy system kontroli wersji, potoki, diff, make, lint, 1979 chroot, 1975 zasada najmniejszych uprawnień ]
 
-11. Historia: Programowanie obiektowe, wzorce projektowe, testy automatyczne
-  [ slajd z podpunktami kiedy pojawiło się programowanie obiektowe, wzorce projektowe, testy automatyczne ]
+9. Historia: Programowanie obiektowe, wzorce projektowe, testy automatyczne
+  [ oś czasu z datami i krótkimi opisami: programowanie obiektowe, wzorce projektowe, testy automatyczne ]
 
-12. Historia: Agile, DevOps, CI/CD, chmura obliczeniowa, infrastructure-as-code
-  [ slajd z podpunktami kiedy pojawiło się Agile, DevOps, CI/CD, chmura obliczeniowa, infrastructure-as-code ]
+10. Historia: Agile, DevOps, CI/CD, chmura obliczeniowa, infrastructure-as-code
+  [ oś czasu z datami i krótkimi opisami: Agile, DevOps, CI/CD, chmura obliczeniowa (np. AWS 2006), infrastructure-as-code ]
 
-13. Historia: LLMy i agenci kodujący
-  [ slajd z podpunktami kiedy pojawiły się LLMy i agenci kodujący ]
+11. Historia: LLMy i agenci kodujący
+  [ oś czasu (każdą datę zweryfikować):
+    - 2017 Transformer ("Attention Is All You Need")
+    - 2020 GPT-3
+    - 2021 GitHub Copilot - podpowiedzi kodu
+    - 2022 ChatGPT - rozmowa z modelem
+    - 2024 MCP - standard podłączania narzędzi
+    - 2025 Claude Code, Codex CLI - agenci w terminalu; AGENTS.md, skills
+    - 2026 orkiestratory agentów (Symphony) ]
 
-14. Vibe coding - amnezja programisty
-  [ slajd z Claude Code z beznadziejnym promptem jakimś który nie doprowadzi do niczego dobrego a jedynie problemów ]
+12. Vibe coding - amnezja programisty i agenta
+  [ makieta terminala Claude Code w dwóch aktach:
+    1. programista zapomina o inżynierii: prompt w stylu "zrób mi system sprzedaży biletów jak Eventbrite, ma działać bez błędów, nie pisz testów, szybko" → agent: "✓ Utworzono 63 pliki, +14 382 linii. Gotowe! 🎉"
+    2. agent zapomina: kilka godzin później, po "context compacted", programista: "przecież ustaliliśmy, że płatności idą przez Stripe?" → agent: "Masz rację! Przepraszam…" i zaczyna od nowa ]
 
-15. Vibe coding: AI slope
-  [ slajd z PRem z dużą ilością kodu, słabej jakości, problemem z review, pokryciem testami ]
+13. Vibe coding: AI slop
+  [ tytuł "AI slop" (bez tłumaczenia). Makieta PR w stylu GitHuba: tytuł "Add ticketing system", +14 382 / −2 107, 63 pliki, pokrycie testami 12%, czerwone CI, komentarz recenzenta "LGTM 👍" sprzed 3 minut ]
 
-16. O czym zapomnieliśmy?
-  [ zapomnieliśmy o inżynierii oprogramowania ] 
+14. O czym zapomnieliśmy?
+  [ najpierw duże pytanie, po naciśnięciu odpowiedź: "O inżynierii oprogramowania", nawiązanie do definicji ze slajdu 3 ]
 
-17. Narzędzia agentów: dostęp do dokumentacji, historii, kontekstu
-  [ slajd z podpunktami o tym jak agenci mogą korzystać z dokumentacji, historii i kontekstu (gh cli, serwery MCP, API) ]
+15. Narzędzia agentów: dostęp do dokumentacji, historii, kontekstu (agent czyta wiedzę)
+  [ dostęp przez serwery MCP lub gh cli / API:
+    - dokumentacja: aktualizowana na bieżąco
+    - historia: w gicie pełna historia zmian i decyzji
+    - kontekst i podjęte decyzje: częściowo w kodzie i historii gita, a zmiany decyzji w ticketach i PR-ach ]
 
-18. Narzędzia agentów: system kontroli wersji, stosy pull requestów
-  [ iteracyjne zmiany, częste commity ze znaczącymi opisami, małe pull requesty, stos pull requestów]
+16. Narzędzia agentów: system kontroli wersji, stosy pull requestów
+  [ - iteracyjne zmiany, częste commity z opisami mówiącymi "dlaczego", nie tylko "co"
+    - małe PR-y: jedna zmiana, jeden cel; najpierw refaktoryzacja bez zmiany zachowania, potem zmiana zachowania
+    - stos PR-ów: każdy buduje na poprzednim, każdy do przejrzenia osobno; rebase stosu to dla agenta tania, mechaniczna praca
+    Obok schemat stosu: main ← PR1 ← PR2 ← PR3 ]
 
-19. Proces agentów: wiedza o tym jak i kiedy używać narzędzi
-  [ AGENTS.md/CLAUDE.md, skills, prompty, workflow, checklisty, dokumentacja ]
+17. Proces agentów: wiedza o tym jak i kiedy używać narzędzi
+  [ - AGENTS.md / CLAUDE.md: krótki spis treści z odsyłaczami do szczegółów, nie jeden wielki plik (lekcja OpenAI, luty 2026)
+    - skills: wiedza wczytywana dopiero wtedy, gdy potrzebna
+    - prompty, workflow, checklisty: powtarzalne procedury w repozytorium
+    - od miękkiej do twardej reguły: uwaga w review → dokumentacja → skill → twarde wymuszenie:
+      plugin, pre-commit hook, linter, test, workflow CI / merge queue na GitHubie ]
 
-20. Proces agentów: TDD, ciągły refactoring, sprawdzenie stylu i zgodności
-  [ slajd z podpunktami o TDD, ciągłym refactoringu, sprawdzaniu stylu i zgodności - pluginy, wspomnij o hubertlepicki/agile na slajdzie ]
+18. Proces agentów: TDD, ciągły refactoring, sprawdzenie stylu i zgodności
+  [ - TDD: czerwony (pada z właściwego powodu) → zielony → refaktoryzacja; mały schemat pętli zewnętrznej (test akceptacyjny) i wewnętrznej (testy jednostkowe)
+    - ciągła refaktoryzacja kodu i testów po każdym zielonym
+    - styl i zgodność: lintery, formatery, wytyczne zespołu jako twarde sprawdzenia
+    - twarda reguła: nie usuwamy, nie pomijamy i nie osłabiamy testów, żeby przeszły
+    W rogu: pełny link https://github.com/hubertlepicki/agile + kod QR + "Talk first. Test first. Small steps. Plain words." ]
 
-21. Proces agentów: zapisywanie i dzielenie się wiedzą i podjętymi decyzjami
-  [ slajd z podpunktami o zapisywaniu i dzieleniu się wiedzą i podjętymi decyzjami - dokumentacja, wiki, repozytoria, notatki ]
+19. Proces agentów: zapisywanie i dzielenie się wiedzą i podjętymi decyzjami (agent zapisuje wiedzę)
+  [ - decyzje jako ADR-y (Architecture Decision Records) w repozytorium
+    - dokumentacja aktualizowana w tym samym PR co kod
+    - wnioski z sesji do AGENTS.md, skills, notatek - następna sesja (i następny człowiek) nie zaczyna od zera
+    - zmiany decyzji dopisywane w tickecie / PR, a nie ginące w czacie z agentem
+    - wiki i repozytoria wiedzy wspólne dla zespołu, nie dla jednego agenta ]
 
-22. Proces agentów: QA poprzez computer/browser use
-  [ slajd z podpunktami o QA poprzez computer/browser use ]
+20. Proces agentów: QA poprzez computer/browser use
+  [ - agent uruchamia aplikację i przeklikuje ścieżkę użytkownika: Playwright / Chrome DevTools (MCP)
+    - computer use dla aplikacji desktopowych i mobilnych
+    - czyta konsolę, ruch sieciowy, logi serwera
+    - wyłapuje to, czego nie widzą testy jednostkowe: rozjechany układ, martwy przycisk, urwany przepływ
+    - zrzuty ekranu / nagranie jako dowód wykonania w PR
+    - nawiązanie: Apollo - zanim polecisz, przeleć misję w symulatorze ]
 
-23. Proces agentów: code review, wielopoziomowy
-  [ slajd z podpunktami o code review, wielopoziomowy - internal review, peer AI review, QA review, security review, human review ]
+21. Proces agentów: code review, wielopoziomowy
+  [ pipeline / lejek, każdy poziom odsiewa coś innego:
+    1. internal review - agent-autor sprawdza sam siebie (zakres zmiany, nic ponad to, o co proszono)
+    2. peer AI review - drugi agent z czystym kontekstem (tylko diff i wymagania), kilku recenzentów z różnymi celami
+    3. QA review - przeklikanie aplikacji (slajd 20)
+    4. security review
+    5. human review - człowiek decyduje o scaleniu i odpowiada za kod
+    Linijka: "Fagan, IBM 1976: role i listy kontrolne - dziś zapisane w prompcie" ]
 
-24. Proces agentów: izolacja środowisk, zasada najniższych uprawnień, sandboxing, paralelizacja pracy
-   [ slajd z podpunktami o izolacji środowisk, zasadzie najniższych uprawnień, sandboxingu, paralelizacji pracy ]
+22. Proces agentów: izolacja środowisk, zasada najniższych uprawnień, sandboxing, paralelizacja pracy
+  [ dwie kolumny:
+    Bezpieczeństwo:
+    - osobne środowisko na projekt: własne pliki, sekrety, ograniczona sieć
+    - najmniejsze uprawnienia: bez produkcji i danych produkcyjnych, sekrety z menedżera
+    - chroniony main (protected branches): agent nie pushuje bezpośrednio, scalenie i wdrożenie wymagają zatwierdzenia przez człowieka (required reviews, zatwierdzanie środowisk w workflow)
+    - treść z zewnątrz to dane, nie polecenia (prompt injection)
+    Równoległość:
+    - git worktrees izolują pliki
+    - kontener / VM na zadanie izoluje bazę, porty, usługi
+    - zadania muszą być naprawdę niezależne
+    - limit wyznacza człowiek: tylu agentów, ile wyników zdążysz rzetelnie przejrzeć
+    Nawiązania: Saltzer i Schroeder 1975, CP-67 1967, chroot 1979 ]
 
-25. Proces agentów: spec-driven development (model kaskadowy v2)
-   [ OpenAI symphony lub inne orkiestratory, opisywanie autonomiczne agenty, orkiestratory ]
+23. Symphony (1): spec-driven development (model kaskadowy v2)
+  [ jak powstaje Symphony: OpenAI publikuje SPEC.md - "daj agentowi, niech zbuduje w Twoim języku".
+    Pełna specyfikacja na początku → implementacja w jednym przebiegu → odbiór na końcu = waterfall.
+    Działa, bo specyfikację spisano po działającym systemie. Nawiązanie do slajdu 7. ]
 
-26. Podsumowanie
-  [ slajd z podsumowaniem, wnioski, co dalej, pytania i odpowiedzi ]
+24. Symphony (2): orkiestrator autonomicznych agentów
+  [ czym jest Symphony: orkiestrator, który można oskryptować, opisując workflow autonomicznych agentów:
+    - tablica zgłoszeń (Linear) jako panel sterowania
+    - każde zgłoszenie dostaje własnego agenta we własnym katalogu
+    - WORKFLOW.md w repozytorium: stany, przejścia, kiedy czekać na człowieka, jaki dowód wykonania zostawić ]
+
+25. Podsumowanie
+  [ tabela "wtedy → dziś":
+    - symulatory Apollo → agent przeklikuje aplikację
+    - Unix, powłoka, diff → interfejs pracy agenta
+    - CP-67, chroot → izolacja zadań
+    - Saltzer i Schroeder 1975 → uprawnienia agenta
+    - inspekcje Fagana → recenzenci z checklistami
+    - TDD i BDD → struktura i pamięć agenta
+    - małe partie (DORA) → stosy małych PR-ów
+    - waterfall → spec-driven development
+    Puenta: "Inżynieria oprogramowania jest dziś ważniejsza niż kiedykolwiek." ]
+
+26. Dziękuję
+  [ "Dziękuję" i @hubertlepicki. Bez pytań. ]
