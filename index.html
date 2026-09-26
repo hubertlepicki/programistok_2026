@@ -193,6 +193,15 @@ code { background: var(--card-2); padding: .06em .32em; border-radius: 6px; colo
 .timeline.dense .nm { font-size: 29px; }
 .timeline.dense .ds { font-size: 21px; }
 
+/* ---------- practices today ---------- */
+.s-practice h2 { font-size: 68px; margin-bottom: 28px; }
+.s-practice .lead { font-size: 30px; max-width: 1560px; margin-bottom: 44px; }
+.practice { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.practice .card { padding: 36px 40px 40px; }
+.practice .bullets { gap: 18px; }
+.practice .bullets li { font-size: 28px; line-height: 1.3; padding-left: 36px; }
+.practice .bullets li::before { width: 16px; }
+
 /* ---------- terminal mockup ---------- */
 .term-wrap { display: grid; grid-template-columns: 1fr; gap: 48px; flex: 1; min-height: 0; margin-top: -12px; }
 .terminal { background: #1b1d23; border-radius: 20px; box-shadow: 0 30px 60px -30px rgba(20,20,30,.45); overflow: hidden; display: flex; flex-direction: column; font: 400 25px/1.5 var(--mono); color: #d7dae0; }
@@ -218,6 +227,20 @@ code { background: var(--card-2); padding: .06em .32em; border-radius: 6px; colo
 .act-note .n { font: 600 22px/1 var(--mono); color: var(--accent); letter-spacing: .1em; }
 .act-note h3 { font: 600 46px/1.1 var(--serif); color: var(--ink); margin: 14px 0 12px; letter-spacing: -.01em; }
 .act-note p { font-size: 27px; color: var(--muted); }
+
+/* ---------- plan-mode session ---------- */
+.s-plan h2 { font-size: 68px; margin-bottom: 30px; }
+.terminal.compact { flex: 1; min-height: 0; font-size: 20px; line-height: 1.42; }
+.terminal.compact .body { padding: 18px 30px 24px; gap: 9px; }
+.terminal.compact .act { gap: 6px; }
+.terminal.compact .prompt { padding: 8px 18px; }
+.terminal .mode { color: #4fb8b0; font-size: 19px; }
+.terminal .mode span { color: #6b7080; }
+.terminal .plan { border: 1.5px solid #4fb8b0; border-radius: 10px; padding: 8px 18px; display: flex; flex-direction: column; color: #d7dae0; }
+.terminal .plan b { color: #4fb8b0; font-weight: 600; }
+.terminal .ask { color: #d7dae0; display: flex; gap: 26px; }
+.terminal .ask b { color: #4fb8b0; font-weight: 600; }
+.terminal .ask span { color: #8b909c; }
 
 /* ---------- PR mockup ---------- */
 .pr-wrap { display: grid; grid-template-columns: 1fr 440px; gap: 56px; flex: 1; min-height: 0; margin-top: -20px; }
@@ -258,76 +281,161 @@ code { background: var(--card-2); padding: .06em .32em; border-radius: 6px; colo
 .s-forgot .answer { font: 500 italic 104px/1.05 var(--serif); color: var(--accent); letter-spacing: -.02em; }
 .s-forgot .def { margin-top: 48px; font-size: 32px; color: var(--muted); max-width: 1300px; }
 
+/* ---------- agent as coworker ---------- */
+.s-coworker h2 { margin-bottom: 44px; }
+.s-coworker .cols { flex: none; gap: 40px; }
+.s-coworker .card { padding: 38px 44px 42px; }
+.s-coworker .bullets { gap: 22px; }
+.s-coworker .bullets li { font-size: 31px; }
+.s-coworker .pair { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--rule); font-size: 28px; line-height: 1.35; }
+.sessions { display: flex; flex-direction: column; gap: 14px; }
+.sess { display: flex; flex-direction: column; gap: 6px; border-left: 5px solid var(--rule); padding: 6px 0 6px 22px; }
+.sess .where { font: 600 27px/1.25 var(--sans); color: var(--ink); }
+.sess .mem { font: 500 21px/1.3 var(--mono); }
+.sess .mem::before { margin-right: 10px; font-weight: 700; }
+.sess .mem.ok { color: var(--green); } .sess .mem.ok::before { content: "✓"; }
+.sess .mem.part { color: #9a6700; } .sess .mem.part::before { content: "~"; }
+.sess .mem.no { color: var(--red); } .sess .mem.no::before { content: "✕"; }
+.sess:has(.ok) { border-left-color: var(--green); }
+.sess:has(.part) { border-left-color: #d9a42b; }
+.sess:has(.no) { border-left-color: var(--red); }
+
 /* ---------- knowledge cards ---------- */
 .kcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
 .kcards .card { min-height: 430px; display: flex; flex-direction: column; }
 .kcards .card p { font-size: 29px; }
 .kcards .card .ico { width: 64px; height: 64px; margin-bottom: 28px; stroke: var(--accent); fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .via { margin-top: auto; display: flex; gap: 16px; align-items: center; font: 500 26px/1 var(--mono); color: var(--muted); padding-top: 44px; }
+.kcards .card p.commit-ex { margin-top: 18px; font-size: 26px; color: var(--muted); }
+.commit-ex code { display: inline-block; margin-top: 10px; font-size: 22px; }
 .via em { font-style: normal; color: var(--muted); font-size: 24px; }
 .via span { background: var(--card); border: 1px solid var(--rule); padding: 14px 24px; border-radius: 12px; color: var(--ink); }
 
 /* ---------- stacked PRs ---------- */
 .s-stack .cols { grid-template-columns: 1fr 640px; gap: 88px; }
-.stack { display: flex; flex-direction: column-reverse; gap: 0; align-self: center; }
-.stack .pr-card { position: relative; background: var(--card); border: 2px solid var(--ink); border-radius: 16px; padding: 22px 30px; display: flex; align-items: center; gap: 22px; font-size: 28px; margin-top: 44px; }
+.s-stack h2 { margin-bottom: 40px; }
+.s-stack .bullets { gap: 20px; }
+.s-stack .bullets li { font-size: 31px; line-height: 1.34; }
+.stack-col { align-self: center; display: flex; flex-direction: column; gap: 28px; }
+.stack { display: flex; flex-direction: column-reverse; gap: 0; }
+.gh-note { font-size: 24px; line-height: 1.35; color: var(--ink-2); border-left: 5px solid var(--blue); padding: 4px 0 4px 20px; }
+.gh-note b { color: var(--ink); }
+.gh-note code { font-size: 20px; }
+.stack .pr-card { position: relative; background: var(--card); border: 2px solid var(--ink); border-radius: 16px; padding: 16px 30px; display: flex; align-items: center; gap: 22px; font-size: 28px; margin-top: 30px; }
 .stack .pr-card.main { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .stack .pr-card .id { font: 700 26px/1 var(--mono); color: var(--accent); min-width: 72px; }
 .stack .pr-card.main .id { color: #f3b58f; }
 .stack .pr-card .nm { font-weight: 600; color: inherit; }
 .stack .pr-card .df { margin-left: auto; font: 600 22px/1 var(--mono); }
 .stack .pr-card .df .a { color: var(--green); } .stack .pr-card .df .d { color: var(--red); margin-left: 8px; }
-.stack .pr-card + .pr-card::before { content: ""; position: absolute; left: 50px; bottom: -46px; width: 2px; height: 46px; background: var(--ink); }
-.stack .pr-card + .pr-card::after { content: ""; position: absolute; left: 43px; bottom: -48px; border: 8px solid transparent; border-top: 12px solid var(--ink); border-bottom: 0; transform: none; }
+.stack .pr-card + .pr-card::before { content: ""; position: absolute; left: 50px; bottom: -32px; width: 2px; height: 32px; background: var(--ink); }
+.stack .pr-card + .pr-card::after { content: ""; position: absolute; left: 43px; bottom: -34px; border: 8px solid transparent; border-top: 12px solid var(--ink); border-bottom: 0; transform: none; }
 
-/* ---------- soft -> hard ladder ---------- */
-.ladder { margin-top: auto; }
-.ladder .scale { display: flex; justify-content: space-between; font: 600 20px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-.ladder .scale b { color: var(--accent); font-weight: 600; }
-.ladder .rungs { display: grid; grid-template-columns: 1fr 1fr 1fr 1.9fr; gap: 0; }
-.ladder .rung { position: relative; padding: 24px 34px 24px 46px; font: 600 28px/1.2 var(--sans); color: var(--ink); clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%, 26px 50%); margin-right: -14px; display: flex; flex-direction: column; justify-content: center; }
-.ladder .rung small { display: block; font: 400 21px/1.3 var(--sans); color: var(--ink-2); margin-top: 6px; }
-.ladder .rung:nth-child(1) { background: #f1e7dc; clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%); padding-left: 32px; }
-.ladder .rung:nth-child(2) { background: #f0d5c0; }
-.ladder .rung:nth-child(3) { background: #e9b08c; }
-.ladder .rung:nth-child(4) { background: var(--accent); color: #fff; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 26px 50%); margin-right: 0; }
-.ladder .rung:nth-child(4) small { color: #fde8da; }
+/* ---------- instruction files ---------- */
+.s-files h2 { font-size: 68px; margin-bottom: 30px; }
+.files { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; flex: 1; min-height: 0; }
+.file-col { display: flex; flex-direction: column; gap: 16px; min-height: 0; }
+.file { background: #1b1d23; border-radius: 16px; overflow: hidden; flex: 1; box-shadow: 0 30px 60px -36px rgba(20,20,30,.45); }
+.file .fbar { background: #2a2d35; padding: 14px 24px; font: 500 20px/1 var(--mono); color: #b9bcc6; }
+.file pre { margin: 0; padding: 26px 30px; font: 400 25px/1.52 var(--mono); color: #d7dae0; white-space: pre-wrap; }
+.file .h { color: #f3b58f; font-weight: 600; }
+.file .c { color: #9fd49f; }
+.file .k { color: #f3b58f; }
+.file .m { color: #7d8390; }
+.file .r { color: #ff7b72; font-weight: 600; } .file .g { color: #56d364; font-weight: 600; } .file .b { color: #79a8ff; font-weight: 600; }
+.fnote { font-size: 26px; color: var(--muted); }
+.fnote b { color: var(--ink); font-weight: 650; }
+
+/* ---------- commit conventions ---------- */
+.s-commit h2 { font-size: 68px; margin-bottom: 26px; }
+.commit-files { flex: none; }
+.commit-files .file pre { font-size: 19.5px; line-height: 1.45; padding: 18px 26px; }
+.commit-msg { margin-top: 20px; background: #1b1d23; border-radius: 16px; overflow: hidden; }
+.commit-msg .fbar { background: #2a2d35; padding: 12px 24px; font: 500 19px/1 var(--mono); color: #b9bcc6; }
+.commit-msg pre { margin: 0; padding: 16px 26px; font: 400 20px/1.42 var(--mono); color: #d7dae0; white-space: pre-wrap; }
+.commit-msg .y { color: #e3c16f; }
+.commit-msg .m { color: #7d8390; }
+.commit-msg b { color: #fff; font-weight: 600; }
+
+/* ---------- sharing agent configuration ---------- */
+.s-shareconf h2 { font-size: 68px; margin-bottom: 30px; }
+.conf { display: grid; grid-template-columns: 1fr 90px 600px; gap: 0; align-items: center; }
+.conf-src { display: flex; flex-direction: column; gap: 22px; }
+.repo { background: #1b1d23; border-radius: 16px; padding: 18px 26px 20px; }
+.repo pre { margin: 0; font: 400 23px/1.5 var(--mono); color: #d7dae0; white-space: pre; }
+.repo .m { color: #7d8390; }
+.rlabel { font: 600 19px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: #f3b58f; margin-bottom: 14px; }
+.conf-dst .rlabel { color: var(--accent); }
+.conf-arrow { font: 400 64px/1 var(--sans); color: var(--ink); text-align: center; }
+.conf-dst { background: var(--card); border: 1px solid var(--rule); border-radius: 22px; padding: 28px 32px; display: flex; flex-direction: column; gap: 12px; }
+.agent-chip { display: flex; align-items: center; gap: 14px; font-size: 26px; color: var(--ink); background: var(--card-2); border-radius: 12px; padding: 12px 18px; }
+.agent-chip::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); flex: none; }
+.same { margin-top: 6px; font: 600 23px/1.3 var(--mono); color: var(--green); }
+.same::before { content: "✓ "; }
+.conf-bullets { margin-top: 30px; gap: 12px; }
+.conf-bullets li { font-size: 29px; }
+
+/* ---------- plugin & hooks ---------- */
+.s-plugin h2 { margin-bottom: 40px; }
+.plugin-wrap { display: grid; grid-template-columns: 1fr 860px; gap: 56px; flex: 1; min-height: 0; }
+.plugin-text .label { font: 600 20px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+.plugin-text .bullets { gap: 18px; }
+.plugin-text .bullets li { font-size: 31px; }
+.plugin-side { display: flex; flex-direction: column; gap: 26px; }
+.hooks { background: #1b1d23; border-radius: 18px; padding: 22px 28px; display: flex; flex-direction: column; gap: 10px; }
+.hgroup { font: 600 16px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: #7d8390; margin-top: 6px; }
+.hgroup:first-child { margin-top: 0; }
+.hk { display: grid; grid-template-columns: 220px 1fr; gap: 16px; align-items: baseline; }
+.hk code { background: none; padding: 0; color: #f3b58f; font: 600 21px/1.25 var(--mono); }
+.hk span { color: #d7dae0; font-size: 20px; line-height: 1.3; }
+.qr { display: grid; grid-template-columns: 190px 1fr; gap: 30px; align-items: center; background: var(--card); border: 1px solid var(--rule); border-radius: 22px; padding: 26px; }
+.qr img { width: 190px; height: 190px; display: block; }
+.qr .url { font: 600 25px/1.3 var(--mono); color: var(--ink); }
+.qr .tag { font: 500 italic 23px/1.3 var(--serif); color: var(--accent); margin-top: 12px; }
+.qr .hosts { font-size: 16px; color: var(--muted); margin-top: 12px; }
+
+/* ---------- when a plugin ---------- */
+.s-when h2 { margin-bottom: 40px; }
+.when-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.when-grid .card { padding: 28px 34px 30px; }
+.when-grid .card .label { margin-bottom: 12px; }
+.when-grid .card h3 { font-size: 32px; margin-bottom: 10px; }
+.when-grid .card p { font-size: 25px; line-height: 1.35; color: var(--ink-2); }
+.when-sum { margin-top: auto; display: flex; gap: 48px; font-size: 30px; color: var(--ink-2); border-top: 2px solid var(--ink); padding-top: 22px; }
+.when-sum b { font-family: var(--mono); font-weight: 600; color: var(--accent); margin-right: 12px; }
 
 /* ---------- TDD ---------- */
-.s-tdd .cols { grid-template-columns: 1fr 600px; gap: 72px; }
-.tdd-side { display: flex; flex-direction: column; gap: 30px; }
-.loop { position: relative; border: 2px dashed var(--muted); border-radius: 28px; padding: 58px 30px 26px; }
-.loop .lbl { position: absolute; top: -17px; left: 30px; background: var(--paper); padding: 0 14px; font: 600 20px/1.6 var(--mono); color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
-.loop svg { display: block; margin: 0 auto; }
-.loop .inner-lbl { text-align: center; font: 600 20px/1.3 var(--mono); color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-top: 4px; }
-.qr { display: grid; grid-template-columns: 170px 1fr; gap: 28px; align-items: center; background: var(--card); border: 1px solid var(--rule); border-radius: 22px; padding: 26px; }
-.qr img { width: 170px; height: 170px; display: block; }
-.qr .url { font: 600 23px/1.3 var(--mono); color: var(--ink); word-break: break-all; }
-.qr .tag { font: 500 italic 26px/1.3 var(--serif); color: var(--accent); margin-top: 12px; }
+.s-tdd h2 { margin-bottom: 8px; }
+.tdd-wrap { display: grid; grid-template-columns: 680px 1fr; gap: 80px; align-items: center; flex: 1; min-height: 0; }
+.tdd-rings { display: block; }
+.tdd-legend { display: flex; flex-direction: column; gap: 48px; }
+.rgr-key { display: flex; flex-direction: column; gap: 14px; }
+.rgr-key div { display: grid; grid-template-columns: 22px 170px 1fr; gap: 16px; align-items: baseline; }
+.rgr-key i { width: 22px; height: 22px; border-radius: 6px; align-self: center; }
+.rgr-key b { font: 700 26px/1.2 var(--mono); color: var(--ink); }
+.rgr-key span { font-size: 26px; color: var(--ink-2); line-height: 1.3; }
+.loops { display: flex; flex-direction: column; gap: 22px; border-top: 2px solid var(--ink); padding-top: 28px; }
+.loop-row b { display: block; font: 600 34px/1.2 var(--serif); color: var(--ink); letter-spacing: -.01em; }
+.loop-row span { font-size: 26px; color: var(--muted); line-height: 1.35; }
 
-/* ---------- writing knowledge ---------- */
-.rows { display: flex; flex-direction: column; gap: 0; border-top: 2px solid var(--ink); }
-.rows .r { display: grid; grid-template-columns: 420px 1fr; gap: 48px; padding: 30px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
-.rows .r b { font: 600 36px/1.2 var(--serif); color: var(--ink); letter-spacing: -.01em; }
-.rows .r span { font-size: 31px; color: var(--ink-2); line-height: 1.35; }
+/* ---------- sharing knowledge ---------- */
+.s-share h2 { font-size: 68px; margin-bottom: 30px; }
+.share-wrap { display: grid; grid-template-columns: 1fr 470px; gap: 40px; flex: 1; min-height: 0; }
+.share-wrap .terminal.compact { font-size: 22px; }
+.share-wrap .terminal.compact .body { gap: 16px; padding-top: 24px; }
+.share-side { display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+.share-side .where { border-left: 5px solid var(--accent); padding: 4px 0 4px 22px; display: flex; flex-direction: column; gap: 4px; }
+.share-side .where b { font: 600 34px/1.15 var(--serif); color: var(--ink); letter-spacing: -.01em; }
+.share-side .where span { font-size: 23px; line-height: 1.3; color: var(--muted); }
 
 /* ---------- QA ---------- */
-.s-qa .cols { grid-template-columns: 1fr 760px; gap: 72px; }
-.browser { background: #fff; border: 1px solid var(--rule); border-radius: 18px; overflow: hidden; box-shadow: 0 30px 60px -36px rgba(20,20,30,.35); align-self: start; }
-.browser .bar { height: 52px; background: var(--card-2); display: flex; align-items: center; gap: 10px; padding: 0 20px; }
-.browser .bar i { width: 14px; height: 14px; border-radius: 50%; background: #d6d1c4; }
-.browser .bar span { margin-left: 16px; flex: 1; background: #fff; border-radius: 8px; padding: 7px 16px; font: 400 18px/1 var(--mono); color: var(--muted); }
-.browser .page { position: relative; padding: 36px 40px 40px; height: 440px; }
-.browser .page .h { width: 55%; height: 26px; background: #e6e2d8; border-radius: 6px; margin-bottom: 26px; }
-.browser .page .ln { height: 14px; background: #efece4; border-radius: 6px; margin-bottom: 14px; }
-.browser .ticket { margin-top: 30px; border: 1px solid var(--rule); border-radius: 14px; padding: 22px 26px; display: flex; justify-content: space-between; align-items: center; }
-.browser .ticket .l { width: 220px; }
-.browser .btn { background: var(--ink); color: #fff; font: 600 22px/1 var(--sans); padding: 16px 28px; border-radius: 10px; }
-.browser .hl { position: absolute; border: 4px solid var(--red); border-radius: 14px; }
-.browser .flag { position: absolute; background: var(--red); color: #fff; font: 600 20px/1.2 var(--sans); padding: 10px 16px; border-radius: 10px; }
-.browser .cursor { position: absolute; width: 34px; height: 34px; }
-.shot-row { display: flex; gap: 14px; margin-top: 18px; }
-.shot-row span { font: 500 20px/1 var(--mono); color: var(--muted); background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 16px; }
+.s-qa h2 { font-size: 68px; margin-bottom: 36px; }
+.qa-wrap { display: grid; grid-template-columns: 1fr 820px; gap: 56px; flex: 1; min-height: 0; }
+.qa-text { display: flex; flex-direction: column; }
+.qa-text .bullets { gap: 26px; }
+.qa-text .bullets li { font-size: 31px; }
+.qa-wrap .file { align-self: start; }
+.qa-wrap .file pre { font-size: 23px; }
 
 /* ---------- review pipeline ---------- */
 .pipeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; align-items: center; margin-top: 8px; }
@@ -344,14 +452,44 @@ code { background: var(--card-2); padding: .06em .32em; border-radius: 6px; colo
 .stage-desc { display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; margin-top: 36px; }
 .stage-desc p { font-size: 25px; line-height: 1.36; color: var(--ink-2); }
 
-/* ---------- security / parallel ---------- */
-.s-sec .cols { gap: 64px; }
-.s-sec .card { padding: 40px 46px; }
-.s-sec .card h3 { display: flex; align-items: center; gap: 18px; margin-bottom: 26px; }
-.s-sec .card h3 svg { width: 44px; height: 44px; stroke: var(--accent); fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-.s-sec .bullets li { font-size: 28px; line-height: 1.34; padding-left: 38px; }
-.s-sec .bullets li::before { width: 16px; }
-.s-sec .bullets { gap: 20px; }
+/* ---------- YOLO / security ---------- */
+.s-yolo h2 { font-size: 72px; margin-bottom: 34px; }
+.ysteps { display: grid; grid-template-columns: repeat(3, 1fr); }
+.ystage { display: flex; flex-direction: column; justify-content: center; gap: 8px; height: 180px; padding: 0 60px 0 64px; margin-right: -22px; clip-path: polygon(0 0, calc(100% - 36px) 0, 100% 50%, calc(100% - 36px) 100%, 0 100%, 36px 50%); }
+.ystage:first-child { padding-left: 36px; clip-path: polygon(0 0, calc(100% - 36px) 0, 100% 50%, calc(100% - 36px) 100%, 0 100%); }
+.ystage:nth-child(1) { background: #f1e7dc; }
+.ystage:nth-child(2) { background: #e9b08c; }
+.ystage:nth-child(3) { background: var(--red); color: #fff; margin-right: 0; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 36px 50%); }
+.ystage .n { font: 600 18px/1 var(--mono); color: var(--accent); }
+.ystage:nth-child(3) .n { color: #ffd9d4; }
+.ystage b { font: 650 34px/1.15 var(--sans); }
+.ystage small { font-size: 24px; opacity: .8; }
+.ycols { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 44px; }
+.ycols .card { padding: 34px 40px 38px; }
+.ycols .bullets { gap: 18px; }
+.ycols .bullets li { font-size: 29px; line-height: 1.32; padding-left: 36px; }
+.ycols .bullets li::before { width: 16px; }
+.ydanger { border-color: #efb4b4; } .ydanger .label { color: var(--red); } .ydanger .bullets li::before { background: var(--red); }
+.yok { border-color: #a9d8b6; } .yok .label { color: var(--green); } .yok .bullets li::before { background: var(--green); }
+
+/* ---------- long sessions ---------- */
+.s-long h2 { font-size: 72px; margin-bottom: 44px; }
+.gantt { position: relative; display: flex; flex-direction: column; gap: 20px; padding-top: 44px; }
+.gaxis { position: absolute; top: 0; left: 300px; right: 0; height: 30px; border-bottom: 2px solid var(--rule); }
+.gaxis span { position: absolute; transform: translateX(-50%); font: 500 20px/1 var(--mono); color: var(--muted); white-space: nowrap; }
+.gaxis span:last-child { transform: translateX(-100%); }
+.lane { display: grid; grid-template-columns: 300px 1fr; align-items: center; }
+.who { font: 650 32px/1.1 var(--sans); color: var(--ink); }
+.who small { display: block; font: 500 18px/1.3 var(--mono); color: var(--muted); margin-top: 4px; }
+.track { position: relative; height: 84px; background: var(--card-2); border-radius: 12px; }
+.bar { position: absolute; top: 10px; bottom: 10px; border-radius: 10px; display: flex; align-items: center; padding: 0 18px; font: 600 23px/1 var(--sans); color: #fff; white-space: nowrap; overflow: hidden; }
+.bar.tdd { background: var(--accent); }
+.bar.qa { background: var(--blue); }
+.bar.rv { background: #7a4fbf; }
+.bar.qa, .bar.rv { white-space: normal; font-size: 19px; line-height: 1.15; padding: 0 14px; }
+.bar.me { background: var(--ink); }
+.long-bullets { margin-top: 56px; gap: 20px; }
+.long-bullets li { font-size: 32px; }
 
 /* ---------- symphony ---------- */
 .flow { display: flex; align-items: stretch; gap: 0; margin-top: 4px; }
@@ -388,19 +526,39 @@ code { background: var(--card-2); padding: .06em .32em; border-radius: 6px; colo
 .orch-side .bullets { gap: 16px; }
 
 /* ---------- summary ---------- */
-.then-now { border-top: 2px solid var(--ink); }
-.then-now > div { display: grid; grid-template-columns: 0.72fr 70px 1.28fr; column-gap: 20px; }
-.then-now span { padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 30px; line-height: 1.25; }
-.then-now span:nth-child(1) { color: var(--muted); }
-.then-now span:nth-child(2) { color: var(--accent); text-align: center; font-weight: 600; }
-.then-now span:nth-child(3) { color: var(--ink); font-weight: 600; }
-.then-now .hd span { font: 600 20px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding: 18px 0 14px; }
-.s-summary .punch { font-size: 54px; margin-top: auto; padding-top: 24px; }
+.s-sum h2 { font-size: 64px; margin-bottom: 40px; }
+.sum-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.sum-grid .card { padding: 30px 30px 32px; }
+.sum-grid .card .label { margin-bottom: 20px; }
+.sum-grid .bullets { gap: 18px; }
+.sum-grid .bullets li { font-size: 27px; line-height: 1.3; padding-left: 30px; }
+.sum-grid .bullets li::before { width: 14px; top: .62em; }
+.sum-grid code { font-size: 20px; }
+.s-sum .punch { font-size: 54px; margin-top: auto; }
 
 /* ---------- thanks ---------- */
 .s-thanks { justify-content: center; align-items: flex-start; padding-left: 160px; }
 .s-thanks h2 { font-size: 220px; margin-bottom: 40px; line-height: .95; }
 .s-thanks .handle { font: 600 60px/1 var(--mono); color: var(--accent); }
+
+/* ---------- presenter view (P) ---------- */
+body.presenter { background: #17191e; }
+body.presenter #progress { display: none; }
+#pv { position: fixed; inset: 0; z-index: 10; display: grid; grid-template-columns: 2.1fr 1fr; gap: 28px; padding: 28px; color: #e6e7ea; font-family: var(--sans); }
+.pv-main, .pv-side { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.pv-label { display: flex; gap: 18px; align-items: baseline; font-size: 18px; color: #9aa0ac; }
+.pv-label b { color: #fff; font-size: 22px; font-weight: 650; }
+.pv-stage { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; background: var(--paper); color: var(--ink); flex: none; }
+.pv-stage .slide { transition: none; }
+.pv-stage .step { transition: none; }
+.pv-stage .step.pending { opacity: .22; transform: none; }
+.pv-stage .step.upnext { opacity: .75; transform: none; outline: 6px dashed var(--accent); outline-offset: 10px; border-radius: 8px; }
+.pv-end { position: absolute; inset: 0; display: grid; place-items: center; background: #23262d; color: #9aa0ac; font-size: 22px; }
+.pv-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+.pv-timer { background: #23262d; border-radius: 10px; padding: 16px 20px; display: flex; flex-direction: column; gap: 6px; }
+.pv-timer span { font: 600 44px/1 var(--mono); color: #fff; }
+.pv-timer small { font-size: 14px; color: #9aa0ac; }
+.pv-hint { font-size: 15px; line-height: 1.6; color: #9aa0ac; margin-top: auto; }
 
 /* ---------- print (PDF export: Ctrl+P) ---------- */
 @page { size: 1920px 1080px; margin: 0; }
@@ -611,6 +769,7 @@ code { background: var(--card-2); padding: .06em .32em; border-radius: 6px; colo
       <li class="step"><div class="t"><span class="y">2008</span><span class="nm">GitHub</span><span class="ds">pull requesty i&nbsp;review</span></div></li>
       <li class="step"><div class="t"><span class="y">2009</span><span class="nm">DevOps</span><span class="ds">DevOpsDays w&nbsp;Gandawie</span></div></li>
       <li class="step"><div class="t"><span class="y">2010</span><span class="nm">Continuous Delivery</span><span class="ds">potok wdrożeniowy</span></div></li>
+      <li class="step"><div class="t"><span class="y">2011</span><span class="nm">ADR</span><span class="ds">Architecture Decision Records: decyzje w&nbsp;repozytorium</span></div></li>
       <li class="step"><div class="t"><span class="y">2013–14</span><span class="nm">Docker · Kubernetes · Terraform</span><span class="ds">kontenery i&nbsp;infrastruktura jako kod</span></div></li>
       <li class="step"><div class="t"><span class="y">2018</span><span class="nm">Accelerate</span><span class="ds">badania DORA: małe partie</span></div></li>
     </ol>
@@ -630,8 +789,44 @@ code { background: var(--card-2); padding: .06em .32em; border-radius: 6px; colo
       <li class="step"><div class="t"><span class="y">2022</span><span class="nm">ChatGPT</span><span class="ds">rozmowa z&nbsp;modelem</span></div></li>
       <li class="step"><div class="t"><span class="y">2024</span><span class="nm">MCP</span><span class="ds">standard podłączania narzędzi</span></div></li>
       <li class="step"><div class="t"><span class="y">2025</span><span class="nm">Claude Code · Codex CLI</span><span class="ds">agenci w&nbsp;terminalu; AGENTS.md, skills</span></div></li>
-      <li class="step"><div class="t"><span class="y">2026</span><span class="nm">Symphony</span><span class="ds">orkiestratory agentów</span></div></li>
+      <li class="step"><div class="t"><span class="y">2026</span><span class="nm">Orkiestratory agentów</span><span class="ds">wielu agentów pracuje z&nbsp;tablicy zadań</span></div></li>
     </ol>
+  </div>
+</section>
+
+<!-- 12. Inżynieria oprogramowania to dziś standard -->
+<section class="slide s-practice">
+  <div class="kicker">Stan przed AI</div>
+  <h2>Inżynieria oprogramowania to dziś standard</h2>
+  <p class="lead">Prawie każda firma i&nbsp;instytucja tworząca oprogramowanie ma swój zestaw praktyk. Trzymają się ich programiści, zespoły i&nbsp;całe organizacje, żeby dostarczać dobre oprogramowanie w&nbsp;budżecie i&nbsp;łatwe w&nbsp;utrzymaniu.</p>
+  <div class="practice">
+    <div class="card step">
+      <div class="label">Programista</div>
+      <ul class="bullets">
+        <li>testy automatyczne, TDD</li>
+        <li>refaktoryzacja</li>
+        <li>standardy kodowania, lintery, formatery</li>
+        <li>małe commity z&nbsp;opisem zmiany</li>
+      </ul>
+    </div>
+    <div class="card step">
+      <div class="label">Zespół</div>
+      <ul class="bullets">
+        <li>Git, pull requesty, code review</li>
+        <li>ciągła integracja (CI)</li>
+        <li>Scrum albo Kanban, retrospektywy</li>
+        <li>definicja ukończenia, dokumentacja</li>
+      </ul>
+    </div>
+    <div class="card step">
+      <div class="label">Organizacja</div>
+      <ul class="bullets">
+        <li>automatyczne wdrożenia (CD)</li>
+        <li>infrastruktura jako kod, chmura, kontenery</li>
+        <li>monitoring, dyżury, analiza awarii</li>
+        <li>bezpieczeństwo: najmniejsze uprawnienia, sekrety, skanowanie zależności</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -641,10 +836,10 @@ code { background: var(--card-2); padding: .06em .32em; border-radius: 6px; colo
   <h2>Amnezja?</h2>
   <div class="term-wrap">
     <div class="terminal">
-      <div class="bar"><i></i><i></i><i></i><span>~/projekty/bilety — claude</span></div>
+      <div class="bar"><i></i><i></i><i></i><span>~/projekty/bilety — AI Agent</span></div>
       <div class="body">
         <div class="act step">
-          <div class="welcome">✻ Welcome to Claude Code!</div>
+          <div class="welcome">✻ AI Agent</div>
           <div class="prompt">zrób mi system sprzedaży biletów jak Eventbrite, ma działać bez błędów, szybko</div>
           <div class="out">
             <div class="dot">Jasne! Tworzę kompletny system sprzedaży biletów…</div>
@@ -702,6 +897,34 @@ code { background: var(--card-2); padding: .06em .32em; border-radius: 6px; colo
   </div>
 </section>
 
+<!-- Agent jako nowy współpracownik -->
+<section class="slide s-coworker">
+  <div class="kicker">Agent w&nbsp;zespole</div>
+  <h2>Agent to nowy współpracownik</h2>
+  <div class="cols cols-2">
+    <div class="card">
+      <div class="label">Pierwszego dnia nie zna</div>
+      <ul class="bullets">
+        <li class="step">naszych procedur i&nbsp;standardów</li>
+        <li class="step">projektu i&nbsp;jego architektury</li>
+        <li class="step">podjętych decyzji projektowych i&nbsp;ich powodów</li>
+        <li class="step">biznesowej strony projektu</li>
+      </ul>
+      <p class="pair step">Dlatego na początku często programujemy z&nbsp;nim <strong>w&nbsp;parach</strong> (pair programming).</p>
+    </div>
+    <div class="card">
+      <div class="label">I&nbsp;każdego dnia może nie pamiętać</div>
+      <div class="sessions">
+        <div class="sess step"><span class="where">Claude Code · Twój laptop</span><span class="mem ok">lokalna pamięć, tylko na tym komputerze</span></div>
+        <div class="sess step"><span class="where">ta sama sesja po streszczeniu kontekstu</span><span class="mem part">szczegóły giną</span></div>
+        <div class="sess step"><span class="where">inny komputer, inny programista</span><span class="mem no">nic nie wie o&nbsp;poprzednich sesjach</span></div>
+        <div class="sess step"><span class="where">inna platforma: chmura, CI, inny agent</span><span class="mem no">nic nie wie o&nbsp;poprzednich sesjach</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="punch step" style="font-size:40px;margin-top:36px">Wszystko, co ma wiedzieć, musi być zapisane tam, skąd <em>każda sesja</em> to przeczyta.</div>
+</section>
+
 <!-- 15. Agent czyta wiedzę -->
 <section class="slide">
   <div class="kicker">Narzędzia agentów · agent czyta wiedzę</div>
@@ -716,14 +939,373 @@ code { background: var(--card-2); padding: .06em .32em; border-radius: 6px; colo
       <svg class="ico" viewBox="0 0 48 48"><circle cx="14" cy="10" r="4"/><circle cx="14" cy="38" r="4"/><circle cx="34" cy="20" r="4"/><path d="M14 14v20M34 24c0 8-8 8-16 12"/></svg>
       <h3>Historia</h3>
       <p>w&nbsp;gicie pełna historia zmian i&nbsp;decyzji</p>
+      <p class="commit-ex">numer ticketu w&nbsp;commicie łączy zmianę z&nbsp;jej powodem:<br><code>[#14] Rezerwuj miejsce na 15 minut</code></p>
     </div>
     <div class="card step">
       <svg class="ico" viewBox="0 0 48 48"><path d="M8 10h32v22H22l-8 7v-7H8z"/><path d="M15 18h18M15 24h12"/></svg>
       <h3>Kontekst i&nbsp;decyzje</h3>
-      <p>częściowo w&nbsp;kodzie i&nbsp;historii gita, a&nbsp;zmiany decyzji w&nbsp;ticketach i&nbsp;PR-ach</p>
+      <p>decyzje projektowe w&nbsp;ADR-ach, częściowo w&nbsp;kodzie i&nbsp;historii gita, a&nbsp;zmiany decyzji w&nbsp;ticketach i&nbsp;PR-ach</p>
     </div>
   </div>
   <div class="via step">przez <span>serwery MCP</span><span>gh&nbsp;CLI</span><span>API</span><span>AGENTS.md</span><span>prompts</span><span>skills</span><em>(więcej później)</em></div>
+</section>
+
+<!-- Sesja z kontekstem i trybem planowania -->
+<section class="slide s-plan">
+  <div class="kicker">Lepszy sposób pracy z&nbsp;agentem</div>
+  <h2>Najpierw kontekst, potem kod</h2>
+  <div class="terminal compact">
+    <div class="bar"><i></i><i></i><i></i><span>~/projekty/bilety — AI Agent</span></div>
+    <div class="body">
+      <div class="act step">
+        <div class="prompt">Budujemy system sprzedaży biletów. Zadania są w&nbsp;github.com/nasza-firma/bilety/issues, milestone „Faza 1”. Przeczytaj tickety i&nbsp;dokumentację, dopytaj o&nbsp;niejasności i&nbsp;przygotuj plan pierwszej fazy.</div>
+        <div class="mode">⏸ plan mode on <span>(shift+tab to cycle)</span></div>
+      </div>
+      <div class="act step">
+        <div class="out">
+          <div class="tool">Bash(gh issue list --repo nasza-firma/bilety --milestone "Faza 1")</div>
+          <div class="sub">⎿ #12 Rejestracja · #13 Logowanie · #14 Kupno biletu · #15 Skanowanie przy bramce</div>
+          <div class="tool">Bash(gh issue view 14 --comments)</div>
+          <div class="sub">⎿ „Płatności przez Stripe, bez przechowywania kart” (decyzja w&nbsp;komentarzu)</div>
+          <div class="tool">Read(docs/architektura.md, docs/adr/)</div>
+          <div class="sub">⎿ 6 ADR-ów (Architecture Decision Records): wcześniejsze decyzje i&nbsp;ich powody</div>
+        </div>
+      </div>
+      <div class="act step">
+        <div class="out">
+          <div class="dot">Rozumiem cel: sprzedaż biletów na wydarzenia i&nbsp;wejście po zeskanowaniu kodu QR.</div>
+          <div class="sub">Faza 1 to cztery tickety, każdy jako osobny PR w&nbsp;stosie.</div>
+          <div class="dot">Jedno pytanie: czy zwroty biletów wchodzą w&nbsp;fazę 1? W&nbsp;#14 nie ma decyzji.</div>
+        </div>
+      </div>
+      <div class="act step">
+        <div class="prompt">Zwroty dopiero w&nbsp;fazie 2.</div>
+        <div class="plan">
+          <b>Plan fazy 1</b>
+          <span>1. #12 rejestracja → 2. #13 logowanie → 3. #14 kupno biletu (Stripe) → 4. #15 skanowanie</span>
+          <span>Każdy krok: test akceptacyjny → TDD → review → PR w&nbsp;stosie</span>
+        </div>
+        <div class="ask">Would you like to proceed? <b>❯ 1. Yes</b> <span>2. No, keep planning</span></div>
+        <div class="out"><div class="dot">Zaczynam od #12: najpierw test akceptacyjny rejestracji.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Agent zapisuje wiedzę -->
+<section class="slide s-share">
+  <div class="kicker">Tak jak korzystaliśmy z&nbsp;wiedzy</div>
+  <h2>Dzielimy się wiedzą z&nbsp;ludźmi i&nbsp;agentami</h2>
+  <div class="share-wrap">
+    <div class="terminal compact">
+      <div class="bar"><i></i><i></i><i></i><span>~/projekty/bilety — AI Agent</span></div>
+      <div class="body">
+        <div class="act step">
+          <div class="prompt">#14 gotowe. Podjęte decyzje projektowe zapisz w&nbsp;ADR-ach, zmiany względem oryginalnych wymagań opisz w&nbsp;tickecie, a&nbsp;znalezione istniejące błędy opisz jako nowe issues na GitHubie i&nbsp;dodaj do backlogu.</div>
+        </div>
+        <div class="act step"><div class="out">
+          <div class="tool">Write(docs/adr/0007-webhooki-stripe.md)</div>
+          <div class="sub">⎿ decyzja: webhook Stripe może przyjść dwa razy, zapisujemy ID zdarzenia</div>
+        </div></div>
+        <div class="act step"><div class="out">
+          <div class="tool">Bash(gh issue comment 14 --body-file zmiany-wymagan.md)</div>
+          <div class="sub">⎿ zmiana: miejsce rezerwowane na 15 minut do czasu płatności</div>
+        </div></div>
+        <div class="act step"><div class="out">
+          <div class="tool">Bash(gh issue create -t "Sesja nie wygasa po zmianie hasła" -l bug -p Backlog)</div>
+          <div class="sub">⎿ #33 w&nbsp;backlogu: istniejący błąd w&nbsp;logowaniu, kroki do odtworzenia</div>
+        </div></div>
+        <div class="act step"><div class="out">
+          <div class="tool">Bash(gh pr create --title "Kupno biletu (#14)" --body-file pr.md)</div>
+          <div class="sub">⎿ PR #31, linki: #14 ↔ ADR 0007 ↔ #33</div>
+        </div></div>
+      </div>
+    </div>
+    <div class="share-side">
+      <div class="where step" data-with="1"><b>ADR</b><span>podjęta decyzja projektowa i&nbsp;jej powód</span></div>
+      <div class="where step" data-with="2"><b>Ticket</b><span>zmiany względem oryginalnych wymagań</span></div>
+      <div class="where step" data-with="3"><b>Nowe issues</b><span>znalezione błędy, od razu w&nbsp;backlogu</span></div>
+      <div class="where step" data-with="4"><b>Pull request</b><span>łączy wszystko linkami</span></div>
+    </div>
+  </div>
+  <div class="punch step" style="font-size:38px;margin-top:28px">Następna sesja, recenzent i&nbsp;człowiek przy poprawkach <em>dostają cały kontekst.</em></div>
+</section>
+
+<!-- Instrukcje: gdzie szukać i jak dzielić się wiedzą -->
+<section class="slide s-files">
+  <div class="kicker">AGENTS.md / CLAUDE.md · skills</div>
+  <h2>Powiedzmy agentowi, gdzie jest wiedza</h2>
+  <div class="files">
+    <div class="file-col step">
+      <div class="file">
+        <div class="fbar"><span>AGENTS.md</span></div>
+<pre><span class="h"># Gdzie szukać wiedzy</span>
+- Zadania i&nbsp;decyzje: GitHub Issues,
+  <span class="c">gh issue view &lt;nr&gt; --comments</span>
+- Architektura: <span class="c">docs/architektura.md</span>
+- Decyzje projektowe: <span class="c">docs/adr/</span>
+- Historia: <span class="c">git log</span>, opisy PR-ów
+
+<span class="h"># Jak dzielić się wiedzą</span>
+- Decyzja projektowa → nowy ADR
+- Zmiana wymagań → komentarz w&nbsp;tickecie
+- Znaleziony błąd → issue <span class="c">bug</span> w&nbsp;Backlogu
+- Procedura: skill <span class="c">zapis-wiedzy</span></pre>
+      </div>
+      <p class="fnote"><b>Zawsze w&nbsp;kontekście:</b> krótka mapa, gdzie co jest.</p>
+    </div>
+    <div class="file-col step">
+      <div class="file">
+        <div class="fbar"><span>skills/zapis-wiedzy/SKILL.md</span></div>
+<pre><span class="m">---</span>
+<span class="k">name:</span> zapis-wiedzy
+<span class="k">description:</span> Użyj po zakończeniu zadania
+  albo przy decyzji projektowej.
+<span class="m">---</span>
+1. Decyzja? Skopiuj <span class="c">docs/adr/szablon.md</span>,
+   nadaj kolejny numer.
+2. Zmiana wymagań? <span class="c">gh issue comment &lt;nr&gt;</span>
+   z&nbsp;sekcją „Zmiana względem zadania”.
+3. Błąd poza zakresem?
+   <span class="c">gh issue create -l bug -p Backlog</span>
+4. PR: Decyzje · Problemy · Zmiany · Linki</pre>
+      </div>
+      <p class="fnote"><b>Wczytywany, gdy potrzebny:</b> dokładna procedura.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Commity: AGENTS.md i skill git-commit -->
+<section class="slide s-commit">
+  <div class="kicker">AGENTS.md · skills</div>
+  <h2>Commity, które mówią dlaczego</h2>
+  <div class="files commit-files">
+    <div class="file step">
+      <div class="fbar"><span>AGENTS.md</span></div>
+<pre><span class="h"># Git</span>
+- Gałęzie: <span class="c">feature/&lt;nr-ticketu&gt;-krotki-opis</span>
+- Temat commita zaczynaj od <span class="c">[#nr-ticketu]</span>
+- W&nbsp;treści: co się zmienia i&nbsp;dlaczego
+- Na końcu: <span class="c">Co-authored-by</span> z&nbsp;nazwą agenta
+- Commity tylko przez skill <span class="c">git-commit</span></pre>
+    </div>
+    <div class="file step">
+      <div class="fbar"><span>.agents/skills/git-commit/SKILL.md</span></div>
+<pre><span class="m">---</span>
+<span class="k">name:</span> git-commit
+<span class="k">description:</span> Commit po sprawdzeniu formatera
+  i&nbsp;akceptacji człowieka.
+<span class="m">---</span>
+1. Uruchom formater. Coś zmienił? Zapytaj.
+2. Przejrzyj <span class="c">git diff</span> i&nbsp;<span class="c">git log --oneline</span>.
+3. Temat: <span class="c">[#nr]</span> + opis, treść: dlaczego.
+4. Pokaż wiadomość i&nbsp;pliki, czekaj na zgodę.
+5. Dodaj tylko zamierzone pliki i&nbsp;commituj.</pre>
+    </div>
+  </div>
+  <div class="commit-msg step">
+    <div class="fbar"><span>git log</span></div>
+<pre><span class="y">commit 8e41c07</span>  <span class="m">(feature/14-kupno-biletu)</span>
+<b>[#14] Rezerwuj miejsce na 15 minut do czasu płatności</b>
+
+Bez rezerwacji dwie osoby mogły kupić to samo miejsce.
+Decyzja w&nbsp;docs/adr/0007, zmiana zakresu opisana w&nbsp;#14.
+
+<span class="m">Co-authored-by: AI Agent &lt;agent@nasza-firma.dev&gt;</span></pre>
+  </div>
+</section>
+
+<!-- Dzielimy się konfiguracją agentów -->
+<section class="slide s-shareconf">
+  <div class="kicker">Dzielimy się konfiguracją</div>
+  <h2>Konfiguracja agentów to kod zespołu</h2>
+  <div class="conf">
+    <div class="conf-src">
+      <div class="repo step">
+        <div class="rlabel">W&nbsp;repozytorium projektu</div>
+<pre>bilety/
+├─ AGENTS.md
+├─ CLAUDE.md <span class="m">→ AGENTS.md</span>
+├─ skills/zapis-wiedzy/
+└─ docs/adr/</pre>
+      </div>
+      <div class="repo step">
+        <div class="rlabel">W&nbsp;osobnym repozytorium zespołu</div>
+<pre>nasza-firma/agent-plugins
+├─ plugins/tdd/          <span class="m">skills, hooki</span>
+├─ plugins/code-review/
+└─ plugins/zapis-wiedzy/</pre>
+      </div>
+    </div>
+    <div class="conf-arrow step" data-with="1">→</div>
+    <div class="conf-dst step" data-with="1">
+      <div class="rlabel">Wszyscy agenci zespołu</div>
+      <div class="agent-chip">agent na Twoim laptopie</div>
+      <div class="agent-chip">agent koleżanki z&nbsp;zespołu</div>
+      <div class="agent-chip">agent w&nbsp;CI robiący review</div>
+      <div class="agent-chip">agent w&nbsp;chmurze, z&nbsp;tablicy zadań</div>
+      <div class="same">te same techniki i&nbsp;metody</div>
+    </div>
+  </div>
+  <ul class="bullets conf-bullets">
+    <li class="step">Zmiany w&nbsp;konfiguracji przez <strong>pull request i&nbsp;review</strong>, jak każdy kod.</li>
+    <li class="step">Wersjonowana razem z&nbsp;projektem albo jako <strong>plugin instalowany przez cały zespół</strong>.</li>
+  </ul>
+  <div class="echo-row step" style="margin-top:22px"><span class="echo">Przykład pluginu: github.com/hubertlepicki/agile</span></div>
+</section>
+
+<!-- 18. TDD -->
+<section class="slide s-tdd">
+  <div class="kicker">Proces agentów</div>
+  <h2>TDD: przypomnienie</h2>
+  <div class="tdd-wrap">
+    <svg class="tdd-rings" viewBox="0 0 720 720" width="680" height="680">
+      <defs><marker id="rgr" viewBox="0 0 10 10" refX="4" refY="5" markerWidth="1.7" markerHeight="1.7" markerUnits="strokeWidth" orient="auto"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+      <g class="step"><path d="M465.8 52.7 A325 325 0 0 1 655.3 495.6" stroke="#c62828" stroke-width="18" fill="none" marker-end="url(#rgr)"/><path d="M610.2 567.5 A325 325 0 0 1 128.9 588.5" stroke="#1a7f37" stroke-width="18" fill="none" marker-end="url(#rgr)"/><path d="M77.6 520.9 A325 325 0 0 1 227.8 63.1" stroke="#1f4fd1" stroke-width="18" fill="none" marker-end="url(#rgr)"/><rect x="265.0" y="14" width="190" height="42" rx="21" fill="#f6f4ee"/><text x="360" y="43" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="23" fill="#16181d">testy e2e</text></g>
+      <g class="step"><path d="M460.8 162.2 A222 222 0 0 1 557.2 461.9" stroke="#c62828" stroke-width="18" fill="none" marker-end="url(#rgr)"/><path d="M524.1 509.5 A222 222 0 0 1 209.5 523.2" stroke="#1a7f37" stroke-width="18" fill="none" marker-end="url(#rgr)"/><path d="M172.4 478.7 A222 222 0 0 1 242.4 171.7" stroke="#1f4fd1" stroke-width="18" fill="none" marker-end="url(#rgr)"/><rect x="215.0" y="117" width="290" height="42" rx="21" fill="#f6f4ee"/><text x="360" y="146" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="23" fill="#16181d">testy integracyjne</text></g>
+      <g class="step"><path d="M376.4 243.1 A118 118 0 0 1 470.2 402.3" stroke="#c62828" stroke-width="18" fill="none" marker-end="url(#rgr)"/><path d="M455.5 429.4 A118 118 0 0 1 270.9 437.4" stroke="#1a7f37" stroke-width="18" fill="none" marker-end="url(#rgr)"/><path d="M253.9 411.7 A118 118 0 0 1 333.5 245.0" stroke="#1f4fd1" stroke-width="18" fill="none" marker-end="url(#rgr)"/><text x="360" y="354" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="23" fill="#16181d">testy</text><text x="360" y="384" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="23" fill="#16181d">jednostkowe</text></g>
+    </svg>
+    <div class="tdd-legend">
+      <div class="rgr-key">
+        <div><i style="background:#c62828"></i><b>RED</b><span>test, który nie przechodzi, z&nbsp;właściwego powodu</span></div>
+        <div><i style="background:#1a7f37"></i><b>GREEN</b><span>najmniej kodu, żeby przeszedł</span></div>
+        <div><i style="background:#1f4fd1"></i><b>REFACTOR</b><span>porządki przy zielonych testach</span></div>
+      </div>
+      <div class="loops">
+        <div class="loop-row step" data-with="0"><b>Pętla zewnętrzna: testy e2e</b><span>cała ścieżka użytkownika, od przeglądarki po bazę</span></div>
+        <div class="loop-row step" data-with="1"><b>Pętla środkowa: testy integracyjne</b><span>współpraca modułów, baza danych, zewnętrzne API</span></div>
+        <div class="loop-row step" data-with="2"><b>Pętla wewnętrzna: testy jednostkowe</b><span>pojedyncze zachowanie, szybko i&nbsp;w&nbsp;małych krokach</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TDD w AGENTS.md i skillu -->
+<section class="slide s-files">
+  <div class="kicker">AGENTS.md · skills</div>
+  <h2>TDD zapisane dla agenta</h2>
+  <div class="files">
+    <div class="file-col step">
+      <div class="file">
+        <div class="fbar"><span>AGENTS.md</span></div>
+<pre><span class="h"># Sposób pracy</span>
+- Każda zmiana zachowania zaczyna się
+  od testu, który nie przechodzi.
+- Od zewnątrz do środka: e2e →
+  integracyjne → jednostkowe.
+- Nie usuwaj, nie pomijaj i&nbsp;nie osłabiaj
+  testów, żeby przeszły.
+- Dokładny cykl: skill <span class="c">tdd</span></pre>
+      </div>
+      <p class="fnote"><b>Zawsze w&nbsp;kontekście:</b> zasada i&nbsp;odsyłacz.</p>
+    </div>
+    <div class="file-col step">
+      <div class="file">
+        <div class="fbar"><span>skills/tdd/SKILL.md</span></div>
+<pre><span class="m">---</span>
+<span class="k">name:</span> tdd
+<span class="k">description:</span> Użyj przy każdej zmianie zachowania.
+<span class="m">---</span>
+1. Z&nbsp;ticketa wypisz zachowania jako przykłady.
+2. Test e2e: uruchom, sprawdź, że pada
+   z&nbsp;właściwego powodu.
+3. Zejdź niżej: integracyjny, jednostkowy.
+   Każdy najpierw <span class="r">RED</span>.
+4. <span class="g">GREEN</span>: najmniej kodu, żeby przeszedł.
+5. <span class="b">REFACTOR</span> kodu i&nbsp;testów przy zielonych.
+6. Wracaj w&nbsp;górę, aż przejdzie test e2e.
+7. Commit na zielonym: skill <span class="c">git-commit</span>.</pre>
+      </div>
+      <p class="fnote"><b>Wczytywany, gdy potrzebny:</b> dokładny cykl.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QA: agent testuje jak użytkownik -->
+<section class="slide s-qa">
+  <div class="kicker">Po TDD: test ręczny</div>
+  <h2>Agent sprawdza zmianę jak użytkownik</h2>
+  <div class="qa-wrap">
+    <div class="qa-text">
+      <ul class="bullets">
+        <li class="step">Dobry programista, zanim odda zmianę, <strong>zawsze przeklika ją ręcznie</strong>. Samo TDD to za mało.</li>
+        <li class="step">Agent też to potrafi: <strong>computer use, Chrome DevTools, Playwright</strong>. Widzi to, co użytkownik: ekran, konsolę, ruch sieciowy.</li>
+        <li class="step">Znaleziony błąd to <strong>nowy czerwony test</strong> i&nbsp;powrót do cyklu TDD.</li>
+      </ul>
+      <div class="echo-row step"><span class="echo">Apollo: najpierw misja w&nbsp;symulatorze</span></div>
+    </div>
+    <div class="file step" data-with="1">
+      <div class="fbar"><span>skills/test-uzytkownika/SKILL.md</span></div>
+<pre><span class="m">---</span>
+<span class="k">name:</span> test-uzytkownika
+<span class="k">description:</span> Użyj przed oddaniem zadania.
+<span class="m">---</span>
+1. <span class="c">gh issue view &lt;nr&gt;</span>: wypisz przypadki
+   użycia i&nbsp;kryteria akceptacji.
+2. Uruchom aplikację, otwórz ją przez
+   <span class="c">Playwright</span> albo <span class="c">Chrome DevTools</span>.
+3. Przejdź każdy przypadek jak użytkownik:
+   klikaj, wpisuj, patrz na ekran i&nbsp;konsolę.
+4. Zrób zrzuty ekranu jako dowód.
+5. Błąd? Najpierw test, który go odtwarza
+   (RED), potem poprawka (GREEN), refaktor.
+6. Wyniki i&nbsp;zrzuty dołącz do PR.</pre>
+    </div>
+  </div>
+</section>
+
+<!-- Wymuszenie procesu pluginem i hookami -->
+<section class="slide s-plugin">
+  <div class="kicker">Gdy AGENTS.md nie wystarcza</div>
+  <h2>Wymuszamy proces pluginem</h2>
+  <div class="plugin-wrap">
+    <div class="plugin-text">
+      <div class="label">Problem</div>
+      <ul class="bullets">
+        <li class="step">Reguła „najpierw test” w&nbsp;AGENTS.md / CLAUDE.md <strong>jest w&nbsp;kontekście, ale w&nbsp;długiej sesji agent coraz częściej ją pomija</strong>, zwłaszcza po streszczeniu kontekstu.</li>
+        <li class="step">Przypominanie o&nbsp;niej w&nbsp;każdym prompcie jest <strong>uciążliwe</strong> i&nbsp;łatwo o&nbsp;nim zapomnieć.</li>
+      </ul>
+      <div class="label" style="margin-top:40px">Rozwiązanie</div>
+      <ul class="bullets">
+        <li class="step">Pakujemy naszą logikę w&nbsp;<strong>plugin</strong> i&nbsp;korzystamy z&nbsp;mechanizmów agenta, np. <strong>hooków</strong>.</li>
+      </ul>
+    </div>
+    <div class="plugin-side">
+      <div class="hooks step" data-with="2">
+        <div class="hgroup">Przypominają reguły</div>
+        <div class="hk"><code>SessionStart</code><span>pełne reguły na starcie i&nbsp;po streszczeniu kontekstu</span></div>
+        <div class="hk"><code>UserPromptSubmit</code><span>krótkie przypomnienie przy każdym prompcie</span></div>
+        <div class="hk"><code>SubagentStart</code><span>pełne reguły dla każdego subagenta</span></div>
+        <div class="hgroup">Pilnują działań</div>
+        <div class="hk"><code>PreToolUse</code><span>blokuje ryzykowne działanie, np. push na <i>main</i> albo commit bez [#nr]</span></div>
+        <div class="hk"><code>PostToolUse</code><span>po edycji uruchamia formater i&nbsp;testy, błędy wracają do agenta</span></div>
+        <div class="hk"><code>Stop</code><span>nie pozwala skończyć, dopóki testy nie przechodzą i&nbsp;nie sprawdzono przypadków użycia z&nbsp;perspektywy użytkownika</span></div>
+      </div>
+      <div class="qr step">
+        <img src="assets/img/qr-agile.svg" alt="Kod QR do github.com/hubertlepicki/agile">
+        <div>
+          <div class="url">https://github.com/<br>hubertlepicki/agile</div>
+          <div class="tag">Talk first. Test first.<br>Small steps. Plain words.</div>
+          <div class="hosts">Claude Code · Codex · OpenCode · Antigravity · Grok Build</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Kiedy potrzebny jest plugin? -->
+<section class="slide s-when">
+  <div class="kicker">AGENTS.md, skills czy plugin</div>
+  <h2>Kiedy potrzebny jest plugin?</h2>
+  <div class="when-grid">
+    <div class="card step"><div class="label">01</div><h3>Regułę trzeba wymusić</h3><p>hooki działają zawsze, niezależnie od tego, czy model pamięta</p></div>
+    <div class="card step"><div class="label">02</div><h3>Wiele elementów działa razem</h3><p>skill, subagent, komenda i&nbsp;hook w&nbsp;jednej paczce</p></div>
+    <div class="card step"><div class="label">03</div><h3>Wiele repozytoriów</h3><p>instalacja raz, wersje, aktualizacja dla całego zespołu</p></div>
+    <div class="card step"><div class="label">04</div><h3>Integracje</h3><p>serwery MCP (Jira, Linear) i&nbsp;LSP, czyli rozumienie kodu</p></div>
+    <div class="card step"><div class="label">05</div><h3>Subagenci z&nbsp;uprawnieniami</h3><p>recenzent tylko do odczytu, tester tylko z&nbsp;przeglądarką</p></div>
+    <div class="card step"><div class="label">06</div><h3>Workflow uruchamia człowiek</h3><p>komendy <code>/review</code>, <code>/commit</code> działają zawsze na żądanie</p></div>
+  </div>
+  <div class="when-sum step"><span><b>AGENTS.md</b> co i&nbsp;gdzie</span><span><b>skills</b> jak</span><span><b>plugin</b> dopilnować i&nbsp;rozdać zespołowi</span></div>
 </section>
 
 <!-- 16. Git i stosy PR-ów -->
@@ -732,122 +1314,21 @@ code { background: var(--card-2); padding: .06em .32em; border-radius: 6px; colo
   <h2>Kontrola wersji i&nbsp;stosy pull requestów</h2>
   <div class="cols">
     <ul class="bullets">
+      <li class="step"><strong>Pamiętacie AI slop?</strong> Agent w&nbsp;godzinę wygeneruje kilkanaście tysięcy linii w&nbsp;jednym PR-ze. Nikt tego rzetelnie nie przejrzy.</li>
       <li class="step"><strong>Iteracyjne zmiany</strong> i&nbsp;częste commity z&nbsp;opisem <em>dlaczego</em>, nie tylko <em>co</em>.</li>
       <li class="step"><strong>Małe PR-y:</strong> jedna zmiana, jeden cel. Najpierw refaktoryzacja bez zmiany zachowania, potem zmiana zachowania.</li>
       <li class="step"><strong>Stos PR-ów:</strong> każdy buduje na poprzednim i&nbsp;każdy da się przejrzeć osobno.</li>
       <li class="step">Rebase/merge stosu to dla agenta <strong>tania, mechaniczna praca</strong>.</li>
     </ul>
-    <div class="stack step">
+    <div class="stack-col">
+      <div class="stack step" data-with="3">
       <div class="pr-card main"><span class="id">main</span><span class="nm">gałąź główna</span></div>
-      <div class="pr-card"><span class="id">PR 1</span><span class="nm">rejestracja</span><span class="df"><span class="a">+84</span><span class="d">−3</span></span></div>
-      <div class="pr-card"><span class="id">PR 2</span><span class="nm">logowanie</span><span class="df"><span class="a">+61</span><span class="d">−2</span></span></div>
-      <div class="pr-card"><span class="id">PR 3</span><span class="nm">kupno biletu</span><span class="df"><span class="a">+143</span><span class="d">−9</span></span></div>
-      <div class="pr-card"><span class="id">PR 4</span><span class="nm">skanowanie biletu</span><span class="df"><span class="a">+92</span><span class="d">−7</span></span></div>
-    </div>
-  </div>
-</section>
-
-<!-- 17. Wiedza o narzędziach -->
-<section class="slide">
-  <div class="kicker">Proces agentów</div>
-  <h2>Jak i&nbsp;kiedy używać narzędzi</h2>
-  <ul class="bullets">
-    <li class="step"><strong>AGENTS.md / CLAUDE.md:</strong> krótki spis treści z&nbsp;odsyłaczami do szczegółów, a&nbsp;nie jeden wielki plik.</li>
-    <li class="step"><strong>Skills:</strong> wiedza wczytywana dopiero wtedy, gdy jest potrzebna.</li>
-    <li class="step"><strong>Prompty, workflow, checklisty:</strong> powtarzalne procedury zapisane w&nbsp;repozytorium.</li>
-  </ul>
-  <div class="ladder step">
-    <div class="scale"><span>reguła miękka</span><b>reguła twarda →</b></div>
-    <div class="rungs">
-      <div class="rung">Uwaga w&nbsp;review</div>
-      <div class="rung">Dokumentacja</div>
-      <div class="rung">Skill</div>
-      <div class="rung">Wymuszenie<small>plugin · pre-commit hook · linter · test · workflow CI · merge queue na GitHubie</small></div>
-    </div>
-  </div>
-</section>
-
-<!-- 18. TDD -->
-<section class="slide s-tdd">
-  <div class="kicker">Proces agentów</div>
-  <h2>TDD, refaktoryzacja, styl i&nbsp;zgodność</h2>
-  <div class="cols">
-    <ul class="bullets small">
-      <li class="step"><strong>TDD:</strong> czerwony test, który pada z&nbsp;właściwego powodu → zielony → refaktoryzacja.</li>
-      <li class="step"><strong>Ciągła refaktoryzacja</strong> kodu i&nbsp;testów, po każdym zielonym.</li>
-      <li class="step"><strong>Styl i&nbsp;zgodność:</strong> lintery, formatery i&nbsp;wytyczne zespołu jako twarde sprawdzenia.</li>
-      <li class="step"><strong>Twarda reguła:</strong> nie usuwamy, nie pomijamy i&nbsp;nie osłabiamy testów, żeby przeszły.</li>
-    </ul>
-    <div class="tdd-side">
-      <div class="loop step">
-        <span class="lbl">Pętla zewnętrzna · test akceptacyjny</span>
-        <svg viewBox="0 0 440 320" width="440" height="320">
-          <defs><marker id="tah" viewBox="0 0 10 10" refX="4" refY="5" markerWidth="1.9" markerHeight="1.9" markerUnits="strokeWidth" orient="auto"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
-          <path d="M231.5 50.6 A110 110 0 0 1 324.6 194" stroke="#c62828" stroke-width="16" fill="none" marker-end="url(#tah)"/>
-          <path d="M309 224.7 A110 110 0 0 1 138.3 233.6" stroke="#1a7f37" stroke-width="16" fill="none" marker-end="url(#tah)"/>
-          <path d="M119.5 204.7 A110 110 0 0 1 197.1 52.4" stroke="#1f4fd1" stroke-width="16" fill="none" marker-end="url(#tah)"/>
-          <text x="346" y="92" font-family="JetBrains Mono" font-weight="700" font-size="22" fill="#c62828">RED</text>
-          <text x="220" y="310" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="22" fill="#1a7f37">GREEN</text>
-          <text x="96" y="92" text-anchor="end" font-family="JetBrains Mono" font-weight="700" font-size="20" fill="#1f4fd1">REFACTOR</text>
-          <text x="220" y="154" text-anchor="middle" font-family="Inter" font-weight="600" font-size="24" fill="#3b404c">testy</text>
-          <text x="220" y="184" text-anchor="middle" font-family="Inter" font-weight="600" font-size="24" fill="#3b404c">jednostkowe</text>
-        </svg>
+      <div class="pr-card"><span class="id">PR 1</span><span class="nm">rejestracja</span><span class="df"><span class="a">+1,184</span><span class="d">−52</span></span></div>
+      <div class="pr-card"><span class="id">PR 2</span><span class="nm">logowanie</span><span class="df"><span class="a">+1,047</span><span class="d">−96</span></span></div>
+      <div class="pr-card"><span class="id">PR 3</span><span class="nm">kupno biletu</span><span class="df"><span class="a">+2,318</span><span class="d">−141</span></span></div>
+      <div class="pr-card"><span class="id">PR 4</span><span class="nm">skanowanie biletu</span><span class="df"><span class="a">+1,562</span><span class="d">−73</span></span></div>
       </div>
-      <div class="qr step">
-        <img src="assets/img/qr-agile.svg" alt="Kod QR do github.com/hubertlepicki/agile">
-        <div>
-          <div class="url">https://github.com/<br>hubertlepicki/agile</div>
-          <div class="tag">Talk first. Test first. Small steps. Plain words.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 19. Agent zapisuje wiedzę -->
-<section class="slide">
-  <div class="kicker">Proces agentów · agent zapisuje wiedzę</div>
-  <h2>Zapisywanie wiedzy i&nbsp;decyzji</h2>
-  <div class="rows">
-    <div class="r step"><b>ADR-y w&nbsp;repozytorium</b><span>decyzje architektoniczne zapisane jako Architecture Decision Records</span></div>
-    <div class="r step"><b>Dokumentacja w&nbsp;tym samym PR</b><span>zmienia się kod, zmienia się opis</span></div>
-    <div class="r step"><b>Wnioski z&nbsp;sesji</b><span>do AGENTS.md, skills i&nbsp;notatek: następna sesja (i&nbsp;następny człowiek) nie zaczyna od zera</span></div>
-    <div class="r step"><b>Zmiany decyzji</b><span>w&nbsp;tickecie albo PR, a&nbsp;nie w&nbsp;czacie z&nbsp;agentem, który zniknie</span></div>
-    <div class="r step"><b>Wiedza zespołu</b><span>wiki i&nbsp;repozytoria wiedzy wspólne dla zespołu, nie dla jednego agenta</span></div>
-  </div>
-</section>
-
-<!-- 20. QA -->
-<section class="slide s-qa">
-  <div class="kicker">Proces agentów</div>
-  <h2>QA: agent sam klika po aplikacji</h2>
-  <div class="cols">
-    <div style="display:flex;flex-direction:column">
-      <ul class="bullets small tight">
-        <li class="step"><strong>Przeglądarka:</strong> Playwright albo Chrome DevTools przez MCP, cała ścieżka użytkownika.</li>
-        <li class="step"><strong>Computer use:</strong> aplikacje desktopowe i&nbsp;mobilne.</li>
-        <li class="step">Czyta <strong>konsolę, ruch sieciowy i&nbsp;logi serwera</strong>.</li>
-        <li class="step">Wyłapuje to, czego nie widzą testy jednostkowe: rozjechany układ, martwy przycisk, urwany przepływ.</li>
-        <li class="step"><strong>Zrzuty ekranu i&nbsp;nagrania</strong> jako dowód wykonania w&nbsp;PR.</li>
-      </ul>
-      <div class="echo-row step"><span class="echo">Apollo: zanim polecisz, przeleć misję w&nbsp;symulatorze</span></div>
-    </div>
-    <div>
-      <div class="browser step">
-        <div class="bar"><i></i><i></i><i></i><span>localhost:3000/wydarzenia/programistok</span></div>
-        <div class="page">
-          <div class="h"></div>
-          <div class="ln" style="width:92%"></div>
-          <div class="ln" style="width:80%"></div>
-          <div class="ln" style="width:64%"></div>
-          <div class="ticket"><div><div class="ln l"></div><div class="ln l" style="width:150px;margin:0"></div></div><div class="btn">Kup bilet</div></div>
-          <div class="ticket"><div><div class="ln l"></div><div class="ln l" style="width:170px;margin:0"></div></div><div class="btn">Kup bilet</div></div>
-          <div class="hl" style="right:28px;top:246px;width:190px;height:78px"></div>
-          <div class="flag" style="right:28px;top:336px">✕ przycisk nic nie robi · 500 w&nbsp;/api/orders</div>
-          <svg class="cursor" style="right:70px;top:282px" viewBox="0 0 24 24"><path d="M4 2l16 10-7 1.5L9.5 21z" fill="#16181d" stroke="#fff" stroke-width="1.5"/></svg>
-        </div>
-      </div>
-      <div class="shot-row step"><span>📷 zrzut-01.png</span><span>🎞 nagranie.webm</span><span>console: 1 error</span></div>
+      <div class="gh-note step"><b>GitHub, lipiec 2026:</b> natywne stosy PR-ów (public preview) i&nbsp;rozszerzenie <code>gh stack</code></div>
     </div>
   </div>
 </section>
@@ -865,7 +1346,7 @@ code { background: var(--card-2); padding: .06em .32em; border-radius: 6px; colo
   </div>
   <div class="stage-desc">
     <p class="step" data-with="0">Agent-autor sprawdza sam siebie: zakres zmiany, nic ponad to, o&nbsp;co proszono.</p>
-    <p class="step" data-with="1">Drugi agent z&nbsp;czystym kontekstem: tylko diff i&nbsp;wymagania. Kilku recenzentów, różne cele.</p>
+    <p class="step" data-with="1"><strong>Inny agent i&nbsp;inny model</strong>, z&nbsp;czystym kontekstem: tylko diff i&nbsp;wymagania. Kilku recenzentów, różne cele.</p>
     <p class="step" data-with="2">Przeklikanie aplikacji w&nbsp;przeglądarce albo na urządzeniu.</p>
     <p class="step" data-with="3">Osobny przegląd bezpieczeństwa.</p>
     <p class="step" data-with="4"><strong>Człowiek decyduje o&nbsp;scaleniu i&nbsp;odpowiada za kod.</strong></p>
@@ -873,31 +1354,62 @@ code { background: var(--card-2); padding: .06em .32em; border-radius: 6px; colo
   <div class="echo-row step"><span class="echo">Fagan, IBM 1976: role i&nbsp;listy kontrolne, dziś zapisane w&nbsp;prompcie</span></div>
 </section>
 
-<!-- 22. Izolacja i równoległość -->
-<section class="slide s-sec">
-  <div class="kicker">Proces agentów</div>
-  <h2>Izolacja, najmniejsze uprawnienia, praca równoległa</h2>
-  <div class="cols cols-2">
-    <div class="card">
-      <h3><svg viewBox="0 0 48 48"><path d="M24 5l15 6v11c0 10-6.5 17-15 21-8.5-4-15-11-15-21V11z"/><path d="M17 24l5 5 9-10"/></svg>Bezpieczeństwo</h3>
+<!-- Od potwierdzania komend do trybu YOLO -->
+<section class="slide s-yolo">
+  <div class="kicker">Bezpieczeństwo</div>
+  <h2>Od „Enter, Enter, Enter” do trybu YOLO</h2>
+  <div class="ysteps">
+    <div class="ystage step"><span class="n">01</span><b>Potwierdzam każdą komendę</b><small>czytam, rozumiem, zatwierdzam</small></div>
+    <div class="ystage step"><span class="n">02</span><b>Udaję, że czytam</b><small>maszynka do naciskania Entera</small></div>
+    <div class="ystage step"><span class="n">03</span><b>Auto-approval, tryb YOLO</b><small>agent robi, co uzna za słuszne</small></div>
+  </div>
+  <div class="ycols">
+    <div class="card ydanger step">
+      <div class="label">Agent bez nadzoru może</div>
       <ul class="bullets">
-        <li class="step"><strong>Osobne środowisko na projekt:</strong> własne pliki, sekrety, ograniczona sieć.</li>
-        <li class="step"><strong>Najmniejsze uprawnienia:</strong> bez produkcji i&nbsp;danych produkcyjnych, sekrety z&nbsp;menedżera.</li>
-        <li class="step"><strong>Chroniony <code>main</code>:</strong> agent nie pushuje bezpośrednio, scalenie i&nbsp;wdrożenie wymagają zatwierdzenia przez człowieka.</li>
-        <li class="step"><strong>Treść z&nbsp;zewnątrz to dane, nie polecenia</strong> (prompt injection).</li>
+        <li>nie odtworzyć błędu lokalnie i&nbsp;<strong>spróbować na produkcji</strong></li>
+        <li>zajrzeć do <strong>produkcyjnej bazy</strong>, żeby sprawdzić dane</li>
+        <li>w&nbsp;Twoim shellu mieć <strong>Twoje uprawnienia</strong>: <code>kubectl</code> <code>gh</code> <code>git push</code> <code>ssh</code></li>
       </ul>
     </div>
-    <div class="card">
-      <h3><svg viewBox="0 0 48 48"><path d="M8 12h32M8 24h32M8 36h32"/><circle cx="16" cy="12" r="3.5" fill="#fff"/><circle cx="30" cy="24" r="3.5" fill="#fff"/><circle cx="21" cy="36" r="3.5" fill="#fff"/></svg>Równoległość</h3>
+    <div class="card yok step">
+      <div class="label">Dlatego</div>
       <ul class="bullets">
-        <li class="step"><strong>Git worktrees</strong> izolują pliki.</li>
-        <li class="step"><strong>Kontener albo VM na zadanie</strong> izoluje bazę, porty i&nbsp;usługi.</li>
-        <li class="step">Zadania muszą być <strong>naprawdę niezależne</strong>.</li>
-        <li class="step"><strong>Limit wyznacza człowiek:</strong> tylu agentów, ile wyników zdążysz rzetelnie przejrzeć.</li>
+        <li><strong>Najmniejsze uprawnienia:</strong> bez produkcji i&nbsp;produkcyjnych sekretów</li>
+        <li><strong>Sandbox:</strong> kontener albo maszyna wirtualna, ograniczona sieć</li>
+        <li><strong>Chroniony <code>main</code>:</strong> scalenie i&nbsp;wdrożenie tylko po akceptacji człowieka</li>
       </ul>
     </div>
   </div>
-  <div class="echo-row step" style="margin-top:36px"><span class="echo">Saltzer i&nbsp;Schroeder 1975</span><span class="echo">CP-67 1967</span><span class="echo">chroot 1979</span></div>
+</section>
+
+<!-- Długie sesje i praca równoległa -->
+<section class="slide s-long">
+  <div class="kicker">Praca równoległa</div>
+  <h2>Długie sesje: nie czekajmy na agenta</h2>
+  <div class="gantt">
+    <div class="gaxis"><span style="left:0%">0 h</span><span style="left:33.3%">1 h</span><span style="left:66.6%">2 h</span><span style="left:100%">3 h</span></div>
+    <div class="lane step" data-with="0"><div class="who">Agent 1<small>worktree A</small></div><div class="track">
+      <div class="bar tdd" style="left:0%;width:55%">#14 kupno biletu · faza implementacji w&nbsp;trybie TDD</div>
+      <div class="bar qa" style="left:55.5%;width:22%">faza testowania z&nbsp;perspektywy użytkownika</div>
+      <div class="bar rv" style="left:78%;width:14%">automatyczny przegląd kodu</div>
+    </div></div>
+    <div class="lane step" data-with="1"><div class="who">Ty<small>nie czekasz</small></div><div class="track">
+      <div class="bar me" style="left:3%;width:15%">plan #15</div>
+      <div class="bar me" style="left:30%;width:17%">review PR #30</div>
+      <div class="bar me" style="left:52%;width:13%">plan #16</div>
+      <div class="bar me" style="left:80%;width:17%">review PR #31</div>
+    </div></div>
+    <div class="lane step" data-with="2"><div class="who">Agent 2<small>maszyna wirtualna B</small></div><div class="track">
+      <div class="bar tdd" style="left:20%;width:52%">#15 skanowanie · faza implementacji w&nbsp;trybie TDD</div>
+      <div class="bar qa" style="left:72.5%;width:22%">faza testowania z&nbsp;perspektywy użytkownika</div>
+    </div></div>
+  </div>
+  <ul class="bullets long-bullets">
+    <li class="step">Zadanie w&nbsp;trybie TDD z&nbsp;testem ręcznym to <strong>nawet kilka godzin</strong> pracy agenta.</li>
+    <li class="step">Nie czekamy: <strong>przeglądamy kod, planujemy</strong> kolejne zadania.</li>
+    <li class="step"><strong>Git worktrees i&nbsp;maszyny wirtualne:</strong> druga instancja agenta pracuje nad innym zadaniem. VM to przy okazji dobry sandbox.</li>
+  </ul>
 </section>
 
 <!-- 23. Spec-driven development -->
@@ -963,19 +1475,47 @@ do „Human Review”.</div>
   </div>
 </section>
 
-<!-- 25. Podsumowanie -->
-<section class="slide s-summary">
+<!-- Podsumowanie: inżynieria oprogramowania w pracy z agentami -->
+<section class="slide s-sum">
   <div class="kicker">Podsumowanie</div>
-  <h2 style="margin-bottom:36px">Co wraca z&nbsp;historii</h2>
-  <div class="then-now">
-    <div class="hd"><span>Wtedy: ręcznie</span><span></span><span>Dziś: agent automatycznie</span></div>
-    <div class="row step"><span>Test przed kodem (TDD)</span><span>→</span><span>pisze test, sprawdza, że nie przechodzi, potem implementuje</span></div>
-    <div class="row step"><span>Refaktoryzacja</span><span>→</span><span>porządkuje kod i&nbsp;testy po każdym zielonym</span></div>
-    <div class="row step"><span>Małe commity i&nbsp;małe PR-y</span><span>→</span><span>dzieli pracę na stos PR-ów i&nbsp;go utrzymuje</span></div>
-    <div class="row step"><span>Styl i&nbsp;standardy zespołu</span><span>→</span><span>uruchamia lintery, trzyma się wytycznych</span></div>
-    <div class="row step"><span>Przeklikanie aplikacji (QA)</span><span>→</span><span>klika sam i&nbsp;zostawia nagranie jako dowód</span></div>
-    <div class="row step"><span>Code review</span><span>→</span><span>kilku recenzentów-agentów przed człowiekiem</span></div>
-    <div class="row step"><span>Dokumentacja i&nbsp;decyzje</span><span>→</span><span>aktualizuje je w&nbsp;tym samym PR</span></div>
+  <h2>Inżynieria oprogramowania w&nbsp;pracy z&nbsp;agentami</h2>
+  <div class="sum-grid">
+    <div class="card step">
+      <div class="label">Kontekst i&nbsp;wiedza</div>
+      <ul class="bullets">
+        <li>tickety, ADR-y, dokumentacja przez <code>gh</code> i&nbsp;MCP</li>
+        <li>tryb planowania: pytania przed kodem</li>
+        <li>AGENTS.md i&nbsp;skills: gdzie szukać, jak pracować</li>
+        <li>zapis decyzji, zmian wymagań i&nbsp;znalezionych błędów</li>
+      </ul>
+    </div>
+    <div class="card step">
+      <div class="label">Sposób pracy</div>
+      <ul class="bullets">
+        <li>TDD od zewnątrz do środka</li>
+        <li>test z&nbsp;perspektywy użytkownika w&nbsp;przeglądarce</li>
+        <li>commity z&nbsp;<code>[#nr]</code> i&nbsp;opisem dlaczego</li>
+        <li>małe PR-y w&nbsp;stosie</li>
+      </ul>
+    </div>
+    <div class="card step">
+      <div class="label">Kontrola jakości</div>
+      <ul class="bullets">
+        <li>wielopoziomowy review: inny agent, inny model</li>
+        <li>człowiek decyduje o&nbsp;scaleniu</li>
+        <li>hooki i&nbsp;pluginy wymuszają proces</li>
+        <li>lintery, CI, merge queue</li>
+      </ul>
+    </div>
+    <div class="card step">
+      <div class="label">Bezpieczeństwo i&nbsp;skala</div>
+      <ul class="bullets">
+        <li>najmniejsze uprawnienia, sandbox</li>
+        <li>chroniony <code>main</code></li>
+        <li>worktrees i&nbsp;maszyny wirtualne do pracy równoległej</li>
+        <li>konfiguracja agentów wspólna dla zespołu</li>
+      </ul>
+    </div>
   </div>
   <div class="punch step">Inżynieria oprogramowania jest dziś <em>ważniejsza niż kiedykolwiek.</em></div>
 </section>
@@ -992,6 +1532,8 @@ do „Human Review”.</div>
 (() => {
   const slides = [...document.querySelectorAll('.slide')];
   const total = slides.length;
+  const params = new URLSearchParams(location.search);
+  const isPresenter = params.has('presenter');
 
   // Footer with talk title and slide number
   slides.forEach((s, i) => {
@@ -1002,7 +1544,8 @@ do „Human Review”.</div>
     s.appendChild(f);
   });
 
-  // Steps: document order, except .then-now rows keep flow; data-with="k" reveals together with the k-th plain step
+  // Steps: document order; data-with="k" reveals together with the k-th plain step,
+  // data-order="k" inserts the element as its own step at position k
   const stepsOf = slides.map(s => {
     const all = [...s.querySelectorAll('.step')];
     const primary = all.filter(el => !el.hasAttribute('data-with') && !el.hasAttribute('data-order'));
@@ -1015,21 +1558,28 @@ do „Human Review”.</div>
       const k = +el.dataset.order;
       groups.splice(Math.min(k, groups.length), 0, [el]);
     });
+    groups.forEach((g, gi) => g.forEach(el => { el.dataset.g = gi; }));
     return groups;
   });
 
   let cur = 0, step = 0;
+  let peer = null; // presenter window (seen from the audience window)
 
   function fit() {
     const scale = Math.min(innerWidth / 1920, innerHeight / 1080);
     document.documentElement.style.setProperty('--scale', scale);
+    if (isPresenter) document.querySelectorAll('.pv-stage').forEach(st => st.style.setProperty('--scale', st.clientWidth / 1920));
   }
 
   function render() {
-    slides.forEach((s, i) => s.classList.toggle('active', i === cur));
-    stepsOf[cur].forEach((g, i) => g.forEach(el => el.classList.toggle('shown', i < step)));
-    document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
-    history.replaceState(null, '', '#' + (cur + 1));
+    if (isPresenter) renderPresenter();
+    else {
+      slides.forEach((s, i) => s.classList.toggle('active', i === cur));
+      stepsOf[cur].forEach((g, i) => g.forEach(el => el.classList.toggle('shown', i < step)));
+      document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+      if (peer && !peer.closed) peer.postMessage({ type: 'state', cur, step }, '*');
+    }
+    history.replaceState(null, '', location.search + '#' + (cur + 1));
   }
 
   function go(n, atEnd) {
@@ -1046,24 +1596,111 @@ do „Human Review”.</div>
     else if (cur > 0) go(cur - 1, true);
   }
 
+  // In the presenter window, commands go to the audience window when it exists
+  const audience = isPresenter && window.opener && !window.opener.closed ? window.opener : null;
+  function command(cmd) {
+    if (audience) { audience.postMessage({ type: 'cmd', cmd }, '*'); return; }
+    ({ next, prev, first: () => go(0), last: () => go(total - 1, true) })[cmd]();
+  }
+
+  function openPresenter() {
+    if (peer && !peer.closed) { peer.focus(); return; }
+    peer = window.open(location.pathname + '?presenter#' + (cur + 1), 'presenter', 'width=1500,height=860');
+  }
+
+  addEventListener('message', e => {
+    const d = e.data || {};
+    if (!isPresenter) {
+      if (d.type === 'hello') { peer = e.source; render(); }
+      else if (d.type === 'cmd') ({ next, prev, first: () => go(0), last: () => go(total - 1, true) })[d.cmd]?.();
+    } else if (d.type === 'state') {
+      cur = d.cur; step = d.step; render();
+    }
+  });
+
   addEventListener('keydown', e => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     const k = e.key;
-    if ([' ', 'ArrowRight', 'ArrowDown', 'PageDown', 'Enter'].includes(k)) { e.preventDefault(); next(); }
-    else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(k)) { e.preventDefault(); prev(); }
-    else if (k === 'Home') go(0);
-    else if (k === 'End') go(total - 1, true);
+    if ([' ', 'ArrowRight', 'ArrowDown', 'PageDown', 'Enter'].includes(k)) { e.preventDefault(); command('next'); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(k)) { e.preventDefault(); command('prev'); }
+    else if (k === 'Home') command('first');
+    else if (k === 'End') command('last');
     else if (k === 'f' || k === 'F') {
       if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen();
     }
+    else if ((k === 'p' || k === 'P') && !isPresenter) openPresenter();
+    else if ((k === 't' || k === 'T') && isPresenter) startedAt = Date.now();
   });
-  addEventListener('click', e => { if (!e.target.closest('a')) next(); });
-  addEventListener('contextmenu', e => { e.preventDefault(); prev(); });
+  addEventListener('click', e => { if (!e.target.closest('a, .pv-timer')) command('next'); });
+  addEventListener('contextmenu', e => { e.preventDefault(); command('prev'); });
   addEventListener('resize', fit);
+
+  // ---------- presenter view ----------
+  let startedAt = Date.now();
+  function renderPresenter() {
+    const groups = stepsOf[cur].length;
+    const curStage = document.getElementById('pv-cur');
+    const nextStage = document.getElementById('pv-next');
+
+    const c = slides[cur].cloneNode(true);
+    c.classList.add('active');
+    c.querySelectorAll('.step').forEach(el => {
+      const g = +el.dataset.g;
+      el.classList.toggle('shown', g < step);
+      el.classList.toggle('upnext', g === step);
+      el.classList.toggle('pending', g > step);
+    });
+    curStage.replaceChildren(c);
+
+    if (cur < total - 1) {
+      const n = slides[cur + 1].cloneNode(true);
+      n.classList.add('active');
+      n.querySelectorAll('.step').forEach(el => el.classList.add('shown'));
+      nextStage.replaceChildren(n);
+    } else nextStage.replaceChildren(Object.assign(document.createElement('div'), { className: 'pv-end', textContent: 'Koniec prezentacji' }));
+
+    document.getElementById('pv-where').textContent = `Slajd ${cur + 1} / ${total}`;
+    document.getElementById('pv-step').textContent = groups
+      ? (step < groups ? `krok ${step} z ${groups} · po spacji pojawi się element w ramce` : `wszystkie ${groups} kroki widoczne · spacja: następny slajd`)
+      : 'bez kroków · spacja: następny slajd';
+    document.getElementById('pv-link').textContent = audience ? 'połączono z oknem prezentacji' : 'tryb próby (brak okna prezentacji)';
+    fit();
+  }
+
+  function tick() {
+    const t = Math.floor((Date.now() - startedAt) / 1000);
+    const mm = String(Math.floor(t / 60)).padStart(2, '0'), ss = String(t % 60).padStart(2, '0');
+    document.getElementById('pv-timer').textContent = `${mm}:${ss}`;
+    document.getElementById('pv-clock').textContent = new Date().toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  if (isPresenter) {
+    document.title = 'Widok prelegenta · ' + document.title;
+    document.body.classList.add('presenter');
+    const ui = document.createElement('div');
+    ui.id = 'pv';
+    ui.innerHTML = `
+      <div class="pv-main">
+        <div class="pv-label"><b id="pv-where"></b><span id="pv-step"></span></div>
+        <div class="pv-stage" id="pv-cur"></div>
+      </div>
+      <div class="pv-side">
+        <div class="pv-label"><b>Następny slajd</b></div>
+        <div class="pv-stage" id="pv-next"></div>
+        <div class="pv-meta">
+          <div class="pv-timer" title="T: zeruj"><span id="pv-timer">00:00</span><small>czas od startu · T zeruje</small></div>
+          <div class="pv-timer"><span id="pv-clock"></span><small>godzina</small></div>
+        </div>
+        <div class="pv-hint"><span id="pv-link"></span><br>spacja, → dalej · ← wstecz · Home / End</div>
+      </div>`;
+    document.body.appendChild(ui);
+    setInterval(tick, 1000); tick();
+    if (audience) audience.postMessage({ type: 'hello' }, '*');
+  }
 
   fit();
   const fromHash = parseInt(location.hash.slice(1), 10);
-  go(Number.isFinite(fromHash) ? fromHash - 1 : 0, new URLSearchParams(location.search).has('all'));
+  go(Number.isFinite(fromHash) ? fromHash - 1 : 0, params.has('all'));
 })();
 </script>
 </body>
