@@ -568,6 +568,21 @@ body.presenter #progress { display: none; }
   .step { opacity: 1; transform: none; transition: none; }
   #progress { display: none; }
 }
+
+/* One complete slide per PDF page, including every incremental reveal. */
+@page { size: 1920px 1080px; margin: 0; }
+@media print {
+  html, body { width: 1920px; height: auto; overflow: visible; background: var(--paper); }
+  body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .slide {
+    position: relative; left: auto; top: auto; transform: none;
+    opacity: 1; visibility: visible; transition: none;
+    break-inside: avoid; break-after: page;
+  }
+  .slide:last-of-type { break-after: auto; }
+  .step { opacity: 1; transform: none; transition: none; }
+  #progress { display: none; }
+}
 </style>
 </head>
 <body>
